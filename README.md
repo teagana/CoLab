@@ -1,3 +1,1 @@
 # CoLab
-
-Emily Stone
