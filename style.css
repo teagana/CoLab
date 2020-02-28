@@ -1,0 +1,286 @@
+/* ----------------------------------------------- PAGE SETUP */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    box-sizing: border-box;
+    }
+
+body {
+	background-color: white;
+}
+
+/* -------------------------------------------------- NAV BAR */
+
+nav {
+    height: 78px;
+    padding-left: 30px;
+    padding-top: 28px;    
+}
+
+#nav-logo {
+    height: 49px;
+    width: 85px;
+    background-image: url(icons/nav-logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#nav-menu ul{
+    width: 140px;
+    height: 49px;
+    line-height: 57px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16pt;
+    color: #E16C6C;
+    
+    float: left;
+        
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-menu a {
+    color: #E16C6C;
+    text-decoration: none;
+    border-bottom: 2px solid #FAE4E4;
+    padding-bottom: 3px;
+}
+
+#nav-logged-in {
+    width: 75px;
+    height: 49px;
+    float: left;
+}
+
+.nav-profile {
+    margin-top: 5px;
+    width: 39px;
+    height: 39px;
+    border-radius: 49px;
+    float: left;
+    
+    background-image: url(icons/nav-placeholder.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.nav-carrot {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 16px;
+    height: 15px;
+    float: left;
+    
+    background-image: url(icons/carrot.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ---------------------------------------------- TEXT STYLES */
+
+h1 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38pt;
+    line-height: 45pt;
+}
+
+h2 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20pt;
+    line-height: 25pt;
+    color: #999999;
+    }
+
+h3 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16pt;
+    line-height: 19pt;
+    color: #000000;
+    opacity: 0.2;
+}
+
+h4 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11pt;
+    line-height: 13pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000000;
+    opacity: 0.4;   
+}
+
+.card-name {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 22pt;
+    color: #000000;
+}
+
+.card-location {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+    opacity: 0.4;
+}
+
+.profile-name {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26pt;
+    line-height: 31pt;
+    color: #FFFFFF;
+}
+
+.profile-location {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16pt;
+    line-height: 19pt;
+    color: #FFFFFF;
+    opacity: 0.4;
+}
+
+.profile-bio {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+}
+
+.xp {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+}
+
+.text-body {
+    padding-top: 15px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    background: rgba(196, 196, 196, 0.15);
+    border-radius: 12px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13pt;
+    line-height: 17pt;
+    color: #606060;
+}
+
+/* -------------------------------------------------- BUTTONS */
+
+button {
+    padding-top: 13px;
+    padding-bottom: 7px;
+    border-radius: 8px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+}
+
+.send {
+    width: 100px;
+    
+    background: #EDEDED;
+    
+    font-weight: 500;
+    color: #000000;
+}
+
+.contact {
+    width: 100%;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    
+    font-weight: 600;
+    color: #F59696;
+}
+
+.close {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    color: white;
+    float: right;
+    margin-top: -20px;
+    opacity: .9;
+}
+
+/* ----------------------------------------------------- TAGS */
+
+.tagset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding-top: 9px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 3px;
+    position: relative;
+    border-radius: 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    
+    clear: both;
+    float: left;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 14pt;
+    text-align: center;
+}
+
+.skill {
+    color: #F59696;
+    background-color: #FCE4E4;
+}
+
+.interest {
+    color: #AF81C4;
+    background-color: #EADEF0;
+}
