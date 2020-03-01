@@ -19,8 +19,8 @@ body {
 
 nav {
     height: 78px;
-    padding-left: 30px;
-    padding-top: 28px;    
+    padding-left: 20px;
+    padding-top: 15px;    
 }
 
 #nav-logo {
@@ -321,15 +321,24 @@ body {
     clip-path: circle(50% at 50% 50%);
 }
 
+/* side image */
 #side-image {
-    right: 0;
-    top: 0;
-    /*width: 500px;*/
-    height: 100vh;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
 }
 
 #side-image img {
     height: 100%;
     float: right;
+}
+
+/* login card */
+#login-button {
+    background-color: #E16C6C;
+    border-radius: 8px;
+    border-color: #E16C6C;
+    width: 100%;
 }
 
