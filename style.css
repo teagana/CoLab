@@ -301,10 +301,23 @@ body {
 
     shape-outside: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
     clip-path: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
+
     background: linear-gradient(304.72deg, #DF7B9F 10.31%, #F59696 59.55%), #C4C4C4;
     height: 100vh;
     width: 700px;
 }
 
+.yellow-circle {
+    position: absolute;
+    right: 360px;
+    top: 25%;
 
+    width: 150px;
+    height: 150px;
+
+    background: linear-gradient(129.92deg, #FFF0D2 5.78%, #FFC98A 85.93%);
+
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+}
 
