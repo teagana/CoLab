@@ -342,7 +342,7 @@ body {
 
 
 /* login card */
-#login-button {
+#login-button, #signup-button {
     background-color: #E16C6C;
     border-radius: 8px;
     border-color: #E16C6C;
@@ -366,12 +366,12 @@ body {
 }
 
 /*email address and password*/
-#login-form input {
+#login-form input, #signup-form input {
     background: #F2F2F2;
     border: none;
 }
 
-#login-form input:focus {
+#login-form input:focus, #signup-form input:form {
     border-color: #E16C6C;
     box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
 }
@@ -389,3 +389,5 @@ body {
 #signup-link, #signup-link:link {
     color: #E16C6C;
 }
+
+/* SIGNUP PAGE */
