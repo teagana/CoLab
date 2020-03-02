@@ -206,7 +206,7 @@ h4 {
 
 /* -------------------------------------------------- BUTTONS */
 
-button {
+/*button {
     padding-top: 13px;
     padding-bottom: 7px;
     border-radius: 8px;
@@ -215,7 +215,7 @@ button {
     font-style: normal;
     font-size: 13pt;
     line-height: 16pt;
-}
+}*/
 
 .send {
     width: 100px;
@@ -285,12 +285,17 @@ button {
     background-color: #EADEF0;
 }
 
+
 /*----------------
 TEAGAN'S ADDITIONS
 ----------------*/
 
 body {
     height: 100vh;
+}
+
+#container {
+    height: 70%;
 }
 
 .pink-rectangle {
@@ -334,11 +339,105 @@ body {
     float: right;
 }
 
+
+
 /* login card */
-#login-button {
+#login-button, #signup-button {
     background-color: #E16C6C;
     border-radius: 8px;
     border-color: #E16C6C;
     width: 100%;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
+@font-face {
+    font-family: Calibre;
+    src: url("Calibre/Calibre-Regular.otf") format("opentype");
+}
+
+.login-card {
+    margin-left: 10%;
+    width: 350px;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+/*email address and password*/
+#login-form input, #signup-form input {
+    background: #F2F2F2;
+    border: none;
+}
+
+#login-form input:focus, #signup-form input:form {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*for card form*/
+.label {
+    padding: 0;
+    margin: 0;
+}
+
+#card-body {
+    width: 100%;
+}
+
+#signup-link, #signup-link:link {
+    color: #E16C6C;
+}
+
+/* HOME PAGE */
+
+#home-content {
+    width: 500px;
+}
+
+#home-container {
+    padding-top: 10%;
+}
+
+/*searchbar stuff*/
+
+#search-bar {
+    margin-top: 40px;
+}
+
+#searchbar {
+    background-color: #F2F2F2;
+    border: none;
+    color: #999999;
+    width: 350px;
+}
+
+.form-control:focus {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*dropdown button*/
+#search-select {
+    background-color: #E16C6C;
+    border-radius: 6px;
+    color: white;
+    width: 125px;
+    height: 40px;
+}
+
+#search-dropdown {
+    background-color: #FAE4E4;
+    color: white;
+    border: none;
+    margin-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    width: 125px;
+}
+
+.dropdown-item {
+
+}
