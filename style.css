@@ -390,4 +390,54 @@ body {
     color: #E16C6C;
 }
 
-/* SIGNUP PAGE */
+/* HOME PAGE */
+
+#home-content {
+    width: 500px;
+}
+
+#home-container {
+    padding-top: 10%;
+}
+
+/*searchbar stuff*/
+
+#search-bar {
+    margin-top: 40px;
+}
+
+#searchbar {
+    background-color: #F2F2F2;
+    border: none;
+    color: #999999;
+    width: 350px;
+}
+
+.form-control:focus {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*dropdown button*/
+#search-select {
+    background-color: #E16C6C;
+    border-radius: 6px;
+    color: white;
+    width: 125px;
+    height: 40px;
+}
+
+#search-dropdown {
+    background-color: #FAE4E4;
+    color: white;
+    border: none;
+    margin-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    width: 125px;
+}
+
+.dropdown-item {
+
+}
