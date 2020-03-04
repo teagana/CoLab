@@ -13,43 +13,35 @@
 	<nav id="header">
         <div id="nav-logo"></div>
         <div id="nav-menu">
-            <ul>
+            <!-- <ul>
                 <li><a href="#">Home</a></li>
-            </ul>
-        </div>
-        <div id="nav-logged-in">
-            <div class="nav-profile"></div>
-            <div class="nav-carrot"></div>
+            </ul> -->
         </div>
     </nav>
 
     <!-- main body, including login/signup card -->
-    <div id="home-container" class="container d-flex justify-content-start">
-    	<div id="home-content">
-    		<div id="search-heading">
-   				<h1>Find your next collaborator or mentor</h1>
-    		</div>
-    		<div id="search-desc">
-    			<h2>Search coLab’s community of college students to find your next collaborator or mentor</h2>
-    		</div>
-    		<div id="search-bar" class="input-group mb-3">
-    			
+    <div id="container" class="container d-flex justify-content-start align-items-center">
+    	<div class="card login-card rounded">
+		  <div id="card-body" class="card-body">
+		  	<h5 class="card-title card-name">Log In to CoLab</h5>
 
-    			<!-- WILL NEED JS TO MAKE THE INNERHTML OF SEARCH-SELECT TO SELECTED OPTION -->
-				  <div class="input-group-prepend">
-				    <button id="search-select" class="btn dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Everyone</button>
-				    <div class="dropdown-menu" id="search-dropdown">
-				    	<a class="dropdown-item" href="#">Everyone</a>
-				      	<a class="dropdown-item" href="#">Mentors</a>
-				      	<a class="dropdown-item" href="#">Collaborators</a>
-				    </div>
-				  </div>
-				  <!-- searchbar here -->
-				  <form class="form-inline">
-				    <input class="form-control mr-sm-2" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
-					</form>
-					
-    		</div>
+		  	<!-- form for logging in -->
+		  	<!-- temporarily just redirect to home page -->
+		  	<form id="login-form" action="search.php">
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
+			    <input type="email" class="form-control" id="email" name="email">
+			  </div>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD</h4></label>
+			    <input type="password" class="form-control" id="password" name="password">
+			  </div>
+			  <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
+
+			  <small id="signup-message" class="form-text text-center">Don’t have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
+			</form>
+
+		  </div>
 		</div>
     </div>
 
