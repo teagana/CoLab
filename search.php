@@ -14,7 +14,8 @@
         <div id="nav-logo"></div>
         <div id="nav-menu">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="search.php">Home</a></li>
+                <li><a href="profile.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
             </ul>
         </div>
         <div id="nav-logged-in">
@@ -45,8 +46,8 @@
 				    </div>
 				  </div>
 				  <!-- searchbar here -->
-				  <form class="form-inline">
-				    <input class="form-control mr-sm-2" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
+					<form class="form-inline">
+				   		<input class="form-control mr-sm-2" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 					</form>
 					
     		</div>
