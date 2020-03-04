@@ -19,8 +19,8 @@ body {
 
 nav {
     height: 78px;
-    padding-left: 30px;
-    padding-top: 28px;    
+    padding-left: 20px;
+    padding-top: 15px;    
 }
 
 #nav-logo {
@@ -65,6 +65,9 @@ nav {
     height: 49px;
     float: left;
 }
+// .nav-pic {
+//     position: relative;
+// }
 
 .nav-profile {
     margin-top: 5px;
@@ -119,7 +122,7 @@ h3 {
     opacity: 0.2;
 }
 
-h4 {
+h4, #modal-body-txt {
     font-family: Calibre;
     font-style: normal;
     font-weight: 500;
@@ -148,6 +151,8 @@ h4 {
     line-height: 16pt;
     color: #000000;
     opacity: 0.4;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .profile-name {
@@ -158,6 +163,10 @@ h4 {
     line-height: 31pt;
     color: #FFFFFF;
 }
+
+.modal-header {
+        background-color: darkslateblue;
+    }
 
 .profile-location {
     font-family: Calibre;
@@ -206,7 +215,7 @@ h4 {
 
 /* -------------------------------------------------- BUTTONS */
 
-button {
+/*button {
     padding-top: 13px;
     padding-bottom: 7px;
     border-radius: 8px;
@@ -215,7 +224,7 @@ button {
     font-style: normal;
     font-size: 13pt;
     line-height: 16pt;
-}
+}*/
 
 .send {
     width: 100px;
@@ -235,6 +244,8 @@ button {
     
     font-weight: 600;
     color: #F59696;
+
+    // hover??
 }
 
 .close {
@@ -284,3 +295,202 @@ button {
     color: #AF81C4;
     background-color: #EADEF0;
 }
+
+
+/*----------------
+TEAGAN'S ADDITIONS
+----------------*/
+
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 70%;
+}
+
+.pink-rectangle {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    shape-outside: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
+    clip-path: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
+
+    background: linear-gradient(304.72deg, #DF7B9F 10.31%, #F59696 59.55%), #C4C4C4;
+    height: 100vh;
+    width: 700px;
+}
+
+.yellow-circle {
+    position: absolute;
+    right: 360px;
+    top: 25%;
+
+    width: 150px;
+    height: 150px;
+
+    background: linear-gradient(129.92deg, #FFF0D2 5.78%, #FFC98A 85.93%);
+
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+}
+
+/* side image */
+#side-image {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+}
+
+#side-image img {
+    height: 100%;
+    float: right;
+}
+
+
+
+/* login card */
+#login-button, #signup-button {
+    background-color: #E16C6C;
+    border-radius: 8px;
+    border-color: #E16C6C;
+    width: 100%;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+@font-face {
+    font-family: Calibre;
+    src: url("Calibre/Calibre-Regular.otf") format("opentype");
+}
+
+.login-card {
+    margin-left: 10%;
+    width: 350px;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.profile-card {
+    margin-left: 35px;
+    margin-bottom: 50px;
+    margin-top: 35px;
+    width: 250px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+/*email address and password*/
+#login-form input, #signup-form input {
+    background: #F2F2F2;
+    border: none;
+}
+
+#login-form input:focus, #signup-form input:form {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*for card form*/
+.label {
+    padding: 0;
+    margin: 0;
+}
+
+#card-body {
+    width: 100%;
+}
+
+#signup-link, #signup-link:link {
+    color: #E16C6C;
+}
+
+/* HOME PAGE */
+
+#home-content {
+    width: 500px;
+}
+
+#home-container {
+    padding-top: 10%;
+}
+
+/*searchbar stuff*/
+
+#search-bar {
+    margin-top: 40px;
+}
+
+#searchbar {
+    background-color: #F2F2F2;
+    border: none;
+    color: #999999;
+    width: 350px;
+}
+
+.form-control:focus {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*dropdown button*/
+#search-select {
+    background-color: #E16C6C;
+    border-radius: 6px;
+    color: white;
+    width: 125px;
+    height: 40px;
+}
+
+#search-dropdown {
+    background-color: #FAE4E4;
+    color: white;
+    border: none;
+    margin-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    width: 125px;
+}
+
+.dropdown-item {
+
+}
+#new-search {
+    width: 482px;
+    margin-left: 359px;
+    margin-right: 359px;
+}
+#results-number {
+    margin: 0;
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+    opacity: 0.4;
+}
+// #row1 {
+//     // float: left;
+//     display: flex;
+// }
+
+// // items in row - =d-flex justify-content-around
+
+// #row2 {
+//     // float: left;
+//     display: flex;
+// }
+// .contact-button {
+//     margin-top: 10px;
+// }
+
+// #individual-profile {
+//     display: -ms-flexbox;
+//     flex-direction: row;
+// }
