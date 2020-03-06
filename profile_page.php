@@ -49,6 +49,15 @@
         </div>
     </nav>
 
+    <div id="profile-person">
+    	<img src="icons/person-1.png">
+    	<p class="card-name">Latte A</p>
+    	<p class="card-location">Los Angeles, CA</p>
+    </div>
+    <div id="profile-details">
+
+    </div>
+
 
 
 </body>
