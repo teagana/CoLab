@@ -41,6 +41,7 @@
         <div id="nav-menu">
             <ul>
                 <li><a href="search.php">Home</a></li>
+                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
             </ul>
         </div>
         <div id="nav-logged-in">

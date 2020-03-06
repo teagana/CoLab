@@ -37,10 +37,11 @@
 
 	<!-- the header at the top -->
 	<nav id="header">
-        <div id="nav-logo"></div>
+        <div id="nav-logo"><img src="icons/nav-logo.png"></div>
         <div id="nav-menu">
             <ul>
                 <li><a href="search.php">Home</a></li>
+                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
             </ul>
         </div>
         <div id="nav-logged-in">
