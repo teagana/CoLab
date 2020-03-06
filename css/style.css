@@ -28,13 +28,10 @@ nav {
 #nav-logo {
   height: 49px;
   width: 85px;
-  background-image: url(icons/nav-logo.png);
-  background-size: contain;
-  background-repeat: no-repeat;
   float: left;
 }
 
-/* line 35, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 32, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #nav-menu ul {
   width: 140px;
   height: 49px;
@@ -53,7 +50,7 @@ nav {
   padding: 0;
 }
 
-/* line 56, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 53, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #nav-menu a {
   color: #E16C6C;
   text-decoration: none;
@@ -61,14 +58,14 @@ nav {
   padding-bottom: 3px;
 }
 
-/* line 63, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 60, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #nav-logged-in {
   width: 75px;
   height: 49px;
   float: left;
 }
 
-/* line 72, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 69, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .nav-profile {
   margin-top: 5px;
   width: 39px;
@@ -80,7 +77,7 @@ nav {
   background-repeat: no-repeat;
 }
 
-/* line 84, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 81, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .nav-carrot {
   margin-top: 20px;
   margin-left: 10px;
@@ -93,7 +90,7 @@ nav {
 }
 
 /* ---------------------------------------------- TEXT STYLES */
-/* line 98, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 95, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 h1 {
   font-family: Calibre;
   font-style: normal;
@@ -102,7 +99,7 @@ h1 {
   line-height: 45pt;
 }
 
-/* line 106, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 103, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 h2 {
   font-family: Calibre;
   font-style: normal;
@@ -112,7 +109,7 @@ h2 {
   color: #999999;
 }
 
-/* line 115, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 112, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 h3 {
   font-family: Calibre;
   font-style: normal;
@@ -123,7 +120,7 @@ h3 {
   opacity: 0.2;
 }
 
-/* line 125, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 122, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 h4, #modal-body-txt {
   font-family: Calibre;
   font-style: normal;
@@ -136,7 +133,7 @@ h4, #modal-body-txt {
   opacity: 0.4;
 }
 
-/* line 137, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 134, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .card-name {
   font-family: Calibre;
   font-style: normal;
@@ -146,7 +143,7 @@ h4, #modal-body-txt {
   color: #000000;
 }
 
-/* line 146, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 143, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .card-location {
   font-family: Calibre;
   font-style: normal;
@@ -159,7 +156,7 @@ h4, #modal-body-txt {
   margin-bottom: 10px;
 }
 
-/* line 158, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 155, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .profile-name {
   font-family: Calibre;
   font-style: normal;
@@ -169,12 +166,12 @@ h4, #modal-body-txt {
   color: #FFFFFF;
 }
 
-/* line 167, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 164, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .modal-header {
   background-color: darkslateblue;
 }
 
-/* line 171, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 168, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .profile-location {
   font-family: Calibre;
   font-style: normal;
@@ -185,7 +182,7 @@ h4, #modal-body-txt {
   opacity: 0.4;
 }
 
-/* line 181, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 178, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .profile-bio {
   font-family: Calibre;
   font-style: normal;
@@ -195,7 +192,7 @@ h4, #modal-body-txt {
   color: #000000;
 }
 
-/* line 190, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 187, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .xp {
   font-family: Calibre;
   font-style: normal;
@@ -205,7 +202,7 @@ h4, #modal-body-txt {
   color: #000000;
 }
 
-/* line 199, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 196, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .text-body {
   padding-top: 15px;
   padding-bottom: 11px;
@@ -232,7 +229,7 @@ h4, #modal-body-txt {
     font-size: 13pt;
     line-height: 16pt;
 }*/
-/* line 229, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 226, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .send {
   width: 100px;
   background: #EDEDED;
@@ -240,7 +237,7 @@ h4, #modal-body-txt {
   color: #000000;
 }
 
-/* line 238, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 235, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .contact {
   width: 100%;
   background: #FFFFFF;
@@ -250,7 +247,7 @@ h4, #modal-body-txt {
   color: #F59696;
 }
 
-/* line 251, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 248, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .close {
   font-family: Arial, sans-serif;
   font-size: 40px;
@@ -261,14 +258,14 @@ h4, #modal-body-txt {
 }
 
 /* ----------------------------------------------------- TAGS */
-/* line 262, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 259, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .tagset {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-/* line 268, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 265, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .tag {
   padding-top: 9px;
   padding-left: 13px;
@@ -288,13 +285,13 @@ h4, #modal-body-txt {
   text-align: center;
 }
 
-/* line 289, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 286, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .skill {
   color: #F59696;
   background-color: #FCE4E4;
 }
 
-/* line 294, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 291, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .interest {
   color: #AF81C4;
   background-color: #EADEF0;
@@ -303,17 +300,17 @@ h4, #modal-body-txt {
 /*----------------
 TEAGAN'S ADDITIONS
 ----------------*/
-/* line 304, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 301, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 body {
   height: 100vh;
 }
 
-/* line 308, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 305, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #container {
   height: 70%;
 }
 
-/* line 312, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 309, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .pink-rectangle {
   position: absolute;
   right: 0%;
@@ -326,7 +323,7 @@ body {
   width: 700px;
 }
 
-/* line 326, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 323, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .yellow-circle {
   position: absolute;
   right: 360px;
@@ -339,7 +336,7 @@ body {
 }
 
 /* side image */
-/* line 341, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 338, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #side-image {
   position: absolute;
   right: 0px;
@@ -347,14 +344,14 @@ body {
   height: 100%;
 }
 
-/* line 348, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 345, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #side-image img {
   height: 100%;
   float: right;
 }
 
 /* login card */
-/* line 356, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 353, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #login-button, #signup-button {
   background-color: #E16C6C;
   border-radius: 8px;
@@ -369,7 +366,7 @@ body {
   src: url("Calibre/Calibre-Regular.otf") format("opentype");
 }
 
-/* line 371, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 368, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .login-card {
   margin-left: 10%;
   width: 350px;
@@ -377,7 +374,7 @@ body {
   border: none;
 }
 
-/* line 378, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 375, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .profile-card {
   margin-left: 35px;
   margin-bottom: 50px;
@@ -388,54 +385,54 @@ body {
 }
 
 /*email address and password*/
-/* line 388, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 385, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #login-form input, #signup-form input {
   background: #F2F2F2;
   border: none;
 }
 
-/* line 393, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 390, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #login-form input:focus, #signup-form input:form {
   border-color: #E16C6C;
   box-shadow: 0px 0px 4px rgba(225, 108, 108, 0.9);
 }
 
 /*for card form*/
-/* line 399, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 396, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .label {
   padding: 0;
   margin: 0;
 }
 
-/* line 404, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 401, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #card-body {
   width: 100%;
 }
 
-/* line 408, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 405, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #signup-link, #signup-link:link {
   color: #E16C6C;
 }
 
 /* HOME PAGE */
-/* line 414, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 411, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #home-content {
   width: 500px;
 }
 
-/* line 418, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 415, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #home-container {
   padding-top: 10%;
 }
 
 /*searchbar stuff*/
-/* line 424, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 421, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #search-bar {
   margin-top: 40px;
   width: 515px;
 }
 
-/* line 429, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 426, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #searchbar {
   background-color: #F2F2F2;
   border: none;
@@ -444,14 +441,14 @@ body {
   margin-right: 0;
 }
 
-/* line 437, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 434, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .form-control:focus {
   border-color: #E16C6C;
   box-shadow: 0px 0px 4px rgba(225, 108, 108, 0.9);
 }
 
 /*dropdown button*/
-/* line 443, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 440, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #search-select {
   background-color: #E16C6C;
   border-radius: 6px;
@@ -460,7 +457,7 @@ body {
   height: 40px;
 }
 
-/* line 451, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 448, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #search-dropdown {
   background-color: #FAE4E4;
   color: white;
@@ -471,14 +468,14 @@ body {
   width: 125px;
 }
 
-/* line 465, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 462, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #new-search {
   width: 524px;
   margin-left: 338px;
   margin-right: 338px;
 }
 
-/* line 470, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 467, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #results-number {
   margin: 0;
   font-family: Calibre;
@@ -490,14 +487,14 @@ body {
   opacity: 0.4;
 }
 
-/* line 480, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 477, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #profile-person {
   width: 50%;
   height: 500px;
   border-right: 2px solid lightgray;
 }
 
-/* line 484, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 481, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #profile-person img {
   width: 33%;
   align-content: center;
@@ -505,19 +502,19 @@ body {
   margin-right: auto;
 }
 
-/* line 490, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 487, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #profile-person p {
   text-align: center;
   margin-bottom: 0;
   margin-top: 0;
 }
 
-/* line 500, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 497, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .gradient {
   background-image: linear-gradient(to right, darkslateblue, #A361B5);
 }
 
-/* line 504, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 501, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .input-group-append img {
   height: 24px;
 }
