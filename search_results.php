@@ -60,9 +60,12 @@
 						</div>
 					</div>
 					  <!-- searchbar here -->
-						<form class="form-inline">
-					   		<input class="form-control mr-sm-2" type="search" placeholder="Engineer" name="search" id="searchbar">
-						</form>
+					<form class="form-inline" action="search_results.php" method="get">
+				   		<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
+				   		<div class="input-group-append">
+	    					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
+	  					</div>
+					</form>	
 				</div>
 		</div>
 <!-- profile cards -->    
@@ -79,11 +82,11 @@
 				  	
 				  	<div class="card-location profile-subhead">Los Angeles, CA</div>
 				  		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Quick View</button>
-						<!--profile modal-->
+		<!--profile modal-->
 							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							  <div class="modal-dialog modal-dialog-centered" role="document">
 							    <div class="modal-content">
-							      <div class="modal-header">
+							      <div class="modal-header gradient">
 							        <span class="profile-name modal-title" id="exampleModalCenterTitle">Lauren B.</span><br/>
 							        <span class="profile-location">Los Angeles, CA</span>
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -159,7 +162,7 @@
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
-						      <div class="modal-header card-name">
+						      <div class="modal-header card-name gradient">
 						        <p class="modal-title" id="exampleModalLabel">Leave a message for fname ll.</p>
 						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						          <span aria-hidden="true">&times;</span>
