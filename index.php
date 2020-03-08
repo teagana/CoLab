@@ -1,3 +1,27 @@
+<?php
+	require "config.php";
+
+	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ( $mysqli->connect_errno ) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+
+	$sql_users = "SELECT * FROM users;";
+
+	$results_users = $mysqli->query( $sql_users );
+
+	if ( $results_users == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+
+	// var_dump($results_users);
+
+	$mysqli->close();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +37,10 @@
 	<nav id="header">
         <div id="nav-logo"></div>
         <div id="nav-menu">
-            <!-- <ul>
-                <li><a href="#">Home</a></li>
-            </ul> -->
+            <ul>
+                <li><a href="search.php">Home</a></li>
+                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
+            </ul>
         </div>
     </nav>
 
