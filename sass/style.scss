@@ -26,9 +26,6 @@ nav {
 #nav-logo {
     height: 49px;
     width: 85px;
-    background-image: url(icons/nav-logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
     float: left;
 }
 
@@ -423,6 +420,7 @@ body {
 
 #search-bar {
     margin-top: 40px;
+    width: 515px;
 }
 
 #searchbar {
@@ -430,6 +428,7 @@ body {
     border: none;
     color: #999999;
     width: 350px;
+    margin-right: 0;
 }
 
 .form-control:focus {
@@ -461,10 +460,10 @@ body {
 
 }
 #new-search {
-    width: 482px;
-    margin-left: 359px;
-    margin-right: 359px;
-}
+    width: 524px;
+    margin-left: 338px;
+    margin-right: 338px;
+} 
 #results-number {
     margin: 0;
     font-family: Calibre;
@@ -475,22 +474,31 @@ body {
     color: #000000;
     opacity: 0.4;
 }
-// #row1 {
-//     // float: left;
-//     display: flex;
-// }
+#profile-person {
+    width: 50%;
+    height: 500px;
+    border-right: 2px solid lightgray;
+    img {
+        width: 33%;
+        align-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    p {
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
 
-// // items in row - =d-flex justify-content-around
+#profile-details {
 
-// #row2 {
-//     // float: left;
-//     display: flex;
-// }
-// .contact-button {
-//     margin-top: 10px;
-// }
-
-// #individual-profile {
-//     display: -ms-flexbox;
-//     flex-direction: row;
-// }
+}
+.gradient {
+    background-image: linear-gradient(to right, darkslateblue, #A361B5);
+}
+.input-group-append {
+    img {
+        height: 24px;
+    }
+}

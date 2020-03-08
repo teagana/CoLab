@@ -1,3 +1,27 @@
+<?php
+	require "config.php";
+
+	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ( $mysqli->connect_errno ) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+
+	$sql_users = "SELECT * FROM users;";
+
+	$results_users = $mysqli->query( $sql_users );
+
+	if ( $results_users == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+
+	// var_dump($results_users);
+
+	$mysqli->close();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +39,7 @@
         <div id="nav-menu">
             <ul>
                 <li><a href="search.php">Home</a></li>
-                <li><a href="profile.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
+                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
             </ul>
         </div>
         <div id="nav-logged-in">
@@ -33,23 +57,25 @@
     		<div id="search-desc">
     			<h2>Search coLab’s community of college students to find your next collaborator or mentor</h2>
     		</div>
-    		<div id="search-bar" class="input-group mb-3">
+    		<div id="search-bar" class="input-group ">
     			
 
     			<!-- WILL NEED JS TO MAKE THE INNERHTML OF SEARCH-SELECT TO SELECTED OPTION -->
-				  <div class="input-group-prepend">
+				<div class="input-group-prepend">
 				    <button id="search-select" class="btn dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Everyone</button>
 				    <div class="dropdown-menu" id="search-dropdown">
 				    	<a class="dropdown-item" href="#">Everyone</a>
 				      	<a class="dropdown-item" href="#">Mentors</a>
 				      	<a class="dropdown-item" href="#">Collaborators</a>
 				    </div>
-				  </div>
+				</div>
 				  <!-- searchbar here -->
-					<form class="form-inline">
-				   		<input class="form-control mr-sm-2" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
-					</form>
-					
+				<form class="form-inline" action="search_results.php" method="get">
+			   		<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
+			   		<div class="input-group-append">
+    					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
+  					</div>
+				</form>	
     		</div>
 		</div>
     </div>
