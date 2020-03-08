@@ -65,6 +65,9 @@ nav {
     height: 49px;
     float: left;
 }
+// .nav-pic {
+//     position: relative;
+// }
 
 .nav-profile {
     margin-top: 5px;
@@ -119,7 +122,7 @@ h3 {
     opacity: 0.2;
 }
 
-h4 {
+h4, #modal-body-txt {
     font-family: Calibre;
     font-style: normal;
     font-weight: 500;
@@ -148,6 +151,8 @@ h4 {
     line-height: 16pt;
     color: #000000;
     opacity: 0.4;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .profile-name {
@@ -158,6 +163,10 @@ h4 {
     line-height: 31pt;
     color: #FFFFFF;
 }
+
+.modal-header {
+        background-color: darkslateblue;
+    }
 
 .profile-location {
     font-family: Calibre;
@@ -235,6 +244,8 @@ h4 {
     
     font-weight: 600;
     color: #F59696;
+
+    // hover??
 }
 
 .close {
@@ -364,6 +375,14 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border: none;
 }
+.profile-card {
+    margin-left: 35px;
+    margin-bottom: 50px;
+    margin-top: 35px;
+    width: 250px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
 
 /*email address and password*/
 #login-form input, #signup-form input {
@@ -441,3 +460,37 @@ body {
 .dropdown-item {
 
 }
+#new-search {
+    width: 482px;
+    margin-left: 359px;
+    margin-right: 359px;
+}
+#results-number {
+    margin: 0;
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+    opacity: 0.4;
+}
+// #row1 {
+//     // float: left;
+//     display: flex;
+// }
+
+// // items in row - =d-flex justify-content-around
+
+// #row2 {
+//     // float: left;
+//     display: flex;
+// }
+// .contact-button {
+//     margin-top: 10px;
+// }
+
+// #individual-profile {
+//     display: -ms-flexbox;
+//     flex-direction: row;
+// }
