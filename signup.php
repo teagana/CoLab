@@ -1,3 +1,27 @@
+<?php
+	require "config.php";
+
+	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ( $mysqli->connect_errno ) {
+		echo $mysqli->connect_error;
+		exit();
+	}
+
+	$sql_users = "SELECT * FROM users;";
+
+	$results_users = $mysqli->query( $sql_users );
+
+	if ( $results_users == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+
+	// var_dump($results_users);
+
+	$mysqli->close();
+?>
 <!DOCTYPE html>
 <html>
 <head>
