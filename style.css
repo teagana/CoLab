@@ -298,7 +298,7 @@ body {
     height: 70%;
 }
 
-.pink-rectangle {
+/*.pink-rectangle {
     position: absolute;
     right: 0%;
     top: 0%;
@@ -324,7 +324,7 @@ body {
 
     shape-outside: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
-}
+}*/
 
 /* side image */
 #side-image {
