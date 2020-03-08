@@ -23,22 +23,35 @@
     <div id="container" class="container d-flex justify-content-start align-items-center">
     	<div class="card login-card rounded">
 		  <div id="card-body" class="card-body">
-		  	<h5 class="card-title card-name">Log In to CoLab</h5>
+		  	<h5 class="card-title card-name">Sign-up for CoLab</h5>
 
-		  	<!-- form for logging in -->
+		  	<!-- form for signing up -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="login-form" action="search.php">
+		  	<form id="signup-form" action="search.php">
 			  <div class="form-group">
-			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
+			    <label class="card-subtitle mb-2 text-muted" for="fname"><h4 class="label">FIRST NAME *</h4></label>
+			    <input type="text" class="form-control" id="fname" name="fname">
+			  </div>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for=";name"><h4 class="label">LAST NAME *</h4></label>
+			    <input type="text" class="form-control" id="lname" name="lname">
+			  </div>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS *</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
 			  </div>
 			  <div class="form-group">
-			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD</h4></label>
+			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD *</h4></label>
 			    <input type="password" class="form-control" id="password" name="password">
 			  </div>
-			  <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for="confirm-password"><h4 class="label">CONFIRM PASSWORD *</h4></label>
+			    <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+			  </div>
+			  
+			  <button id="signup-button" class="btn btn-primary" type="submit">Sign Up</button>
 
-			  <small id="signup-message" class="form-text text-center">Don’t have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
+			  <small id="signup-message" class="form-text text-center">Already have an account? <a id="signup-link" href="index.php">Log In</a></small>
 			</form>
 
 		  </div>
