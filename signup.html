@@ -6,6 +6,12 @@
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<style>
+		#container {
+			height: initial;
+		}
+	</style>
 </head>
 <body>
 
@@ -28,7 +34,7 @@
 
 		  	<!-- form for signing up -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="signup-form" action="search.php">
+		  	<form id="signup-form" action="search.html">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="fname"><h4 class="label">FIRST NAME *</h4></label>
 			    <input type="text" class="form-control" id="fname" name="fname">
@@ -52,7 +58,7 @@
 			  
 			  <button id="signup-button" class="btn btn-primary" type="submit">Sign Up</button>
 
-			  <small id="signup-message" class="form-text text-center">Already have an account? <a id="signup-link" href="index.php">Log In</a></small>
+			  <small id="signup-message" class="form-text text-center">Already have an account? <a id="signup-link" href="index.html">Log In</a></small>
 			</form>
 
 		  </div>
