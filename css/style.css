@@ -16,6 +16,11 @@ body {
   background-color: white;
 }
 
+@font-face {
+  font-family: Calibre;
+  src: url("../Calibre/Calibre-Regular.otf") format("opentype");
+}
+
 /* -------------------------------------------------- NAV BAR */
 /* line 20, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 nav {
@@ -72,7 +77,7 @@ nav {
   height: 39px;
   border-radius: 49px;
   float: left;
-  background-image: url(icons/nav-placeholder.png);
+  background-image: url(../icons/nav-placeholder.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -84,7 +89,7 @@ nav {
   width: 16px;
   height: 15px;
   float: left;
-  background-image: url(icons/carrot.png);
+  background-image: url(../icons/carrot.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -361,10 +366,7 @@ body {
   margin-bottom: 10px;
 }
 
-@font-face {
-  font-family: Calibre;
-  src: url("Calibre/Calibre-Regular.otf") format("opentype");
-}
+
 
 /* line 368, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .login-card {
