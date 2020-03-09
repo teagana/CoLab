@@ -15,6 +15,12 @@ body {
 	background-color: white;
 }
 
+@font-face {
+    font-family: Calibre;
+    src: url("Calibre/Calibre-Regular.otf") format("opentype");
+}
+
+
 /* -------------------------------------------------- NAV BAR */
 
 nav {
@@ -26,6 +32,9 @@ nav {
 #nav-logo {
     height: 49px;
     width: 85px;
+    background-image: url(icons/nav-logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     float: left;
 }
 
@@ -62,9 +71,6 @@ nav {
     height: 49px;
     float: left;
 }
-// .nav-pic {
-//     position: relative;
-// }
 
 .nav-profile {
     margin-top: 5px;
@@ -119,7 +125,7 @@ h3 {
     opacity: 0.2;
 }
 
-h4, #modal-body-txt {
+h4 {
     font-family: Calibre;
     font-style: normal;
     font-weight: 500;
@@ -148,8 +154,6 @@ h4, #modal-body-txt {
     line-height: 16pt;
     color: #000000;
     opacity: 0.4;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .profile-name {
@@ -160,10 +164,6 @@ h4, #modal-body-txt {
     line-height: 31pt;
     color: #FFFFFF;
 }
-
-.modal-header {
-        background-color: darkslateblue;
-    }
 
 .profile-location {
     font-family: Calibre;
@@ -241,8 +241,6 @@ h4, #modal-body-txt {
     
     font-weight: 600;
     color: #F59696;
-
-    // hover??
 }
 
 .close {
@@ -360,23 +358,12 @@ body {
     margin-bottom: 10px;
 }
 
-@font-face {
-    font-family: Calibre;
-    src: url("Calibre/Calibre-Regular.otf") format("opentype");
-}
+
 
 .login-card {
     margin-left: 10%;
     width: 350px;
     
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border: none;
-}
-.profile-card {
-    margin-left: 35px;
-    margin-bottom: 50px;
-    margin-top: 35px;
-    width: 250px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border: none;
 }
@@ -420,7 +407,6 @@ body {
 
 #search-bar {
     margin-top: 40px;
-    width: 515px;
 }
 
 #searchbar {
@@ -428,7 +414,6 @@ body {
     border: none;
     color: #999999;
     width: 350px;
-    margin-right: 0;
 }
 
 .form-control:focus {
@@ -458,47 +443,4 @@ body {
 
 .dropdown-item {
 
-}
-#new-search {
-    width: 524px;
-    margin-left: 338px;
-    margin-right: 338px;
-} 
-#results-number {
-    margin: 0;
-    font-family: Calibre;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13pt;
-    line-height: 16pt;
-    color: #000000;
-    opacity: 0.4;
-}
-#profile-person {
-    width: 50%;
-    height: 500px;
-    border-right: 2px solid lightgray;
-    img {
-        width: 33%;
-        align-content: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    p {
-        text-align: center;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-}
-
-#profile-details {
-
-}
-.gradient {
-    background-image: linear-gradient(to right, darkslateblue, #A361B5);
-}
-.input-group-append {
-    img {
-        height: 24px;
-    }
 }

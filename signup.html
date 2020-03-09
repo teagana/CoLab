@@ -13,9 +13,10 @@
 	<nav id="header">
         <div id="nav-logo"></div>
         <div id="nav-menu">
-            <!-- <ul>
-                <li><a href="#">Home</a></li>
-            </ul> -->
+            <ul>
+                <!-- <li><a href="search.php">Home</a></li>
+                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li> -->
+            </ul>
         </div>
     </nav>
 
@@ -27,23 +28,31 @@
 
 		  	<!-- form for signing up -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="signup-form" action="home.html">
+		  	<form id="signup-form" action="search.php">
 			  <div class="form-group">
-			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
+			    <label class="card-subtitle mb-2 text-muted" for="fname"><h4 class="label">FIRST NAME *</h4></label>
+			    <input type="text" class="form-control" id="fname" name="fname">
+			  </div>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for=";name"><h4 class="label">LAST NAME *</h4></label>
+			    <input type="text" class="form-control" id="lname" name="lname">
+			  </div>
+			  <div class="form-group">
+			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS *</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
 			  </div>
 			  <div class="form-group">
-			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD</h4></label>
+			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD *</h4></label>
 			    <input type="password" class="form-control" id="password" name="password">
 			  </div>
 			  <div class="form-group">
-			    <label class="card-subtitle mb-2 text-muted" for="confirm-password"><h4 class="label">CONFIRM PASSWORD</h4></label>
+			    <label class="card-subtitle mb-2 text-muted" for="confirm-password"><h4 class="label">CONFIRM PASSWORD *</h4></label>
 			    <input type="password" class="form-control" id="confirm-password" name="confirm-password">
 			  </div>
 			  
 			  <button id="signup-button" class="btn btn-primary" type="submit">Sign Up</button>
 
-			  <small id="signup-message" class="form-text text-center">Already have an account? <a id="signup-link" href="index.html">Log In</a></small>
+			  <small id="signup-message" class="form-text text-center">Already have an account? <a id="signup-link" href="index.php">Log In</a></small>
 			</form>
 
 		  </div>
