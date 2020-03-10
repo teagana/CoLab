@@ -34,6 +34,10 @@ nav {
   height: 49px;
   width: 85px;
   float: left;
+
+  background-image: url(../icons/nav-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* line 32, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
@@ -439,7 +443,7 @@ body {
   background-color: #F2F2F2;
   border: none;
   color: #999999;
-  width: 350px;
+  width: 325px;
   margin-right: 0;
 }
 
@@ -455,7 +459,7 @@ body {
   background-color: #E16C6C;
   border-radius: 6px;
   color: white;
-  width: 125px;
+  width: 130px;
   height: 40px;
 }
 
