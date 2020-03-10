@@ -14,7 +14,7 @@
         <div id="nav-logo"></div>
         <div id="nav-menu">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="home.html">Home</a></li>
             </ul>
         </div>
         <div id="nav-logged-in">
@@ -44,10 +44,13 @@
 				      	<a class="dropdown-item" href="#">Collaborators</a>
 				    </div>
 				  </div>
-				  <!-- searchbar here -->
-				  <form class="form-inline">
-				    <input class="form-control mr-sm-2" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
-					</form>
+					  <!-- searchbar here -->
+					<form class="form-inline" action="search_results.html" method="get">
+						<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
+						<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
+						</div>
+					</form>	
 					
     		</div>
 		</div>
