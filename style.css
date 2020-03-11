@@ -441,6 +441,6 @@ body {
     width: 125px;
 }
 
-.dropdown-item {
-
+.modal-fix {
+    padding: 15px !important;
 }
