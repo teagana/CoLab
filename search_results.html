@@ -5,8 +5,7 @@
 	
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="jquery-3.4.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	e
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body class="container-xl">
@@ -50,7 +49,7 @@
     <div id="results-container" class="container-xl align-items-start justify-content-between">
 
 	<!-- card 1 -->
-	    <div class="row row-cols-xl-4">
+	    <div class="row">
 	    	<div class="col mb-4">
 		    	<div class="card profile-card rounded">
 				  <div id="card-header" class="card-header">
@@ -75,13 +74,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex justify-content-between">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -90,7 +90,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -98,6 +98,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -149,7 +150,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -160,7 +161,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -207,13 +208,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -222,7 +224,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -230,6 +232,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -281,7 +284,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -292,7 +295,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -339,13 +342,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -354,7 +358,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -362,6 +366,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -413,7 +418,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -424,7 +429,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -471,13 +476,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -486,7 +492,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -494,6 +500,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -545,7 +552,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -556,7 +563,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -579,7 +586,7 @@
 				</div>
 			</div>
 <!-- Row 2 - Card 5 -->
-		<div class="row row-cols-xl-4">
+		<div class="row">
 		    	<div class="card profile-card rounded">
 				  <div id="card-header" class="card-header">
 				  	<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
@@ -603,13 +610,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -618,7 +626,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -626,6 +634,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -677,7 +686,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -688,7 +697,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -735,13 +744,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -750,7 +760,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -758,6 +768,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -809,7 +820,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -820,7 +831,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -867,13 +878,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -882,7 +894,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -890,6 +902,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -941,7 +954,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -952,7 +965,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -999,13 +1012,14 @@
 							          <span aria-hidden="true">&times;</span>
 							        </button>
 							      </div>
-							        <div class="modal-body">
-							        	<div id="left">
+							        <div class="modal-body modal-fix">
+							        	<div class="left-modal">
 								            <div id="about">
 								                <div class="card-location profile-subhead">ABOUT NAME</div>
 								                <p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
 								            </div>
-								            <div id="education">
+								            <div class="d-flex">
+								            <div class="education">
 								                <div class="card-location profile-subhead">EDUCATION</div>
 								                    
 								                    <div class="xp">
@@ -1014,7 +1028,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
 								                    </div>
 								            </div>
-								            <div id="career">
+								            <div class="career">
 								                <div class="card-location profile-subhead">CAREER</div>
 								                     
 								                    <div class="xp">
@@ -1022,6 +1036,7 @@
 								                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
 								                    </div>
 								            </div>
+								        </div>
 								        </div>
 								        <div id="right">
 								            <div id="profile-skill">
@@ -1073,7 +1088,7 @@
 		                    <div class="tag interest">Mental Health</div>
 		                    <div class="tag interest">UX Design</div>
 					</div>
-					<button id="contact-button" class="btn contact" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+					<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 					<!-- contact modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -1084,7 +1099,7 @@
 						          <span aria-hidden="true">&times;</span>
 						        </button>
 						      </div>
-						      <div class="modal-body modal-body-txt">
+						      <div class="modal-body modal-fix modal-body modal-fix-txt">
 						        <form>
 						          <div class="form-group">
 						            <label for="recipient-name" class="col-form-label">YOUR NAME</label>
@@ -1114,6 +1129,9 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<!-- <script src="jquery-3.4.1.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	    <!-- js to change text of button when selected search filter changes -->
     <script>
