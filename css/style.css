@@ -588,21 +588,23 @@ body {
   margin-right: 15px;
 }
 
-/* line 539, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* MAIN PROFILE PAGE */
+/* line 541, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #left {
   float: left;
   width: 225px;
   height: 275px;
 }
 
-/* line 545, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 547, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #right {
   float: left;
   width: 225px;
   height: 275px;
+  margin-left: 10px;
 }
 
-/* line 551, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 554, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #bio {
   margin-left: 50px;
   margin-right: 50px;
@@ -610,66 +612,66 @@ body {
   text-align: center;
 }
 
-/* line 558, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 561, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .left {
   float: left;
   width: 50%;
   margin-top: 50px;
 }
 
-/* line 564, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 567, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #school {
   float: left;
   margin: 10px;
   width: 260px;
 }
 
-/* line 570, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 573, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #course-work {
   float: left;
   margin: 10px;
   width: 260px;
 }
 
-/* line 574, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 577, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #course-work ul {
   margin-left: 20px;
 }
 
-/* line 579, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 582, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .right {
   float: left;
   width: 50%;
   margin-top: 50px;
 }
 
-/* line 585, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 588, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #career {
   float: left;
   margin: 10px;
   width: 285px;
 }
 
-/* line 591, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 594, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #skills {
   float: left;
   margin: 10px;
   width: 285px;
 }
 
-/* line 597, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 600, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #interests {
   float: left;
   margin: 10px;
   width: 285px;
 }
 
-/* line 603, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 606, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .margin {
   margin-top: 50px;
 }
 
-/* line 607, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 610, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .modal-body {
   overflow-y: scroll;
 }
