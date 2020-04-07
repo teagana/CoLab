@@ -30,6 +30,7 @@
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset=“utf-8”>
 </head>
 <body>
 
@@ -39,8 +40,12 @@
         <div id="nav-menu">
             <ul>
                 <li><a href="search.php">Home</a></li>
-                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
+<!--                 <li><a href="profile_page.html" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li> -->
             </ul>
+        </div>
+        <div id="nav-logged-in">
+            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+<!--             <div class="nav-carrot"></div> -->
         </div>
     </nav>
 
@@ -52,7 +57,7 @@
 
 		  	<!-- form for logging in -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="login-form" action="search.php">
+		  	<form id="login-form" action="index.php">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
@@ -63,7 +68,7 @@
 			  </div>
 			  <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
 
-			  <small id="signup-message" class="form-text text-center">Don’t have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
+			  <small id="signup-message" class="form-text text-center">Don't have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
 			</form>
 
 		  </div>
