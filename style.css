@@ -1,0 +1,446 @@
+/* ----------------------------------------------- PAGE SETUP */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    box-sizing: border-box;
+    }
+
+body {
+	background-color: white;
+}
+
+@font-face {
+    font-family: Calibre;
+    src: url("Calibre/Calibre-Regular.otf") format("opentype");
+}
+
+
+/* -------------------------------------------------- NAV BAR */
+
+nav {
+    height: 78px;
+    padding-left: 20px;
+    padding-top: 15px;    
+}
+
+#nav-logo {
+    height: 49px;
+    width: 85px;
+    background-image: url(icons/nav-logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#nav-menu ul{
+    width: 140px;
+    height: 49px;
+    line-height: 57px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16pt;
+    color: #E16C6C;
+    
+    float: left;
+        
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-menu a {
+    color: #E16C6C;
+    text-decoration: none;
+    border-bottom: 2px solid #FAE4E4;
+    padding-bottom: 3px;
+}
+
+#nav-logged-in {
+    width: 75px;
+    height: 49px;
+    float: left;
+}
+
+.nav-profile {
+    margin-top: 5px;
+    width: 39px;
+    height: 39px;
+    border-radius: 49px;
+    float: left;
+    
+    background-image: url(icons/nav-placeholder.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.nav-carrot {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 16px;
+    height: 15px;
+    float: left;
+    
+    background-image: url(icons/carrot.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ---------------------------------------------- TEXT STYLES */
+
+h1 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38pt;
+    line-height: 45pt;
+}
+
+h2 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20pt;
+    line-height: 25pt;
+    color: #999999;
+    }
+
+h3 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16pt;
+    line-height: 19pt;
+    color: #000000;
+    opacity: 0.2;
+}
+
+h4 {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11pt;
+    line-height: 13pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000000;
+    opacity: 0.4;   
+}
+
+.card-name {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 22pt;
+    color: #000000;
+}
+
+.card-location {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+    opacity: 0.4;
+}
+
+.profile-name {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26pt;
+    line-height: 31pt;
+    color: #FFFFFF;
+}
+
+.profile-location {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16pt;
+    line-height: 19pt;
+    color: #FFFFFF;
+    opacity: 0.4;
+}
+
+.profile-bio {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+}
+
+.xp {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 16pt;
+    color: #000000;
+}
+
+.text-body {
+    padding-top: 15px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    background: rgba(196, 196, 196, 0.15);
+    border-radius: 12px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13pt;
+    line-height: 17pt;
+    color: #606060;
+}
+
+/* -------------------------------------------------- BUTTONS */
+
+/*button {
+    padding-top: 13px;
+    padding-bottom: 7px;
+    border-radius: 8px;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-size: 13pt;
+    line-height: 16pt;
+}*/
+
+.send {
+    width: 100px;
+    
+    background: #EDEDED;
+    
+    font-weight: 500;
+    color: #000000;
+}
+
+.contact {
+    width: 100%;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    
+    font-weight: 600;
+    color: #F59696;
+}
+
+.close {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    color: white;
+    float: right;
+    margin-top: -20px;
+    opacity: .9;
+}
+
+/* ----------------------------------------------------- TAGS */
+
+.tagset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding-top: 9px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 3px;
+    position: relative;
+    border-radius: 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    
+    clear: both;
+    float: left;
+    
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 14pt;
+    text-align: center;
+}
+
+.skill {
+    color: #F59696;
+    background-color: #FCE4E4;
+}
+
+.interest {
+    color: #AF81C4;
+    background-color: #EADEF0;
+}
+
+
+/*----------------
+TEAGAN'S ADDITIONS
+----------------*/
+
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 70%;
+}
+
+/*.pink-rectangle {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    shape-outside: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
+    clip-path: polygon(45% 0, 100% 0, 100% 100%, 15% 100%);
+
+    background: linear-gradient(304.72deg, #DF7B9F 10.31%, #F59696 59.55%), #C4C4C4;
+    height: 100vh;
+    width: 700px;
+}
+
+.yellow-circle {
+    position: absolute;
+    right: 360px;
+    top: 25%;
+
+    width: 150px;
+    height: 150px;
+
+    background: linear-gradient(129.92deg, #FFF0D2 5.78%, #FFC98A 85.93%);
+
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+}*/
+
+/* side image */
+#side-image {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+}
+
+#side-image img {
+    height: 100%;
+    float: right;
+}
+
+
+
+/* login card */
+#login-button, #signup-button {
+    background-color: #E16C6C;
+    border-radius: 8px;
+    border-color: #E16C6C;
+    width: 100%;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+.login-card {
+    margin-left: 10%;
+    width: 350px;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+/*email address and password*/
+#login-form input, #signup-form input {
+    background: #F2F2F2;
+    border: none;
+}
+
+#login-form input:focus, #signup-form input:form {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*for card form*/
+.label {
+    padding: 0;
+    margin: 0;
+}
+
+#card-body {
+    width: 100%;
+}
+
+#signup-link, #signup-link:link {
+    color: #E16C6C;
+}
+
+/* HOME PAGE */
+
+#home-content {
+    width: 500px;
+}
+
+#home-container {
+    padding-top: 10%;
+}
+
+/*searchbar stuff*/
+
+#search-bar {
+    margin-top: 40px;
+}
+
+#searchbar {
+    background-color: #F2F2F2;
+    border: none;
+    color: #999999;
+    width: 350px;
+}
+
+.form-control:focus {
+    border-color: #E16C6C;
+    box-shadow: 0px 0px 4px rgba(225,108,108, 0.9);
+}
+
+/*dropdown button*/
+#search-select {
+    background-color: #E16C6C;
+    border-radius: 6px;
+    color: white;
+    width: 125px;
+    height: 40px;
+}
+
+#search-dropdown {
+    background-color: #FAE4E4;
+    color: white;
+    border: none;
+    margin-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    width: 125px;
+}
+
+.modal-fix {
+    padding: 15px !important;
+}
