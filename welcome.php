@@ -59,35 +59,25 @@
     <!-- the header at the top -->
     <nav id="header">
         <div id="nav-logo"></div>
-        <div id="nav-menu">
-            <ul>
-                <li><a href="search.php">Home</a></li>
-                <!--                 <li><a href="profile_page.html" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li> -->
-            </ul>
-        </div>
-        <div id="nav-logged-in">
-            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-            <!--             <div class="nav-carrot"></div> -->
-        </div>
     </nav>
 
     <div class="center">
-        <h1>Welcome to coLab</h1>
+        <h1>Welcome to CoLab</h1>
         <h2>A community of college student mentors and collaborators.</h2>
     </div>
     <br><br>
 
     <div class="container">
         <div class="row align-items-center">
-            <!--            <h2>Card Header and Footer</h2>-->
+            <!--<h2>Card Header and Footer</h2>-->
             <div class="col-4 card login-card rounded-extra">
-                <!--                <div class="card-header">Header</div>-->
+                <!--<div class="card-header">Header</div>-->
 
                 <div class="card-body">
                     <h4>Mentors &amp; Collaborators</h4>
                     <br>
                     <h5>Get started by creating a profile on coLab</h5>
-                    <a id="login-button" class="btn btn-primary" href="index.html">Sign up or Log In</a>
+                    <a id="login-button" class="btn btn-primary" href="index.php">Sign up or Log In</a>
                 </div> 
 
             </div>
@@ -96,7 +86,7 @@
                     <h4>Search coLab's community</h4>
                     <br>
                     <h5>Start searching for mentors and collaborators</h5>
-                    <a id="login-button" class="btn btn-primary" href="search.html">Go to search</a>
+                    <a id="login-button" class="btn btn-primary" href="search.php">Go to search</a>
                 </div> 
 
             </div>
