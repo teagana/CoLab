@@ -46,14 +46,6 @@
 	<!-- the header at the top -->
 	<nav id="header">
 		<div id="nav-logo"></div>
-		<div id="nav-menu">
-			<ul>
-				<li><a href="search.php">Home</a></li>
-			</ul>
-		</div>
-		<div id="nav-logged-in">
-			<div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-		</div>
 	</nav>
 
 	<div class="container">
@@ -141,6 +133,7 @@
 						</div>
 
 						<button id="signup-button" class="btn btn-primary" type="submit">Save changes</button>
+						<input type="button" value="Back" onclick="history.back()" class="btn contact"/>
 					</form>
 
 				</div>
