@@ -1,0 +1,106 @@
+<?php
+    require "config.php";
+
+    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    if ( $mysqli->connect_errno ) {
+        echo $mysqli->connect_error;
+        exit();
+    }
+
+    $sql_users = "SELECT * FROM users;";
+
+    $results_users = $mysqli->query( $sql_users );
+
+    if ( $results_users == false ) {
+        echo $mysqli->error;
+        $mysqli->close();
+        exit();
+    }
+
+    // var_dump($results_users);
+
+    $mysqli->close();
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Welcome to coLab</title>
+    <style>
+        .center {
+            margin: auto;
+            margin-top: 10%;
+            width: 60%;
+            padding: 10px;
+            text-align: center;
+        }
+        h5 {
+            font-family: Calibre-Semibold;
+            font-style: normal;
+            font-size: 18pt;
+            line-height: 22pt;
+            color: #000000;
+        }
+        .login-card:hover {
+            box-shadow: 0px 0px 50px rgba(255, 108, 108, 0.3);
+            transition: 0.2s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- the header at the top -->
+    <nav id="header">
+        <div id="nav-logo"></div>
+        <div id="nav-menu">
+            <ul>
+                <li><a href="search.php">Home</a></li>
+                <!--                 <li><a href="profile_page.html" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li> -->
+            </ul>
+        </div>
+        <div id="nav-logged-in">
+            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+            <!--             <div class="nav-carrot"></div> -->
+        </div>
+    </nav>
+
+    <div class="center">
+        <h1>Welcome to coLab</h1>
+        <h2>A community of college student mentors and collaborators.</h2>
+    </div>
+    <br><br>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <!--            <h2>Card Header and Footer</h2>-->
+            <div class="col-4 card login-card rounded-extra">
+                <!--                <div class="card-header">Header</div>-->
+
+                <div class="card-body">
+                    <h4>Mentors &amp; Collaborators</h4>
+                    <br>
+                    <h5>Get started by creating a profile on coLab</h5>
+                    <a id="login-button" class="btn btn-primary" href="index.html">Sign up or Log In</a>
+                </div> 
+
+            </div>
+            <div class="col-4 card login-card rounded-extra">
+                <div class="card-body">
+                    <h4>Search coLab's community</h4>
+                    <br>
+                    <h5>Start searching for mentors and collaborators</h5>
+                    <a id="login-button" class="btn btn-primary" href="search.html">Go to search</a>
+                </div> 
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
