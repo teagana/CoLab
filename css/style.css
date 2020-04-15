@@ -107,9 +107,9 @@ nav {
 /* line 95, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 /* line 103, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 h1 {
-  font-family: Calibre-Semibold;
+  font-family: Calibre;
   font-style: normal;
-/*  font-weight: 1000;*/
+  font-weight: 600;
   font-size: 38pt;
   line-height: 45pt;
 }
@@ -149,10 +149,6 @@ h4, #modal-body-txt {
   text-transform: uppercase;
   color: #000000;
   opacity: 0.4;
-}
-
-.rounded-extra {
-    border-radius: 20px;
 }
 
 /* line 134, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
@@ -412,7 +408,6 @@ body {
   width: 350px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border: none;
-  transition: 0.2s;
 }
 
 /* line 375, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
