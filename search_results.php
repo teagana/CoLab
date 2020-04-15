@@ -35,19 +35,12 @@
 <body class="container-xl">
 
 	<!-- the header at the top -->
-	<nav id="header">
-		<div id="nav-logo"></div>
-		<div id="nav-menu">
-			<ul>
-				<li><a href="search.php">Home</a></li>
-				<!--                 <li><a href="profile_page.html" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li> -->
-			</ul>
-		</div>
-		<div id="nav-logged-in">
-			<div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-			<!--             <div class="nav-carrot"></div> -->
-		</div>
-	</nav>
+    <nav id="header">
+        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
+        <div id="nav-logged-in">
+            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+        </div>    
+    </nav>
 	<div id="new-search">
 		<h3 id="results-number"># people found for 'Engineer'</h3>
 		<div class="input-group mb-3">

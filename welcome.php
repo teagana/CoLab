@@ -76,14 +76,14 @@
                 <div class="card-body">
                     <h4>Mentors &amp; Collaborators</h4>
                     <br>
-                    <h5>Get started by creating a profile on coLab</h5>
+                    <h5>Get started by creating a profile on CoLab</h5>
                     <a id="login-button" class="btn btn-primary" href="index.php">Sign up or Log In</a>
                 </div> 
 
             </div>
             <div class="col-4 card login-card rounded-extra">
                 <div class="card-body">
-                    <h4>Search coLab's community</h4>
+                    <h4>Search CoLab's community</h4>
                     <br>
                     <h5>Start searching for mentors and collaborators</h5>
                     <a id="login-button" class="btn btn-primary" href="search.php">Go to search</a>

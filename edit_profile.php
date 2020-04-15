@@ -44,9 +44,9 @@
 
 <body>
 	<!-- the header at the top -->
-	<nav id="header">
-		<div id="nav-logo"></div>
-	</nav>
+    <nav id="header">
+        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>   
+    </nav>
 
 	<div class="container">
 		<div class="row align-items-center">
