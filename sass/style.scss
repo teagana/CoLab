@@ -34,10 +34,13 @@ nav {
   height: 49px;
   width: 85px;
   float: left;
+    img {
+      width: 100%;
+    }
 
-  background-image: url(../icons/nav-logo.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+  // background-image: url(../icons/nav-logo.png);
+  // background-size: contain;
+  // background-repeat: no-repeat;
 }
 
 /* line 32, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
@@ -72,13 +75,14 @@ nav {
   width: 75px;
   height: 49px;
   float: left;
+  margin-left: 15px;
 }
 
 /* line 69, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 .nav-profile {
   margin-top: 5px;
-  width: 39px;
-  height: 39px;
+  // width: 39px;
+  height: 49px;
   border-radius: 49px;
   float: left;
   // background-image: url(../icons/nav-placeholder.png);
@@ -609,4 +613,16 @@ body {
 
 .modal-body {
    overflow-y: scroll;
+}
+#edit {
+  width: 5%;
+  margin-left: 85%;
+  float: left;
+  input {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    font-weight: 600;
+    color: #F59696;  
+  }
 }
