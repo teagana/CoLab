@@ -8,18 +8,26 @@
 		exit();
 	}
 
+	$mysqli->set_charset('utf8');
+
+// Users:
 	$sql_users = "SELECT * FROM users;";
-
 	$results_users = $mysqli->query( $sql_users );
-
 	if ( $results_users == false ) {
 		echo $mysqli->error;
 		$mysqli->close();
 		exit();
 	}
 
-	// var_dump($results_users);
-
+// Profile Type:
+	$sql_profile_type = "SELECT * FROM profile_type;";
+	$results_profile_type = $mysqli->query($sql_profile_type);
+	if ( $results_profile_type == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+	
 	$mysqli->close();
 ?>
 <!DOCTYPE html>

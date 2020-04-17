@@ -8,18 +8,26 @@
 		exit();
 	}
 
+	$mysqli->set_charset('utf8');
+
+// Users:
 	$sql_users = "SELECT * FROM users;";
-
 	$results_users = $mysqli->query( $sql_users );
-
 	if ( $results_users == false ) {
 		echo $mysqli->error;
 		$mysqli->close();
 		exit();
 	}
 
-	// var_dump($results_users);
-
+// Profile Type:
+	$sql_profile_type = "SELECT * FROM profile_type;";
+	$results_profile_type = $mysqli->query($sql_profile_type);
+	if ( $results_profile_type == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+	
 	$mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -31,6 +39,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset=“utf-8”>
+    
 </head>
 <body>
 
@@ -53,19 +62,23 @@
     			<h2>Search coLab's community of college students to find your next collaborator or mentor</h2>
     		</div>
     		<div id="search-bar" class="input-group ">
-    			
+				<select class="search" id="search-select">
+					<option value="" selected disabled>-- Select --</option>
+						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
 
-    			<!-- WILL NEED JS TO MAKE THE INNERHTML OF SEARCH-SELECT TO SELECTED OPTION -->
-				<div class="input-group-prepend">
-				    <button id="search-select" class="btn dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Everyone</button>
-				    <div class="dropdown-menu" id="search-dropdown">
-				    	<a class="dropdown-item" href="#" onclick="dropdownClick('Everyone');">Everyone</a>
-				      	<a class="dropdown-item" href="#" onclick="dropdownClick('Mentors');">Mentors</a>
-				      	<a class="dropdown-item" href="#" onclick="dropdownClick('Collaborators');">Collaborators</a>
-				    </div>
-				</div>
-				  <!-- searchbar here -->
-				<form class="form-inline" action="search_results.php" method="get">
+						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+
+					<option value="<?php echo $row['profile_type_id']; ?>" selected>
+						<?php echo $row['profile_type']; ?></option>
+						<?php else : ?>
+
+					<option value="<?php echo $row['profile_type_id']; ?>">
+						<?php echo $row['profile_type']; ?></option>
+						<?php endif; ?>
+						<?php endwhile; ?>
+					</select>
+	<!-- searchbar here -->
+				<form class="form-inline" action="search_results.php" method="GET">
 			   		<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 			   		<div class="input-group-append">
     					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
