@@ -1,20 +1,4 @@
 <?php
-
-	/*
-		COLUMNS TO SEARCH:
-		- filter first by profile_type (join)
-		- bio
-		- school (school_name, join)
-		- school_year(year, join)
-		- major (join)
-		- minor (join)
-		- industry (join)
-		- company
-		- job_role
-		- skills
-	*/
-
-
 	require "config.php";
 
 	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -24,12 +8,12 @@
 		exit();
 	}
 
-	//default is to just filter by dropdown and no search term
+//default is to just filter by dropdown and no search term
 	$sql_users = "SELECT * FROM users 
 		JOIN profile_type ON users.profile_type_id = profile_type.profile_type_id 
 		WHERE users.profile_type = " . $_GET['filter'] . ";";
 
-	//IF THERE IS A SEARCH TERM SET
+//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
 		$search_term = $_GET['search'];
@@ -55,7 +39,7 @@
 			);";
 	}
 
-	//probably change this to a prepared statement
+//probably change this to a prepared statement
 
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
@@ -111,15 +95,22 @@
 	<div id="new-search">
 		<h3 id="results-number"># people found for 'Engineer'</h3>
 		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<button id="search-select" class="btn dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Everyone</button>
-				<div class="dropdown-menu" id="search-dropdown">
-					<a class="dropdown-item" href="#" onclick="dropdownClick('Everyone');">Everyone</a>
-					<a class="dropdown-item" href="#" onclick="dropdownClick('Mentors');">Mentors</a>
-					<a class="dropdown-item" href="#" onclick="dropdownClick('Collaborators');">Collaborators</a>
-				</div>
-			</div>
-			<!-- searchbar here -->
+			<select class="search" id="search-select">
+				<option value="" selected disabled>-- Select --</option>
+					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
+
+					<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+
+				<option value="<?php echo $row['profile_type_id']; ?>" selected>
+					<?php echo $row['profile_type']; ?></option>
+					<?php else : ?>
+
+				<option value="<?php echo $row['profile_type_id']; ?>">
+					<?php echo $row['profile_type']; ?></option>
+					<?php endif; ?>
+					<?php endwhile; ?>
+			</select>
+	<!-- searchbar here -->
 			<form class="form-inline" action="search_results.php" method="get">
 				<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 				<div class="input-group-append">
@@ -1230,16 +1221,6 @@
 
 	<!-- <script src="jquery-3.4.1.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-	<!-- js to change text of button when selected search filter changes -->
-	<script>
-
-		function dropdownClick(text) {
-			document.querySelector("#search-select").innerHTML = text;
-			document.querySelector("#search-filter").value = text;
-		}
-
-	</script>
 
 </body>
 </html>
