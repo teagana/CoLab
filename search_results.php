@@ -1,4 +1,20 @@
 <?php
+
+	/*
+		COLUMNS TO SEARCH:
+		- filter first by profile_type (join)
+		- bio
+		- school (school_name, join)
+		- school_year(year, join)
+		- major (join)
+		- minor (join)
+		- industry (join)
+		- company
+		- job_role
+		- skills
+	*/
+
+
 	require "config.php";
 
 	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -8,7 +24,38 @@
 		exit();
 	}
 
-	$sql_users = "SELECT * FROM users;";
+	//default is to just filter by dropdown and no search term
+	$sql_users = "SELECT * FROM users 
+		JOIN profile_type ON users.profile_type_id = profile_type.profile_type_id 
+		WHERE users.profile_type = " . $_GET['filter'] . ";";
+
+	//IF THERE IS A SEARCH TERM SET
+	if(isset($_GET['search'])) {
+		
+		$search_term = $_GET['search'];
+		
+		$sql_users = "SELECT * FROM users 
+			JOIN profile_type ON users.profile_type = profile_type.profile_type 
+			JOIN school ON users.school_id = school.school_id 
+			JOIN school_year ON users.school_year_id = school_year.year_id 
+			JOIN major ON users.major_id = major.major_id 
+			JOIN minor ON users.minor_id = minor.minor_id 
+			JOIN industry ON users.industry_id = industry.industry_id 
+			WHERE users.profile_type = " . $_GET['filter'] . 
+			" AND (
+				school.school_name LIKE '%" . $search_term . "%' 
+				OR users.bio LIKE '%" . $search_term . "%'
+				OR school_year.year LIKE '%" . $search_term . "%' 
+				OR major.major LIKE '%" . $search_term . "%' 
+				OR minor.minor LIKE '%" . $search_term . "%' 
+				OR industry.industry LIKE '%" . $search_term . "%' 
+				OR users.company LIKE '%" . $search_term . "%' 
+				OR users.job_role LIKE '%" . $search_term . "%' 
+				OR users.skils LIKE '%" . $search_term . "%'
+			);";
+	}
+
+	//probably change this to a prepared statement
 
 	$results_users = $mysqli->query( $sql_users );
 
@@ -72,6 +119,9 @@
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
 				</div>
+
+				<!-- hidden input to submit with search for filtering type of user -->
+				<input id="search-filter" name="filter" type="hidden" value="Everyone">
 			</form>	
 		</div>
 	</div>
