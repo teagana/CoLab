@@ -31,6 +31,18 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta charset=“utf-8”>
+
+	<!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1758353,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
 </head>
 <body>
 
@@ -50,7 +62,7 @@
 
 		  	<!-- form for logging in -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="login-form" action="index.php">
+		  	<form id="login-form" action="search.php">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
