@@ -58,7 +58,7 @@
 <body>
     <!-- the header at the top -->
     <nav id="header">
-        <div id="nav-logo"></div>
+        <div><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></div>   
     </nav>
 
     <div class="center">

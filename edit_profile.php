@@ -80,9 +80,12 @@
 	<title>Edit your profile</title>
 
 	<style>
-		#bio-id, #school-id {
+		#bio-id, #school-id, #school-year-id, #major-id, #minor-id, #industry-id {
 			background: #F2F2F2;
 			border: none;
+		}
+		.checkboxes {
+			margin-left: 10px;
 		}
 	</style>
 
@@ -101,10 +104,17 @@
 					<h5 class="card-title card-name">Edit your profile</h5>
 					<span id="firstName">Eumin</span> <span id="lastName">Lee</span><br>
 					<span id="email" style="color:dodgerblue;">euminlee@usc.edu</span><br><br>
-				
 				<!-- edit profile form -->
 					<form id="signup-form" method="POST">
 						<div class="form-group">
+
+							<input type="checkbox" id="mentor" name="mentor" value="">
+ 								<label for="mentor" class="checkboxes card-subtitle mb-2 text-muted">Mentor</label><br>
+							<input type="checkbox" id="collaborator" name="collaborator" value="">
+								<label for="collaborator" class="checkboxes card-subtitle mb-2 text-muted">Collaborator</label><br>
+							<input type="checkbox" id="everyone" name="everyone" value="">
+								<label for="everyone" class="checkboxes card-subtitle mb-2 text-muted">Both</label><br>
+
 							<label class="card-subtitle mb-2 text-muted" for="bio"><h4 class="label">BIO</h4></label>
 							<textarea class="form-control" id="bio-id" name="bio"></textarea>
 						</div>
@@ -136,7 +146,7 @@
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">YEAR IN SCHOOL</h4></label>
 
-							<select name="school-year" id="school-id" class="form-control">
+							<select name="school-year" id="school-year-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school_year->fetch_assoc() ): ?>
 
@@ -155,7 +165,7 @@
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="major"><h4 class="label">MAJOR</h4></label>
-							<select name="major" id="school-id" class="form-control">
+							<select name="major" id="major-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_major->fetch_assoc() ): ?>
 
@@ -174,7 +184,7 @@
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="minor"><h4 class="label">MINOR</h4></label>
-							<select name="minor" id="school-id" class="form-control">
+							<select name="minor" id="minor-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_minor->fetch_assoc() ): ?>
 
@@ -203,7 +213,7 @@
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="industry"><h4 class="label">INDUSTRY</h4></label>
-							<select name="industry" id="school-id" class="form-control">
+							<select name="industry" id="industry-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_industry->fetch_assoc() ): ?>
 
