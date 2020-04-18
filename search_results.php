@@ -18,7 +18,6 @@
 		$search_term = $_GET['search'];
 		
 		$sql_users = "SELECT * FROM users 
-			JOIN profile_type ON users.profile_type = profile_type.profile_type 
 			JOIN school ON users.school_id = school.school_id 
 			JOIN school_year ON users.school_year_id = school_year.year_id 
 			JOIN major ON users.major_id = major.major_id 
