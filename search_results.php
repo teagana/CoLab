@@ -39,6 +39,8 @@
 
 //probably change this to a prepared statement
 
+	echo $sql_users;
+
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
 		echo $mysqli->error;
