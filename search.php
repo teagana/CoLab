@@ -8,18 +8,26 @@
 		exit();
 	}
 
+	$mysqli->set_charset('utf8');
+
+// Users:
 	$sql_users = "SELECT * FROM users;";
-
 	$results_users = $mysqli->query( $sql_users );
-
 	if ( $results_users == false ) {
 		echo $mysqli->error;
 		$mysqli->close();
 		exit();
 	}
 
-	// var_dump($results_users);
-
+// Profile Type:
+	$sql_profile_type = "SELECT * FROM profile_type;";
+	$results_profile_type = $mysqli->query($sql_profile_type);
+	if ( $results_profile_type == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+	
 	$mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -30,22 +38,30 @@
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset=“utf-8”>
+
+
+    <!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1758353,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
 </head>
 <body>
 
-	<!-- the header at the top -->
-	<nav id="header">
-        <div id="nav-logo"></div>
-        <div id="nav-menu">
-            <ul>
-                <li><a href="search.php">Home</a></li>
-                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
-            </ul>
-        </div>
+    <!-- the header at the top -->
+
+    <nav id="header">
+        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="nav-logged-in">
-            <div class="nav-profile"></div>
-            <div class="nav-carrot"></div>
-        </div>
+            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+        </div>    
     </nav>
 
     <!-- main body, including login/signup card -->
@@ -55,26 +71,33 @@
    				<h1>Find your next collaborator or mentor</h1>
     		</div>
     		<div id="search-desc">
-    			<h2>Search coLab’s community of college students to find your next collaborator or mentor</h2>
+    			<h2>Search coLab's community of college students to find your next collaborator or mentor</h2>
     		</div>
     		<div id="search-bar" class="input-group ">
-    			
+				<select class="search" id="search-select" name="filter">
+					<option value="" selected disabled>-- Select --</option>
+						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
 
-    			<!-- WILL NEED JS TO MAKE THE INNERHTML OF SEARCH-SELECT TO SELECTED OPTION -->
-				<div class="input-group-prepend">
-				    <button id="search-select" class="btn dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Everyone</button>
-				    <div class="dropdown-menu" id="search-dropdown">
-				    	<a class="dropdown-item" href="#">Everyone</a>
-				      	<a class="dropdown-item" href="#">Mentors</a>
-				      	<a class="dropdown-item" href="#">Collaborators</a>
-				    </div>
-				</div>
-				  <!-- searchbar here -->
-				<form class="form-inline" action="search_results.php" method="get">
+						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+
+					<option value="<?php echo $row['profile_type_id']; ?>" selected>
+						<?php echo $row['profile_type']; ?></option>
+						<?php else : ?>
+
+					<option value="<?php echo $row['profile_type_id']; ?>">
+						<?php echo $row['profile_type']; ?></option>
+						<?php endif; ?>
+						<?php endwhile; ?>
+					</select>
+	<!-- searchbar here -->
+				<form class="form-inline" action="search_results.php" method="GET">
 			   		<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 			   		<div class="input-group-append">
     					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
   					</div>
+
+                    <!-- hidden input to submit with search for filtering type of user -->
+                    <input id="search-filter" name="filter" type="hidden" value="Everyone">
 				</form>	
     		</div>
 		</div>

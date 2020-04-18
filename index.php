@@ -30,18 +30,28 @@
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset=“utf-8”>
+
+	<!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1758353,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
 </head>
 <body>
 
 	<!-- the header at the top -->
-	<nav id="header">
-        <div id="nav-logo"></div>
-        <div id="nav-menu">
-            <ul>
-                <li><a href="search.php">Home</a></li>
-                <li><a href="profile_page.php" class="nav-pic"><img src="icons/nav-placeholder.png" alt="Pofile Picture"></a></li>
-            </ul>
-        </div>
+    <nav id="header">
+        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
+        <div id="nav-logged-in">
+            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+        </div>    
     </nav>
 
     <!-- main body, including login/signup card -->
@@ -63,7 +73,7 @@
 			  </div>
 			  <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
 
-			  <small id="signup-message" class="form-text text-center">Don’t have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
+			  <small id="signup-message" class="form-text text-center">Don't have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
 			</form>
 
 		  </div>
