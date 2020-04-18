@@ -24,7 +24,7 @@
 			JOIN major ON users.major_id = major.major_id 
 			JOIN minor ON users.minor_id = minor.minor_id 
 			JOIN industry ON users.industry_id = industry.industry_id 
-			WHERE users.profile_type = " . $_GET['filter'] . 
+			WHERE users.profile_type_id = " . $_GET['filter'] . 
 			" AND (
 				school.school_name LIKE '%" . $search_term . "%' 
 				OR users.bio LIKE '%" . $search_term . "%'
