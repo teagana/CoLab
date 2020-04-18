@@ -97,7 +97,7 @@
   					</div>
 
                     <!-- hidden input to submit with search for filtering type of user -->
-                    <input id="search-filter" name="filter" type="hidden" value="Everyone">
+                    <!-- <input id="search-filter" name="filter" type="hidden" value="Everyone"> -->
 				</form>	
     		</div>
 		</div>
