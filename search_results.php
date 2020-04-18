@@ -18,11 +18,11 @@
 		$search_term = $_GET['search'];
 		
 		$sql_users = "SELECT * FROM users 
-			JOIN school ON users.school_id = school.school_id 
-			JOIN school_year ON users.school_year_id = school_year.year_id 
-			JOIN major ON users.major_id = major.major_id 
-			JOIN minor ON users.minor_id = minor.minor_id 
-			JOIN industry ON users.industry_id = industry.industry_id 
+			LEFT JOIN school ON users.school_id = school.school_id 
+			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
+			LEFT JOIN major ON users.major_id = major.major_id 
+			LEFT JOIN minor ON users.minor_id = minor.minor_id 
+			LEFT JOIN industry ON users.industry_id = industry.industry_id 
 			WHERE users.profile_type_id = " . $_GET['filter'] . 
 			" AND (
 				school.school_name LIKE '%" . $search_term . "%' 
