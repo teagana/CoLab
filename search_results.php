@@ -10,10 +10,9 @@
 
 //default is to just filter by dropdown and no search term
 	$sql_users = "SELECT * FROM users 
-		JOIN profile_type ON users.profile_type_id = profile_type.profile_type_id 
-		WHERE users.profile_type = " . $_GET['filter'] . ";";
+		WHERE users.profile_type_id = " . $_GET['filter'] . ";";
 
-//IF THERE IS A SEARCH TERM SET
+	//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
 		$search_term = $_GET['search'];
@@ -95,7 +94,7 @@
 	<div id="new-search">
 		<h3 id="results-number"># people found for 'Engineer'</h3>
 		<div class="input-group mb-3">
-			<select class="search" id="search-select">
+			<select class="search" id="search-select" name="filter">
 				<option value="" selected disabled>-- Select --</option>
 					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
 
@@ -127,12 +126,18 @@
 	<div id="results-container" class="container-xl align-items-start justify-content-between">
 		<div class="row">
 			<!-- card 1 -->
+			
+			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
+			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
+
 			<div class="col-3">
 				<div class="card profile-card rounded">
 					<div id="card-header" class="card-header">
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Emily S.</h5>
+						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">
+							<?php echo $row['user_first	']; ?>
+						</h5>
 
 						<div class="card-location profile-subhead">Los Angeles, CA</div>
 						<!--profile modal-->
@@ -153,16 +158,26 @@
 									<div class="modal-body">
 										<div id="left">
 											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.</p>
+												<div class="card-location profile-subhead">ABOUT 
+													<?php echo $row['user_first']; ?>
+												</div>
+												<p>
+													<?php echo $row['bio']; ?>
+												</p>
 											</div>
 											<div id="education">
 													<div class="card-location profile-subhead">EDUCATION</div>
 
 													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Arts, Technology, and the Business of Innovation<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
+														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon">
+															<?php echo $row['school_name']; ?>
+														<br/> 
+														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
+															<?php echo $row['major']; ?>
+														<br/> 
+														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
+															<?php echo $row['year']; ?>
+
 													</div>
 												</div>
 												<div id="career">
@@ -258,6 +273,10 @@
 					</div>
 				</div>
 			</div>
+
+			<?php endwhile; ?>
+			<!-- END LOOPING THROUGH RESULT CARDS -->
+
 			<!-- card 2 -->
 			<div class="col-3">
 				<div class="card profile-card rounded">
