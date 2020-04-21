@@ -98,7 +98,7 @@
     </nav>
 
 	<div class="container">
-		<div class="row align-items-center">
+		<div class="row align-items-center justify-content-center">
 			<div class="card login-card rounded col-6">
 				<div id="card-body" class="card-body">
 					<h5 class="card-title card-name">Edit your profile</h5>
@@ -231,12 +231,12 @@
 						</div>
 
 						<div class="form-group">
-							<label class="card-subtitle mb-2 text-muted" for="skills"><h4 class="label">SKILLS</h4></label>
+							<label class="card-subtitle mb-2 text-muted" for="skills"><h4 class="label">SKILLS<small>  (SEPARATED BY COMMAS)</small></h4></label>
 							<input class="form-control" id="skills-id" name="skills">
 						</div>
 
 						<div class="form-group">
-							<label class="card-subtitle mb-2 text-muted" for="interests"><h4 class="label">INTERESTS</h4></label>
+							<label class="card-subtitle mb-2 text-muted" for="interests"><h4 class="label">INTERESTS<small>  (SEPARATED BY COMMAS)</small></h4></label>
 							<input class="form-control" id="interests-id" name="interests">
 						</div>
 
