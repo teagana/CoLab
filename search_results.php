@@ -163,8 +163,8 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<div id="left">
-											<div id="about">
+										<div class="left">
+											<div class="about">
 												<div class="card-location profile-subhead">ABOUT 
 													<?php echo $row['user_first']; ?>
 												</div>
@@ -172,7 +172,7 @@
 													<?php echo $row['bio']; ?>
 												</p>
 											</div>
-											<div id="education">
+											<div class="education">
 													<div class="card-location profile-subhead">EDUCATION</div>
 
 													<div class="xp">
@@ -187,7 +187,7 @@
 
 													</div>
 												</div>
-												<div id="career">
+												<div class="career">
 													<div class="card-location profile-subhead">CAREER</div>
 
 													<div class="xp">
@@ -199,8 +199,8 @@
 													</div>
 												</div>
 										</div>
-										<div id="right">
-											<div id="profile-skill">
+										<div class="right">
+											<div class="profile-skill">
 												<div class="card-location profile-subhead">SKILLS</div>
 												<div class="tagset">  
 													<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
@@ -211,7 +211,7 @@
 													<div class="tag skill">Creative Problem Solving</div>
 												</div>
 											</div>
-											<div id="profile-interest">
+											<div class="profile-interest">
 												<div class="card-location">INTERESTED IN</div>
 												<div class="tagset">  
 													<div class="tag interest">Social Impact</div>
@@ -229,13 +229,13 @@
 							</div>
 						</div>
 						<hr>
-						<div id="user-info">
-							<div id="users-school">
+						<div class="user-info">
+							<div class="users-school">
 								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">
 									<?php echo $row['school_name']; ?>	
 								</div>
 							</div>
-							<div id="users-field">
+							<div class="users-field">
 								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">
 									<?php echo $row['major']; ?>
 								</div>
@@ -259,7 +259,7 @@
 						</div>
 						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
 						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" class="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
@@ -274,11 +274,11 @@
 												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
 												<input type="text" class="form-control search-bar" id="recipient-name">
 												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
+												<input type="email" class="form-control" class="recipient-email search-bar">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
+												<textarea class="form-control" class="message-text"></textarea>
 											</div>
 										</form>
 									</div>
