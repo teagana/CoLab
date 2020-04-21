@@ -259,7 +259,7 @@
 						</div>
 						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 						<!-- contact modal -->
-						<div class="modal fade" class="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
