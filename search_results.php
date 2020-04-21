@@ -131,6 +131,8 @@
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
 
+			<?php echo $row ?>
+
 			<div class="col-3">
 				<div class="card profile-card rounded">
 					<div id="card-header" class="card-header">
