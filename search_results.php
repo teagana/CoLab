@@ -39,7 +39,7 @@
 
 //probably change this to a prepared statement
 
-	echo $sql_users;
+	// echo $sql_users;
 
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
@@ -137,10 +137,12 @@
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
 						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">
-							<?php echo $row['user_first	']; ?>
+							<?php echo $row['user_first']; ?>
 						</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
+						<!-- college (formerly location) -->
+						<div class="card-location profile-subhead">
+							<?php echo $row['school_name']; ?>
+						</div>
 						<!--profile modal-->
 						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
@@ -148,8 +150,12 @@
 									<div class="modal-header gradient">
 										<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Emily S.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
+											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
+												<?php echo $row['user_first']; ?>
+											</p>
+											<p class="profile-location profile-modal">
+												<?php echo $row['school_name']; ?>
+											</p>
 										</div>
 
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -185,8 +191,11 @@
 													<div class="card-location profile-subhead">CAREER</div>
 
 													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Interface Design Intern<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Apple
+														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">
+															<?php echo $row['job_role']; ?>
+														<br/> 
+														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">
+															<?php echo $row['company']; ?>
 													</div>
 												</div>
 										</div>
@@ -194,6 +203,8 @@
 											<div id="profile-skill">
 												<div class="card-location profile-subhead">SKILLS</div>
 												<div class="tagset">  
+													<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
+													
 													<div class="tag skill">Adobe Creative Suite</div>
 													<div class="tag skill">Figma</div>
 													<div class="tag skill">Product Design</div>
@@ -220,12 +231,18 @@
 						<hr>
 						<div id="user-info">
 							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
+								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">
+									<?php echo $row['school_name']; ?>	
+								</div>
 							</div>
 							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Arts, Technology, and the Business of Innovation</div>
+								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">
+									<?php echo $row['major']; ?>
+								</div>
 							</div>
 						</div>
+
+						<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
 
 						<div class="card-location profile-subhead">SKILLS</div>
 						<div class="tagset">  
@@ -246,7 +263,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Emily S.</p>
+										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first']; ?></p>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
