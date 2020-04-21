@@ -136,7 +136,7 @@
 					<div id="card-header" class="card-header">
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">
+						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
 							<?php echo $row['user_first']; ?>
 						</h5>
 						<!-- college (formerly location) -->
@@ -144,13 +144,13 @@
 							<?php echo $row['school_name']; ?>
 						</div>
 						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal fade" id="modal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-header gradient">
 										<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 										<div>
-											<p class="profile-name modal-title profile-modal exampleModalCenterTitle">
+											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
 												<?php echo $row['user_first']; ?>
 											</p>
 											<!-- NOT INCLUDING LOCATION -->
@@ -223,7 +223,7 @@
 
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+										<button type="button" class="btn contact" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 									</div>
 								</div>
 							</div>
@@ -257,9 +257,9 @@
 							<div class="tag interest">Mental Health</div>
 							<div class="tag interest">UX Design</div>
 						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 						<!-- contact modal -->
-						<div class="modal fade" class="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" class="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
