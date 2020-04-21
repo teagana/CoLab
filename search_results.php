@@ -131,8 +131,6 @@
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
 
-			<?php echo $row ?>
-
 			<div class="col-3">
 				<div class="card profile-card rounded">
 					<div id="card-header" class="card-header">
@@ -155,9 +153,9 @@
 											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
 												<?php echo $row['user_first']; ?>
 											</p>
-											<p class="profile-location profile-modal">
-												<?php echo $row['school_name']; ?>
-											</p>
+											<!-- NOT INCLUDING LOCATION -->
+											<!-- <p class="profile-location profile-modal">
+											</p> -->
 										</div>
 
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
