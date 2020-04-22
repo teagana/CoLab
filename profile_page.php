@@ -123,8 +123,8 @@
                     <li>Web Application Security</li>
                 </ul>
             </div> -->
-        </div>
-        <div class="right">
+
+            <!-- MOVED CAREER BOX UP HERE TO MAKE THE PAGE LOOK MORE BALANCED -->
             <div id="career" class="text-body">
                 <div class="card-location profile-subhead">CAREER</div>
                     <div class="xp">
@@ -135,6 +135,8 @@
                             <?php echo $row['company']; ?>
                     </div>
             </div>
+        </div>
+        <div class="right">
             <div id="skills" class="text-body">
                 <div class="card-location profile-subhead">SKILLS</div>
                 <div class="tagset">  
@@ -157,7 +159,7 @@
                                 <?php echo $interest; ?>
                             </div>
                         <?php endforeach; ?>
-                        
+
                     </div>
                 </div>
         </div>
