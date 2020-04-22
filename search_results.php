@@ -246,16 +246,31 @@
 
 						<div class="card-location profile-subhead">SKILLS</div>
 						<div class="tagset">  
-							<div class="tag skill">Adobe Creative Suite</div>
+							<!-- <div class="tag skill">Adobe Creative Suite</div>
 							<div class="tag skill">Figma</div>
 							<div class="tag skill">Product Design</div>
-							<div class="tag skill">Creative Problem Solving</div>
+							<div class="tag skill">Creative Problem Solving</div> -->
+
+							<!-- loop through skills separated by commas -->
+							<?php foreach(explode(",", $row['skills']) as $skill): ?>
+								<div class="tag skill">
+									<?php echo $skill; ?>
+								</div>
+							<?php endforeach; ?>
+
 						</div>
 						<div class="card-location">INTERESTED IN</div>
 						<div class="tagset">  
-							<div class="tag interest">Social Impact</div>
+							<!-- <div class="tag interest">Social Impact</div>
 							<div class="tag interest">Mental Health</div>
-							<div class="tag interest">UX Design</div>
+							<div class="tag interest">UX Design</div> -->
+							
+							<!-- loop through interests separated by commas -->
+							<?php foreach(explode(",", $row['interest']) as $interest): ?>
+								<div class="tag interest">
+									<?php echo $interest; ?>
+								</div>
+							<?php endforeach; ?>
 						</div>
 						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 						<!-- contact modal -->
