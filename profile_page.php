@@ -74,6 +74,14 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
+
+<style>
+    /* OVERWRITING STYLE FOR GRAY BOXES SINCE I MOVED THEM A BIT */
+    #career {
+        width: 260px;
+    }
+</style>
+
 </head>
 <body class="container-xl">
 
