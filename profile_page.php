@@ -1,27 +1,55 @@
 <?php
-	require "config.php";
+    ob_start();
 
-	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    require "config.php";
+    
+    //don't allow access to this page if user isn't logged in
+    if( !isset($_SESSION['logged_in']) ) {
+        //redirect to search page if not logged in
+        header('Location: search.php');
+    }
+    
+    //user is logged in; populate profile page
+    else {
 
-	if ( $mysqli->connect_errno ) {
-		echo $mysqli->connect_error;
-		exit();
-	}
+        //get logged in user's user_id from the current session
+        $user_id = $_SESSION['user_id'];
 
-	$sql_users = "SELECT * FROM users;";
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	$results_users = $mysqli->query( $sql_users );
+        if ( $mysqli->connect_errno ) {
+            echo $mysqli->connect_error;
+            exit();
+        }
 
-	if ( $results_users == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
+        //select user that's currently logged in
+        $sql_profile = "SELECT * FROM users 
+            LEFT JOIN school ON users.school_id = school.school_id 
+            LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
+            LEFT JOIN major ON users.major_id = major.major_id 
+            LEFT JOIN minor ON users.minor_id = minor.minor_id 
+            LEFT JOIN industry ON users.industry_id = industry.industry_id 
+        WHERE users.user_id = " . $user_id . ";";
 
-	// var_dump($results_users);
+        $results_profile = $mysqli->query( $sql_profile );
 
-	$mysqli->close();
+        if ( $results_profile == false ) {
+            echo $mysqli->error;
+            $mysqli->close();
+            exit();
+        }
+
+        // var_dump($results_users);
+
+        //should only be one row returned, since user ids are unique
+        $row = $results_profile->fetch_assoc(); 
+
+        $mysqli->close();
+    }
+
+	
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,29 +86,35 @@
     </nav>
     <div id="profile-person">
     	<img src="assets/person-1.png" id="main-profile" class="margin">
-    	<p class="card-name">Emily S</p>
-    	<p class="card-location">Los Angeles, CA</p>
+    	<p class="card-name">
+            <?php echo $row['user_first']; ?>
+        </p>
+    	<!-- <p class="card-location">Los Angeles, CA</p> -->
         <p id="bio" class="profile-bio">
-            I am a designer/developer hybrid with an emphasis on web design and development and a minor in applied computer security. On weekends, you can find me skiing, hiking, surfing, creating playlists, or generating a secret list of the best coffee shops in Los Angeles.
+            <?php echo $row['bio']; ?>
         </p>
     </div>
     <div id="profile-details">
         <div class="left">
             <div id="school" class="text-body">
-                <div class="card-location profile-subhead">EDUCATION - CLASS OF 2021</div>
+                <div class="card-location profile-subhead">EDUCATION</div>
                     <div class="xp">
-                        <img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC
+                        <img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> 
+                            <?php echo $row['school_name']; ?>
                     </div>
                 <div class="card-location profile-subhead">MAJOR</div>
                     <div class="xp">
-                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Arts, Technology, and the Business of Innovation
+                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
+                            <?php echo $row['major']; ?>
                     </div>
                 <div class="card-location profile-subhead">MINOR</div>
                     <div class="xp">
-                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Applied Computer Security 
+                        <img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> 
+                            <?php echo $row['minor']; ?>
                     </div>
             </div>
-            <div id="course-work" class="text-body">
+            <!-- THIS ISN'T ACTUALLY SOMETHING WE'RE KEEPING TRACK OF IN OUR DB -->
+            <!-- <div id="course-work" class="text-body">
                 <div class="card-location profile-subhead">RELEVANT COURSEWORK</div>
                 <ul>
                     <li>Design Strategy</li>
@@ -88,31 +122,42 @@
                     <li>Motion graphics</li>
                     <li>Web Application Security</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="right">
             <div id="career" class="text-body">
                 <div class="card-location profile-subhead">CAREER</div>
                     <div class="xp">
-                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Interface Design Intern<br/>
-                        <img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Apple
+                        <img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">
+                            <?php echo $row['job_role']; ?>
+                        <br/>
+                        <img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">
+                            <?php echo $row['company']; ?>
                     </div>
             </div>
             <div id="skills" class="text-body">
                 <div class="card-location profile-subhead">SKILLS</div>
                 <div class="tagset">  
-                    <div class="tag skill">Adobe Creative Suite</div>
-                    <div class="tag skill">Figma</div>
-                    <div class="tag skill">Product Design</div>
-                    <div class="tag skill">Creative Problem Solving</div>
+                    <!-- loop through skills separated by commas -->
+                    <?php foreach(explode(",", $row['skills']) as $skill): ?>
+                        <div class="tag skill">
+                            <?php echo $skill; ?>
+                        </div>
+                    <?php endforeach; ?>
+
                 </div>
             </div>
             <div id="interests" class="text-body">
                 <div class="card-location">INTERESTED IN</div>
                     <div class="tagset">  
-                        <div class="tag interest">Social Impact</div>
-                        <div class="tag interest">Mental Health</div>
-                        <div class="tag interest">UX Design</div>
+
+                    	<!-- loop through interests separated by commas -->
+                        <?php foreach(explode(",", $row['interest']) as $interest): ?>
+                            <div class="tag interest">
+                                <?php echo $interest; ?>
+                            </div>
+                        <?php endforeach; ?>
+                        
                     </div>
                 </div>
         </div>
