@@ -79,6 +79,7 @@
     /* OVERWRITING STYLE FOR GRAY BOXES SINCE I MOVED THEM A BIT */
     #career {
         width: 260px;
+        padding-bottom: 15px;
     }
 </style>
 
@@ -95,7 +96,7 @@
     <div id="profile-person">
     	<img src="assets/person-1.png" id="main-profile" class="margin">
     	<p class="card-name">
-            <?php echo $row['user_first']; ?>
+            <?php echo $row['user_first'] . $row['user_last'][0] . "."; ?>
         </p>
     	<!-- <p class="card-location">Los Angeles, CA</p> -->
         <p id="bio" class="profile-bio">
