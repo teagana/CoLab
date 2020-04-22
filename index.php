@@ -12,6 +12,8 @@
 	//user is not currently logged in
 	else {
 
+		echo "user not currently logged in";
+
 		// If user attempted to log in or sign up (aka submitted the form)
 		if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['login-signup'])){
 			
