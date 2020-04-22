@@ -120,7 +120,7 @@
 
 		  	<!-- form for logging in -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="login-form" action="login.php" method="POST">
+		  	<form id="login-form" action="index.php" method="POST">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
