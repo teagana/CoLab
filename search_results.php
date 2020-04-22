@@ -203,20 +203,28 @@
 											<div class="profile-skill">
 												<div class="card-location profile-subhead">SKILLS</div>
 												<div class="tagset">  
-													<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
 													
-													<div class="tag skill">Adobe Creative Suite</div>
-													<div class="tag skill">Figma</div>
-													<div class="tag skill">Product Design</div>
-													<div class="tag skill">Creative Problem Solving</div>
+													<!-- loop through skills separated by commas -->
+													<?php foreach(explode(",", $row['skills']) as $skill): ?>
+														<div class="tag skill">
+															<?php echo $skill; ?>
+														</div>
+													<?php endforeach; ?>
 												</div>
 											</div>
 											<div class="profile-interest">
 												<div class="card-location">INTERESTED IN</div>
 												<div class="tagset">  
-													<div class="tag interest">Social Impact</div>
+													<!-- <div class="tag interest">Social Impact</div>
 													<div class="tag interest">Mental Health</div>
-													<div class="tag interest">UX Design</div>
+													<div class="tag interest">UX Design</div> -->
+
+													<!-- loop through interests separated by commas -->
+													<?php foreach(explode(",", $row['interest']) as $interest): ?>
+														<div class="tag interest">
+															<?php echo $interest; ?>
+														</div>
+													<?php endforeach; ?>
 												</div>
 											</div>
 										</div>
@@ -241,8 +249,6 @@
 								</div>
 							</div>
 						</div>
-
-						<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
 
 						<div class="card-location profile-subhead">SKILLS</div>
 						<div class="tagset">  
