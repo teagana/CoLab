@@ -4,7 +4,8 @@
 	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
 	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-		header('Location: search.php');
+		//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
+		header('Location: https://460.itpwebdev.com/~colab/colab/search.php');
 	}
 
 	//user is not currently logged in
@@ -60,7 +61,9 @@
 					$_SESSION['user_id'] = $row['user_id'];
 					
 					//redirect them to the search page
-					header('Location: search.php');
+					
+					//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
+					header('Location: https://460.itpwebdev.com/~colab/colab/search.php');
 				}
 
 				//no match
@@ -138,7 +141,7 @@
 
 				<!-- div to hold possible login errors -->
 				<div id="errors">
-					<small class="text-danger">
+					<small class="text-danger text-center">
 						<?php
 							if ( isset($error) && !empty($error) ) {
 								echo $error;
