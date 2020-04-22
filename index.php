@@ -6,20 +6,15 @@
 	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
 	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-		//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
 		header('Location: search.php');
 	}
 
 	//user is not currently logged in
 	else {
 
-		// echo "user not currently logged in";
-
 		// If user attempted to log in (aka submitted the form)
 		if( isset($_POST['email']) && isset($_POST['password'])){
-			
-			// echo "email + password fields filled";
-			
+						
 			//error if fields are empty
 			if( empty($_POST['email']) || empty($_POST['password']) ) {
 
@@ -63,8 +58,6 @@
 					$_SESSION['user_id'] = $row['user_id'];
 					
 					//redirect them to the search page
-
-					//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
 					header('Location: search.php');
 				}
 
