@@ -13,6 +13,8 @@
 		// If user attempted to log in or sign up (aka submitted the form)
 		if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['login-signup'])){
 			
+			echo "email + password fields filled";
+			
 			//error if fields are empty
 			if( empty($_POST['email']) || empty($_POST['password']) ) {
 
@@ -43,9 +45,13 @@
 					exit();
 				}
 
+				echo $results;
+
 				//if there is a match, we will get at least one result back
 				if($results->num_rows > 0) {
 					//log them in
+
+					echo "at least one match";
 
 					$row = $results->fetch_assoc();
 
