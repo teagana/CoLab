@@ -1,11 +1,13 @@
 <?php
+	ob_start();
+
 	require "config.php";
 	
 	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
 	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
 		//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
-		header('Location: https://460.itpwebdev.com/~colab/colab/search.php');
+		header('Location: search.php');
 	}
 
 	//user is not currently logged in
@@ -61,9 +63,9 @@
 					$_SESSION['user_id'] = $row['user_id'];
 					
 					//redirect them to the search page
-					
+
 					//CHANGE THIS TO BE THE MAIN URL AFTER BEFORE ACTUAL DEPLOYMENT
-					header('Location: https://460.itpwebdev.com/~colab/colab/search.php');
+					header('Location: search.php');
 				}
 
 				//no match
