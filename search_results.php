@@ -137,7 +137,7 @@
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
 						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
-							<?php echo $row['user_first']; ?>
+							<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 						</h5>
 						<!-- college (formerly location) -->
 						<div class="card-location profile-subhead">
@@ -151,7 +151,7 @@
 										<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 										<div>
 											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
-												<?php echo $row['user_first']; ?>
+												<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 											</p>
 											<!-- NOT INCLUDING LOCATION -->
 											<!-- <p class="profile-location profile-modal">
@@ -166,7 +166,7 @@
 										<div class="left">
 											<div class="about">
 												<div class="card-location profile-subhead">ABOUT 
-													<?php echo $row['user_first']; ?>
+													<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 												</div>
 												<p>
 													<?php echo $row['bio']; ?>
@@ -284,7 +284,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first']; ?></p>
+										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?></p>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
