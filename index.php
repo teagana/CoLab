@@ -1,8 +1,6 @@
 <?php
 	require "config.php";
 	
-	echo "running php???";
-
 	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
 	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
@@ -12,12 +10,12 @@
 	//user is not currently logged in
 	else {
 
-		echo "user not currently logged in";
+		// echo "user not currently logged in";
 
 		// If user attempted to log in (aka submitted the form)
 		if( isset($_POST['email']) && isset($_POST['password'])){
 			
-			echo "email + password fields filled";
+			// echo "email + password fields filled";
 			
 			//error if fields are empty
 			if( empty($_POST['email']) || empty($_POST['password']) ) {
@@ -48,8 +46,6 @@
 					echo $mysqli->error;
 					exit();
 				}
-
-				echo $results;
 
 				//if there is a match, we will get at least one result back
 				if($results->num_rows > 0) {
