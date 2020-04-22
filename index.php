@@ -1,5 +1,7 @@
 <?php
 	require "config.php";
+	
+	echo "running php???";
 
 	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
 	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
