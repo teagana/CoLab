@@ -1,26 +1,110 @@
 <?php
+	ob_start();
+	
 	require "config.php";
 
-	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	//if the user is already logged in, redirect them to the search page
+	//since they shouldn't be able to sign up when they're logged in
+    if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-	if ( $mysqli->connect_errno ) {
-		echo $mysqli->connect_error;
-		exit();
+		header('Location: search.php');
 	}
 
-	$sql_users = "SELECT * FROM users;";
+	//user not logged in; let them sign up
+	else {
 
-	$results_users = $mysqli->query( $sql_users );
+		//open SQL connection
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	if ( $results_users == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
+		if ( $mysqli->connect_errno ) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+		
+		//if the user hit the signup button
+		if(isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['email']) 
+			&& isset($_POST['password']) && isset($_POST['confirm-password'])) {
+			
+			//if any of the fields are empty, set error
+			if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) 
+			|| empty($_POST['password']) || empty($_POST['confirm-password'])) {
+				$error = "please fill out all fields";
+			}
+			
+			//make sure the password and confirm-password match
+			else if($_POST['password'] != $_POST['confirm-password']) {
+				$error = "make sure your password confirmation matches your password";
+			}
+
+			//user correctly filled out all fields; sign them up
+			else {
+				
+				$emailInput = $_POST["email"];
+				$passwordInput = $_POST["password"];
+				//hash user input of password to compare this string to the password stored in the users table
+				$passwordInput = hash("sha256", $passwordInput);
+				
+				//check to make sure no one with this email has already signed up
+				$sql_registered = "SELECT * FROM users WHERE email='" . $emailInput . "';";
+
+				$results_registered = $mysqli->query($sql_registered);
+				if(!$results_registered) {
+					echo $mysqli->error;
+				}
+
+				//if there is one match or more, that means a user with this username or email already exists -- display error
+				if($results_registered->num_rows > 0) {
+					$error = "email is already taken. please choose another one.";
+				}
+
+				//email is NOT already in use; insert into db, set session variables, redirect to edit_profile page
+				else {
+
+					//insert new user into the database
+					//FINISH THIS
+					$sql = "INSERT INTO users()
+						VALUES();";
+
+					$results = $mysqli->query($sql);
+					if(!$results) {
+						echo $mysqli->error;
+					}
+
+					//get the user_id from that insertion
+					$get_user_id = $mysqli->query($sql_registered);
+					if(!$get_user_id) {
+						echo $mysqli->error;
+					}
+
+					$row = $get_user_id->fetch_assoc();
+
+					//log user in
+					$_SESSION['logged_in'] = true;
+					$_SESSION['email'] = $emailInput;
+					$_SESSION['user_id'] = $row['user_id'];
+
+					
+					header('Location: home.php');
+				}
+			}
+		}
 	}
+		
+	
 
-	// var_dump($results_users);
+	// $sql_users = "SELECT * FROM users;";
 
-	$mysqli->close();
+	// $results_users = $mysqli->query( $sql_users );
+
+	// if ( $results_users == false ) {
+	// 	echo $mysqli->error;
+	// 	$mysqli->close();
+	// 	exit();
+	// }
+
+	// // var_dump($results_users);
+
+	// $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +152,7 @@
 
 		  	<!-- form for signing up -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="signup-form" action="search.php">
+		  	<form id="signup-form" action="signup.php" method="POST">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="fname"><h4 class="label">FIRST NAME *</h4></label>
 			    <input type="text" class="form-control" id="fname" name="fname">
@@ -89,6 +173,17 @@
 			    <label class="card-subtitle mb-2 text-muted" for="confirm-password"><h4 class="label">CONFIRM PASSWORD *</h4></label>
 			    <input type="password" class="form-control" id="confirm-password" name="confirm-password">
 			  </div>
+
+			  <!-- div to hold possible signup errors -->
+				<div id="errors">
+					<small class="text-danger text-center">
+						<?php
+							if ( isset($error) && !empty($error) ) {
+								echo $error;
+							}
+						?>
+					</small>
+				</div>
 			  
 			  <button id="signup-button" class="btn btn-primary" type="submit">Sign Up</button>
 
