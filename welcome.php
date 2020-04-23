@@ -1,26 +1,14 @@
 <?php
+    ob_start();
+
     require "config.php";
 
-    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    //if the user is already logged in, redirect them to the search page
+    if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-    if ( $mysqli->connect_errno ) {
-        echo $mysqli->connect_error;
-        exit();
-    }
+		header('Location: search.php');
+	}
 
-    $sql_users = "SELECT * FROM users;";
-
-    $results_users = $mysqli->query( $sql_users );
-
-    if ( $results_users == false ) {
-        echo $mysqli->error;
-        $mysqli->close();
-        exit();
-    }
-
-    // var_dump($results_users);
-
-    $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
