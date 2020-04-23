@@ -39,6 +39,8 @@
 			//user correctly filled out all fields; sign them up
 			else {
 				
+				$first_name = $_POST['fname'];
+				$last_name = $_POST['lname'];
 				$emailInput = $_POST["email"];
 				$passwordInput = $_POST["password"];
 				//hash user input of password to compare this string to the password stored in the users table
@@ -54,7 +56,7 @@
 
 				//if there is one match or more, that means a user with this username or email already exists -- display error
 				if($results_registered->num_rows > 0) {
-					$error = "email is already taken. please choose another one.";
+					$error = "email is already taken. please user a different one.";
 				}
 
 				//email is NOT already in use; insert into db, set session variables, redirect to edit_profile page
@@ -62,8 +64,8 @@
 
 					//insert new user into the database
 					//FINISH THIS
-					$sql = "INSERT INTO users()
-						VALUES();";
+					$sql = "INSERT INTO users(user_first, user_last, user_email, user_password)
+						VALUES('" . $first_name . "', '" . $last_name . "', '" . $emailInput . "', '" . $passwordInput . "');";
 
 					$results = $mysqli->query($sql);
 					if(!$results) {
@@ -84,7 +86,7 @@
 					$_SESSION['user_id'] = $row['user_id'];
 
 					
-					header('Location: home.php');
+					header('Location: edit_profile.php');
 				}
 			}
 		}
