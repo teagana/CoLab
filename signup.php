@@ -47,7 +47,7 @@
 				$passwordInput = hash("sha256", $passwordInput);
 				
 				//check to make sure no one with this email has already signed up
-				$sql_registered = "SELECT * FROM users WHERE email='" . $emailInput . "';";
+				$sql_registered = "SELECT * FROM users WHERE user_email='" . $emailInput . "';";
 
 				$results_registered = $mysqli->query($sql_registered);
 				if(!$results_registered) {
