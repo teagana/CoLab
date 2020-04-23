@@ -131,14 +131,12 @@
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
 
-			<?php echo $row ?>
-
 			<div class="col-3">
 				<div class="card profile-card rounded">
 					<div id="card-header" class="card-header">
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">
+						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
 							<?php echo $row['user_first']; ?>
 						</h5>
 						<!-- college (formerly location) -->
@@ -146,7 +144,7 @@
 							<?php echo $row['school_name']; ?>
 						</div>
 						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal fade" id="modal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-header gradient">
@@ -155,9 +153,9 @@
 											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
 												<?php echo $row['user_first']; ?>
 											</p>
-											<p class="profile-location profile-modal">
-												<?php echo $row['school_name']; ?>
-											</p>
+											<!-- NOT INCLUDING LOCATION -->
+											<!-- <p class="profile-location profile-modal">
+											</p> -->
 										</div>
 
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -165,8 +163,8 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<div id="left">
-											<div id="about">
+										<div class="left">
+											<div class="about">
 												<div class="card-location profile-subhead">ABOUT 
 													<?php echo $row['user_first']; ?>
 												</div>
@@ -174,7 +172,7 @@
 													<?php echo $row['bio']; ?>
 												</p>
 											</div>
-											<div id="education">
+											<div class="education">
 													<div class="card-location profile-subhead">EDUCATION</div>
 
 													<div class="xp">
@@ -189,7 +187,7 @@
 
 													</div>
 												</div>
-												<div id="career">
+												<div class="career">
 													<div class="card-location profile-subhead">CAREER</div>
 
 													<div class="xp">
@@ -201,67 +199,88 @@
 													</div>
 												</div>
 										</div>
-										<div id="right">
-											<div id="profile-skill">
+										<div class="right">
+											<div class="profile-skill">
 												<div class="card-location profile-subhead">SKILLS</div>
 												<div class="tagset">  
-													<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
 													
-													<div class="tag skill">Adobe Creative Suite</div>
-													<div class="tag skill">Figma</div>
-													<div class="tag skill">Product Design</div>
-													<div class="tag skill">Creative Problem Solving</div>
+													<!-- loop through skills separated by commas -->
+													<?php foreach(explode(",", $row['skills']) as $skill): ?>
+														<div class="tag skill">
+															<?php echo $skill; ?>
+														</div>
+													<?php endforeach; ?>
 												</div>
 											</div>
-											<div id="profile-interest">
+											<div class="profile-interest">
 												<div class="card-location">INTERESTED IN</div>
 												<div class="tagset">  
-													<div class="tag interest">Social Impact</div>
+													<!-- <div class="tag interest">Social Impact</div>
 													<div class="tag interest">Mental Health</div>
-													<div class="tag interest">UX Design</div>
+													<div class="tag interest">UX Design</div> -->
+
+													<!-- loop through interests separated by commas -->
+													<?php foreach(explode(",", $row['interest']) as $interest): ?>
+														<div class="tag interest">
+															<?php echo $interest; ?>
+														</div>
+													<?php endforeach; ?>
 												</div>
 											</div>
 										</div>
 
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+										<button type="button" class="btn contact" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 									</div>
 								</div>
 							</div>
 						</div>
 						<hr>
-						<div id="user-info">
-							<div id="users-school">
+						<div class="user-info">
+							<div class="users-school">
 								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">
 									<?php echo $row['school_name']; ?>	
 								</div>
 							</div>
-							<div id="users-field">
+							<div class="users-field">
 								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">
 									<?php echo $row['major']; ?>
 								</div>
 							</div>
 						</div>
 
-						<!-- TODO: FIGURE OUT HOW TO STORE SKILLS AND INTERESTS/LOOP THROUGH (COORDINATE WITH EDIT PROFILE PAGE) -->
-
 						<div class="card-location profile-subhead">SKILLS</div>
 						<div class="tagset">  
-							<div class="tag skill">Adobe Creative Suite</div>
+							<!-- <div class="tag skill">Adobe Creative Suite</div>
 							<div class="tag skill">Figma</div>
 							<div class="tag skill">Product Design</div>
-							<div class="tag skill">Creative Problem Solving</div>
+							<div class="tag skill">Creative Problem Solving</div> -->
+
+							<!-- loop through skills separated by commas -->
+							<?php foreach(explode(",", $row['skills']) as $skill): ?>
+								<div class="tag skill">
+									<?php echo $skill; ?>
+								</div>
+							<?php endforeach; ?>
+
 						</div>
 						<div class="card-location">INTERESTED IN</div>
 						<div class="tagset">  
-							<div class="tag interest">Social Impact</div>
+							<!-- <div class="tag interest">Social Impact</div>
 							<div class="tag interest">Mental Health</div>
-							<div class="tag interest">UX Design</div>
+							<div class="tag interest">UX Design</div> -->
+							
+							<!-- loop through interests separated by commas -->
+							<?php foreach(explode(",", $row['interest']) as $interest): ?>
+								<div class="tag interest">
+									<?php echo $interest; ?>
+								</div>
+							<?php endforeach; ?>
 						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
+						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
@@ -276,11 +295,11 @@
 												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
 												<input type="text" class="form-control search-bar" id="recipient-name">
 												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
+												<input type="email" class="form-control" class="recipient-email search-bar">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
+												<textarea class="form-control" class="message-text"></textarea>
 											</div>
 										</form>
 									</div>
@@ -297,958 +316,10 @@
 			<?php endwhile; ?>
 			<!-- END LOOPING THROUGH RESULT CARDS -->
 
+			<!-- BEGINNING OF DUMMY CARDS -->
 			<!-- card 2 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-2.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Teagan A.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-2.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Teagan A.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>TBD</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Computer Science<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Student<br/> 
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">HTML/CSS</div>
-													<div class="tag skill">JavaScript</div>
-													<div class="tag skill">Java</div>
-													<div class="tag skill">Python</div>
-													<div class="tag skill">PHP</div>
-													<div class="tag skill">C++</div>
-													<div class="tag skill">SQL</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Full Stack</div>
-													<div class="tag interest">Sustainability</div>
-													<div class="tag interest">LGBT Rights</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Computer Science</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">HTML/CSS</div>
-							<div class="tag skill">JavaScript</div>
-							<div class="tag skill">Java</div>
-							<div class="tag skill">Python</div>
-							<div class="tag skill">PHP</div>
-							<div class="tag skill">C++</div>
-							<div class="tag skill">SQL</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Full Stack</div>
-							<div class="tag interest">Sustainability</div>
-							<div class="tag interest">LGBT Rights</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Teagan A.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- card 3 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-9.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Lauren B.</h5>
-
-						<div class="card-location profile-subhead">Dallas, TX</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-9.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Lauren B.</p>
-											<p class="profile-location profile-modal">Dallas, TX</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>I am a business marketing student with a minor in web design and development. On weekends, you can find me in the gym, exploring Los Angeles, and spending time with friends.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Business Administration<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Web Technologies and Applications<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2020
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Video Technitian<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">USC Marshall ELC
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">HTML/CSS (SASS)</div>
-													<div class="tag skill">PHP</div>
-													<div class="tag skill">JavaScript</div>
-													<div class="tag skill">MySQL</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Marketing</div>
-													<div class="tag interest">Front End</div>
-													<div class="tag interest">UX Design</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Business Administration</div>
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Web Technologies and Applications</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">HTML/CSS (SASS)</div>
-							<div class="tag skill">PHP</div>
-							<div class="tag skill">JavaScript</div>
-							<div class="tag skill">MySQL</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Marketing</div>
-							<div class="tag interest">Front End</div>
-							<div class="tag interest">UX Design</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Lauren B.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- card 4 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-4.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Eumin L.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-4.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Eumin L.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>Hello! I’m a multimedia storyteller with a passion for creating at the intersection of code and design. I’ve been working in product design for the past year & have a background in film and creative coding.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Media Arts + Practice<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Web Technologies and Applications<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Product Designer<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Raya
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">Adobe Creative Suite</div>
-													<div class="tag skill">Figma</div>
-													<div class="tag skill">HTML/CSS</div>
-													<div class="tag skill">JavaScript</div>
-													<div class="tag skill">Processing</div>
-													<div class="tag skill">PHP</div>
-													<div class="tag skill">Arduino</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Urban Planning</div>
-													<div class="tag interest">Abstract Film</div>
-													<div class="tag interest">Ethical Design</div>
-													<div class="tag interest">Accessibility</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Media Arts + Practice</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">Adobe Creative Suite</div>
-							<div class="tag skill">Figma</div>
-							<div class="tag skill">HTML/CSS</div>
-							<div class="tag skill">JavaScript</div>
-							<div class="tag skill">Processing</div>
-							<div class="tag skill">PHP</div>
-							<div class="tag skill">Arduino</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Urban Planning</div>
-							<div class="tag interest">Abstract Film</div>
-							<div class="tag interest">Ethical Design</div>
-							<div class="tag interest">Accessibility</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Eumin L.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- row 2 card 5 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-5.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Latte A.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-5.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Latte A.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>Latte is a filmmaker, designer, and researcher based in San Francisco, California. They work in the fields of media technology, product marketing, and interaction design. They currently attend USC School of Cinematic Arts.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Film & Television Production<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Digital Studies<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2022
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Creative Communications<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Blue Shield of California
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">Film Production</div>
-													<div class="tag skill">Creative Design</div>
-													<div class="tag skill">Post Production</div>
-													<div class="tag skill">Composing Media</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Healthcare</div>
-													<div class="tag interest">Media Architecture</div>
-													<div class="tag interest">User Experience</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Film & Television Production</div>
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Digital Studies</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">Film Production</div>
-							<div class="tag skill">Creative Design</div>
-							<div class="tag skill">Post Production</div>
-							<div class="tag skill">Composing Media</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Healthcare</div>
-							<div class="tag interest">Media Architecture</div>
-							<div class="tag interest">User Experience</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Latte A.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- card 6 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-6.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Carrot J.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-6.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Carrot J.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>Carrot is a multidisciplinary designer and creative technologist with an emphasis on storytelling and understanding how people interact with their digital and physical environments. My goal is to bridge the gaps across disciplines to allow design and innovation to improve the lives of individuals, teams, and organizations.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Computer Science - Games<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Fine Art<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2021
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Designer/Developer<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Crosstown LA
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">Computer-aided Design (CAD)</div>
-													<div class="tag skill">SolidWorks</div>
-													<div class="tag skill">AutoCAD Architecture</div>
-													<div class="tag skill">Cinema 4D</div>
-													<div class="tag skill">3D Design</div>
-													<div class="tag skill">C++</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Social Impact</div>
-													<div class="tag interest">Inofrmation Security</div>
-													<div class="tag interest">Accessinle Design</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Computer Science - Games</div>
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Fine Art</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">Computer-aided Design (CAD)</div>
-							<div class="tag skill">SolidWorks</div>
-							<div class="tag skill">AutoCAD Architecture</div>
-							<div class="tag skill">Cinema 4D</div>
-							<div class="tag skill">3D Design</div>
-							<div class="tag skill">C++</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Social Impact</div>
-							<div class="tag interest">Inofrmation Security</div>
-							<div class="tag interest">Accessinle Design</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Carrot J.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- card 7 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-7.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Croissant T.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-7.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Croissant T.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>Hello! I'm Croissant, an innovative creator, engineer, and adventurer living in Los Angeles. I'm a mechanical engineer passionate about utilizing user-centered design to create products for healthcare and emerging hardware that is changing the way we think about big problems. I love making things from physical products to digital media. Passionate about education, making an impact on the community, and women in tech. I also spend a lot of time climbing mountains, collecting patches for my jean jacket, and bullet journaling.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Mechanical Engineering<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2020
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Project Manager<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Willow Pump
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">Mechanical Engineering</div>
-													<div class="tag skill">Computer-aided Design (CAD)</div>
-													<div class="tag skill">Auto CAD Architecture</div>
-													<div class="tag skill">Java</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Emergent Technology</div>
-													<div class="tag interest">Education</div>
-													<div class="tag interest">Women in STEM</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Mechanical Engineering</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">Mechanical Engineering</div>
-							<div class="tag skill">Computer-aided Design (CAD)</div>
-							<div class="tag skill">Auto CAD Architecture</div>
-							<div class="tag skill">Java</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Emergent Technology</div>
-							<div class="tag interest">Education</div>
-							<div class="tag interest">Women in STEM</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Croissant T.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- card 8 -->
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-8.png" alt="Profile Picture" class="person-pic">
-
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#exampleModalCenter" id="myBtn">Beet R.</h5>
-
-						<div class="card-location profile-subhead">Los Angeles, CA</div>
-						<!--profile modal-->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-8.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">Beet R.</p>
-											<p class="profile-location profile-modal">Los Angeles, CA</p>
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div id="left">
-											<div id="about">
-												<div class="card-location profile-subhead">ABOUT NAME</div>
-												<p>Beet is in their final year at the University of Southern California studying Public Relations. They expand their realm of knowledge with an emphasis in Design and Photography. Curiosity is one of Beet's greatest assets and compels them to constantly learn from different people, perspectives, and stories.</p>
-											</div>
-											<div id="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
-
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> USC <br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">Public Relations<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon"> Class of 2022
-													</div>
-												</div>
-												<div id="career">
-													<div class="card-location profile-subhead">CAREER</div>
-
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">Public Relations Specialist<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">Merakite
-													</div>
-												</div>
-										</div>
-										<div id="right">
-											<div id="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													<div class="tag skill">Social Media Marketing</div>
-													<div class="tag skill">Photography</div>
-													<div class="tag skill">Content Strategy</div>
-													<div class="tag skill">Journalism</div>
-													<div class="tag skill">Adobe Creative Suite</div>
-												</div>
-											</div>
-											<div id="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<div class="tag interest">Collaborative Innovation</div>
-													<div class="tag interest">Affordable Housing</div>
-													<div class="tag interest">Climate Change</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div id="user-info">
-							<div id="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">USC</div>
-							</div>
-							<div id="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">Public Relations</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<div class="tag skill">Social Media Marketing</div>
-							<div class="tag skill">Photography</div>
-							<div class="tag skill">Content Strategy</div>
-							<div class="tag skill">Journalism</div>
-							<div class="tag skill">Adobe Creative Suite</div>
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<div class="tag interest">Collaborative Innovation</div>
-							<div class="tag interest">Affordable Housing</div>
-							<div class="tag interest">Climate Change</div>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for Beet R.</p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body modal-body-txt">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" id="recipient-email search-bar">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<!-- DELETED DUMMY CARDS FOR THE TIME BEING TO MAKE THINGS CLEARER -->
+			<!-- END OF CARDS -->
 		</div>
 	</div>
 
