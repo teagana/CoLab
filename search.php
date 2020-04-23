@@ -74,7 +74,7 @@
     			<h2>Search coLab's community of college students to find your next collaborator or mentor</h2>
     		</div>
     		<div id="search-bar" class="input-group ">
-				<select class="search" id="search-select">
+				<select class="search" id="search-select" name="filter">
 					<option value="" selected disabled>-- Select --</option>
 						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
 
@@ -97,7 +97,7 @@
   					</div>
 
                     <!-- hidden input to submit with search for filtering type of user -->
-                    <input id="search-filter" name="filter" type="hidden" value="Everyone">
+                    <!-- <input id="search-filter" name="filter" type="hidden" value="Everyone"> -->
 				</form>	
     		</div>
 		</div>
