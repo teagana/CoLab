@@ -124,7 +124,7 @@
         </div>    
     </nav>
 	<div id="new-search">
-		<h3 id="results-number"><?php echo count($results_profile_type->fetch_assoc()) ?> people found for '<?php echo $search_term ?>'</h3>
+		<h3 id="results-number"><?php echo count($results_users->fetch_assoc()) ?> people found for '<?php echo $search_term ?>'</h3>
 		<div class="input-group mb-3">
 			
 	<!-- searchbar here -->
