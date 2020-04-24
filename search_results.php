@@ -8,16 +8,46 @@
 		exit();
 	}
 
-//default is to just filter by dropdown and no search term
-	$sql_users = "SELECT * FROM users 
-		WHERE users.profile_type_id = " . $_GET['filter'] . ";";
+	//if filter is set to everyone, just don't filter by type
+	if($_GET['filter'] == 3) {
+		$sql_users = "SELECT * FROM users;";
+	}
+
+	//otherwise, filter by type
+	else {
+		//default is to just filter by dropdown and no search term
+		$sql_users = "SELECT * FROM users 
+			WHERE users.profile_type_id = " . $_GET['filter'] . ";";
+	}
+
 
 	//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
 		$search_term = $_GET['search'];
-		
-		$sql_users = "SELECT * FROM users 
+
+		//again, don't add filter if set to everyone
+		if($_GET['filter'] == 3) {
+			$sql_users = "SELECT * FROM users 
+			LEFT JOIN school ON users.school_id = school.school_id 
+			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
+			LEFT JOIN major ON users.major_id = major.major_id 
+			LEFT JOIN minor ON users.minor_id = minor.minor_id 
+			LEFT JOIN industry ON users.industry_id = industry.industry_id 
+			WHERE school.school_name LIKE '%" . $search_term . "%' 
+				OR users.bio LIKE '%" . $search_term . "%'
+				OR school_year.year LIKE '%" . $search_term . "%' 
+				OR major.major LIKE '%" . $search_term . "%' 
+				OR minor.minor LIKE '%" . $search_term . "%' 
+				OR industry.industry LIKE '%" . $search_term . "%' 
+				OR users.company LIKE '%" . $search_term . "%' 
+				OR users.job_role LIKE '%" . $search_term . "%' 
+				OR users.skills LIKE '%" . $search_term . "%';";
+		}
+
+		//otherwise add in the profile type filter
+		else {
+			$sql_users = "SELECT * FROM users 
 			LEFT JOIN school ON users.school_id = school.school_id 
 			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
 			LEFT JOIN major ON users.major_id = major.major_id 
@@ -35,11 +65,12 @@
 				OR users.job_role LIKE '%" . $search_term . "%' 
 				OR users.skills LIKE '%" . $search_term . "%'
 			);";
+		}
+		
 	}
 
 //probably change this to a prepared statement
 
-	// echo $sql_users;
 
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
