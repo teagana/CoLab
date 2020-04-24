@@ -75,18 +75,19 @@
     		</div>
     		<div id="search-bar" class="input-group ">
 				<select class="search" id="search-select" name="filter">
-					<option value="" selected disabled>-- Select --</option>
+					<!-- <option value="" selected disabled>-- Select --</option> -->
 						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
 
-						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
-
-					<option value="<?php echo $row['profile_type_id']; ?>" selected>
-						<?php echo $row['profile_type']; ?></option>
-						<?php else : ?>
-
-					<option value="<?php echo $row['profile_type_id']; ?>">
-						<?php echo $row['profile_type']; ?></option>
-						<?php endif; ?>
+							<!-- select by default the one your profile is set to? -->
+							<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+								<option value="<?php echo $row['profile_type_id']; ?>" selected>
+									<?php echo $row['profile_type']; ?></option>
+							
+							<?php else : ?>
+								<option value="<?php echo $row['profile_type_id']; ?>">
+									<?php echo $row['profile_type']; ?></option>
+					
+							<?php endif; ?>
 						<?php endwhile; ?>
 					</select>
 	<!-- searchbar here -->

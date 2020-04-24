@@ -95,23 +95,25 @@
 	<div id="new-search">
 		<h3 id="results-number"># people found for 'Engineer'</h3>
 		<div class="input-group mb-3">
-			<select class="search" id="search-select" name="filter">
-				<option value="" selected disabled>-- Select --</option>
-					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
-
-					<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
-
-				<option value="<?php echo $row['profile_type_id']; ?>" selected>
-					<?php echo $row['profile_type']; ?></option>
-					<?php else : ?>
-
-				<option value="<?php echo $row['profile_type_id']; ?>">
-					<?php echo $row['profile_type']; ?></option>
-					<?php endif; ?>
-					<?php endwhile; ?>
-			</select>
+			
 	<!-- searchbar here -->
 			<form class="form-inline" action="search_results.php" method="get">
+				<select class="search" id="search-select" name="filter">
+					<!-- <option value="" selected disabled>-- Select --</option> -->
+					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
+
+						<!-- select by default the one your profile is set to? -->
+						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+							<option value="<?php echo $row['profile_type_id']; ?>" selected>
+								<?php echo $row['profile_type']; ?></option>
+
+						<?php else : ?>
+							<option value="<?php echo $row['profile_type_id']; ?>">
+								<?php echo $row['profile_type']; ?></option>
+
+						<?php endif; ?>
+					<?php endwhile; ?>
+				</select>
 				<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
