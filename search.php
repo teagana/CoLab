@@ -74,27 +74,29 @@
     			<h2>Search coLab's community of college students to find your next collaborator or mentor</h2>
     		</div>
     		<div id="search-bar" class="input-group ">
-				<select class="search" id="search-select" name="filter">
-					<option value="" selected disabled>-- Select --</option>
-						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
-
-						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
-
-					<option value="<?php echo $row['profile_type_id']; ?>" selected>
-						<?php echo $row['profile_type']; ?></option>
-						<?php else : ?>
-
-					<option value="<?php echo $row['profile_type_id']; ?>">
-						<?php echo $row['profile_type']; ?></option>
-						<?php endif; ?>
-						<?php endwhile; ?>
-					</select>
 	<!-- searchbar here -->
 				<form class="form-inline" action="search_results.php" method="GET">
-			   		<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
-			   		<div class="input-group-append">
-    					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
-  					</div>
+					<select class="search" id="search-select" name="filter">
+						<!-- <option value="" selected disabled>-- Select --</option> -->
+						<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
+
+							<!-- select by default the one your profile is set to? -->
+							<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+								<option value="<?php echo $row['profile_type_id']; ?>" selected>
+									<?php echo $row['profile_type']; ?></option>
+							
+							<?php else : ?>
+								<option value="<?php echo $row['profile_type_id']; ?>">
+									<?php echo $row['profile_type']; ?></option>
+					
+							<?php endif; ?>
+						<?php endwhile; ?>
+					</select>
+				
+					<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
+						</div>
 
                     <!-- hidden input to submit with search for filtering type of user -->
                     <!-- <input id="search-filter" name="filter" type="hidden" value="Everyone"> -->
