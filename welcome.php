@@ -1,26 +1,14 @@
 <?php
+    ob_start();
+
     require "config.php";
 
-    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    //if the user is already logged in, redirect them to the search page
+    if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-    if ( $mysqli->connect_errno ) {
-        echo $mysqli->connect_error;
-        exit();
-    }
+		header('Location: search.php');
+	}
 
-    $sql_users = "SELECT * FROM users;";
-
-    $results_users = $mysqli->query( $sql_users );
-
-    if ( $results_users == false ) {
-        echo $mysqli->error;
-        $mysqli->close();
-        exit();
-    }
-
-    // var_dump($results_users);
-
-    $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,6 +16,8 @@
 <head>
 
     <meta charset="utf-8">
+    <!-- meta tag for SEO -->
+    <meta  name="description" content="Join and search coLab's community of college students to find your next collaborator or mentor.">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     

@@ -8,16 +8,46 @@
 		exit();
 	}
 
-//default is to just filter by dropdown and no search term
-	$sql_users = "SELECT * FROM users 
-		WHERE users.profile_type_id = " . $_GET['filter'] . ";";
+	//if filter is set to everyone, just don't filter by type
+	if($_GET['filter'] == 3) {
+		$sql_users = "SELECT * FROM users;";
+	}
+
+	//otherwise, filter by type
+	else {
+		//default is to just filter by dropdown and no search term
+		$sql_users = "SELECT * FROM users 
+			WHERE users.profile_type_id = " . $_GET['filter'] . ";";
+	}
+
 
 	//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
 		$search_term = $_GET['search'];
-		
-		$sql_users = "SELECT * FROM users 
+
+		//again, don't add filter if set to everyone
+		if($_GET['filter'] == 3) {
+			$sql_users = "SELECT * FROM users 
+			LEFT JOIN school ON users.school_id = school.school_id 
+			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
+			LEFT JOIN major ON users.major_id = major.major_id 
+			LEFT JOIN minor ON users.minor_id = minor.minor_id 
+			LEFT JOIN industry ON users.industry_id = industry.industry_id 
+			WHERE school.school_name LIKE '%" . $search_term . "%' 
+				OR users.bio LIKE '%" . $search_term . "%'
+				OR school_year.year LIKE '%" . $search_term . "%' 
+				OR major.major LIKE '%" . $search_term . "%' 
+				OR minor.minor LIKE '%" . $search_term . "%' 
+				OR industry.industry LIKE '%" . $search_term . "%' 
+				OR users.company LIKE '%" . $search_term . "%' 
+				OR users.job_role LIKE '%" . $search_term . "%' 
+				OR users.skills LIKE '%" . $search_term . "%';";
+		}
+
+		//otherwise add in the profile type filter
+		else {
+			$sql_users = "SELECT * FROM users 
 			LEFT JOIN school ON users.school_id = school.school_id 
 			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
 			LEFT JOIN major ON users.major_id = major.major_id 
@@ -35,11 +65,12 @@
 				OR users.job_role LIKE '%" . $search_term . "%' 
 				OR users.skills LIKE '%" . $search_term . "%'
 			);";
+		}
+		
 	}
 
 //probably change this to a prepared statement
 
-	// echo $sql_users;
 
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
@@ -93,25 +124,27 @@
         </div>    
     </nav>
 	<div id="new-search">
-		<h3 id="results-number"># people found for 'Engineer'</h3>
+		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
 		<div class="input-group mb-3">
-			<select class="search" id="search-select" name="filter">
-				<option value="" selected disabled>-- Select --</option>
-					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
-
-					<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
-
-				<option value="<?php echo $row['profile_type_id']; ?>" selected>
-					<?php echo $row['profile_type']; ?></option>
-					<?php else : ?>
-
-				<option value="<?php echo $row['profile_type_id']; ?>">
-					<?php echo $row['profile_type']; ?></option>
-					<?php endif; ?>
-					<?php endwhile; ?>
-			</select>
+			
 	<!-- searchbar here -->
 			<form class="form-inline" action="search_results.php" method="get">
+				<select class="search" id="search-select" name="filter">
+					<!-- <option value="" selected disabled>-- Select --</option> -->
+					<?php while( $row = $results_profile_type->fetch_assoc() ): ?>
+
+						<!-- select by default the one your profile is set to? -->
+						<?php if ( $row['profile_type_id'] == $row_users['profile_type_id'] ) : ?>
+							<option value="<?php echo $row['profile_type_id']; ?>" selected>
+								<?php echo $row['profile_type']; ?></option>
+
+						<?php else : ?>
+							<option value="<?php echo $row['profile_type_id']; ?>">
+								<?php echo $row['profile_type']; ?></option>
+
+						<?php endif; ?>
+					<?php endwhile; ?>
+				</select>
 				<input class="form-control" type="search" placeholder="Try 'Engineer'" name="search" id="searchbar">
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary" type="submit"><img src="icons/search.png"></button>
@@ -137,7 +170,7 @@
 						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
 						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
-							<?php echo $row['user_first']; ?>
+							<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 						</h5>
 						<!-- college (formerly location) -->
 						<div class="card-location profile-subhead">
@@ -151,7 +184,7 @@
 										<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 										<div>
 											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
-												<?php echo $row['user_first']; ?>
+												<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 											</p>
 											<!-- NOT INCLUDING LOCATION -->
 											<!-- <p class="profile-location profile-modal">
@@ -166,7 +199,7 @@
 										<div class="left">
 											<div class="about">
 												<div class="card-location profile-subhead">ABOUT 
-													<?php echo $row['user_first']; ?>
+													<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
 												</div>
 												<p>
 													<?php echo $row['bio']; ?>
@@ -284,7 +317,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first']; ?></p>
+										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?></p>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>

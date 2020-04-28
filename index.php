@@ -1,26 +1,88 @@
 <?php
+	ob_start();
+
 	require "config.php";
+	
+	// If user is logged in, redirect user to search page. Don't allow them to see the login page.
+	if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-	if ( $mysqli->connect_errno ) {
-		echo $mysqli->connect_error;
-		exit();
+		header('Location: search.php');
 	}
 
-	$sql_users = "SELECT * FROM users;";
+	//user is not currently logged in
+	else {
 
-	$results_users = $mysqli->query( $sql_users );
+		// If user attempted to log in (aka submitted the form)
+		if( isset($_POST['email']) && isset($_POST['password'])){
+						
+			//error if fields are empty
+			if( empty($_POST['email']) || empty($_POST['password']) ) {
 
-	if ( $results_users == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
+				$error = "please enter an email and password";
+			}
+
+			//both fields filled in; try to log user in
+			else {
+				$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+				if ( $mysqli->connect_errno ) {
+					echo $mysqli->connect_error;
+					exit();
+				}
+
+				$emailInput = $_POST["email"];
+				$passwordInput = $_POST["password"];
+				//hash user input of password to compare this string to the password stored in the users table
+				$passwordInput = hash("sha256", $passwordInput);
+
+				//query database for that email/password combo
+				$sql = "SELECT * FROM users
+					WHERE user_email = '" . $emailInput . "' AND user_password = '" . $passwordInput . "';";
+
+				$results = $mysqli->query($sql);
+				if(!$results) {
+					echo $mysqli->error;
+					exit();
+				}
+
+				//if there is a match, we will get at least one result back
+				if($results->num_rows > 0) {
+					//log them in
+
+					echo "at least one match";
+
+					$row = $results->fetch_assoc();
+
+					$_SESSION['logged_in'] = true;
+					$_SESSION['email'] = $emailInput;
+					$_SESSION['user_id'] = $row['user_id'];
+					
+					//redirect them to the search page
+					header('Location: search.php');
+				}
+
+				//no match
+				else {
+					$error = "invalid email or password";
+				}
+			}
+
+		}
+
+		// $sql_users = "SELECT * FROM users;";
+
+		// $results_users = $mysqli->query( $sql_users );
+
+		// if ( $results_users == false ) {
+		// 	echo $mysqli->error;
+		// 	$mysqli->close();
+		// 	exit();
+		// }
+
+		// var_dump($results_users);
+
+		// $mysqli->close();
 	}
-
-	// var_dump($results_users);
-
-	$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +95,7 @@
 	<meta charset=“utf-8”>
 
 	<!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
-<script>
+<!-- <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:1758353,hjsv:6};
@@ -42,7 +104,7 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+</script> -->
 </head>
 <body>
 
@@ -62,7 +124,7 @@
 
 		  	<!-- form for logging in -->
 		  	<!-- temporarily just redirect to home page -->
-		  	<form id="login-form" action="search.php">
+		  	<form id="login-form" action="index.php" method="POST">
 			  <div class="form-group">
 			    <label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">EMAIL ADDRESS</h4></label>
 			    <input type="email" class="form-control" id="email" name="email">
@@ -71,6 +133,18 @@
 			    <label class="card-subtitle mb-2 text-muted" for="password"><h4 class="label">PASSWORD</h4></label>
 			    <input type="password" class="form-control" id="password" name="password">
 			  </div>
+
+				<!-- div to hold possible login errors -->
+				<div id="errors">
+					<small class="text-danger text-center">
+						<?php
+							if ( isset($error) && !empty($error) ) {
+								echo $error;
+							}
+						?>
+					</small>
+				</div>
+
 			  <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
 
 			  <small id="signup-message" class="form-text text-center">Don't have an account yet? <a id="signup-link" href="signup.php">Sign up</a></small>
