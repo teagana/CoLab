@@ -164,18 +164,30 @@
 					<form id="signup-form" method="POST" action="edit_profile.php">
 						<div class="form-group">
 							<!-- NEED TO SELECT THE CORRECT ONE BASED ON VALUE OF profile_type_id -->
-							<?php if ( $profile_row['profile_type_id'] == 1 ) : ?>
-								<input type="checkbox" id="mentor" name="mentor" value="1" selected>
 
+							<!-- current profile type is mentor -->
+							<?php if ( $profile_row['profile_type_id'] == 1 ) : ?>
+								<input type="checkbox" id="mentor" name="mentor" value="1" checked>
 							<?php else: ?>
 								<input type="checkbox" id="mentor" name="mentor" value="1">
-
 							<?php endif; ?>
- 								<label for="mentor" class="checkboxes card-subtitle mb-2 text-muted">Mentor</label><br>
-							<input type="checkbox" id="collaborator" name="collaborator" value="2">
-								<label for="collaborator" class="checkboxes card-subtitle mb-2 text-muted">Collaborator</label><br>
-							<input type="checkbox" id="everyone" name="everyone" value="3">
-								<label for="everyone" class="checkboxes card-subtitle mb-2 text-muted">Both</label><br>
+							<label for="mentor" class="checkboxes card-subtitle mb-2 text-muted">Mentor</label><br>
+
+							<!-- current profile type is collaborator -->
+							<?php if ( $profile_row['profile_type_id'] == 2 ) : ?>
+								<input type="checkbox" id="collaborator" name="collaborator" value="2" checked>							
+							<?php else: ?>
+								<input type="checkbox" id="collaborator" name="collaborator" value="2">
+							<?php endif; ?>
+							<label for="collaborator" class="checkboxes card-subtitle mb-2 text-muted">Collaborator</label><br>
+
+							<!-- current profile type is everyone/both -->
+							<?php if ( $profile_row['profile_type_id'] == 3 ) : ?>
+								<input type="checkbox" id="everyone" name="everyone" value="3" checked>							
+							<?php else: ?>
+								<input type="checkbox" id="everyone" name="everyone" value="3">
+							<?php endif; ?>
+							<label for="everyone" class="checkboxes card-subtitle mb-2 text-muted">Both</label><br>
 
 							<label class="card-subtitle mb-2 text-muted" for="bio"><h4 class="label">BIO</h4></label>
 							<textarea class="form-control" id="bio-id" name="bio"><?php echo $profile_row['bio'] ?></textarea>
