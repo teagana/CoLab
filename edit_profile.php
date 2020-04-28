@@ -164,7 +164,13 @@
 					<form id="signup-form" method="POST" action="edit_profile.php">
 						<div class="form-group">
 							<!-- NEED TO SELECT THE CORRECT ONE BASED ON VALUE OF profile_type_id -->
-							<input type="checkbox" id="mentor" name="mentor" value="1">
+							<?php if ( $profile_row['profile_type_id'] == 1 ) : ?>
+								<input type="checkbox" id="mentor" name="mentor" value="1" selected>
+
+							<?php else: ?>
+								<input type="checkbox" id="mentor" name="mentor" value="1">
+
+							<?php endif; ?>
  								<label for="mentor" class="checkboxes card-subtitle mb-2 text-muted">Mentor</label><br>
 							<input type="checkbox" id="collaborator" name="collaborator" value="2">
 								<label for="collaborator" class="checkboxes card-subtitle mb-2 text-muted">Collaborator</label><br>
@@ -206,13 +212,13 @@
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school_year->fetch_assoc() ): ?>
 										<!-- prepopulate appropriate school year -->
-										<?php if ( $row['school_year_id'] == $profile_row['school_year_id'] ) : ?>
+										<?php if ( $row['year_id'] == $profile_row['school_year_id'] ) : ?>
 
-											<option value="<?php echo $row['school_year_id']; ?>" selected>
+											<option value="<?php echo $row['year_id']; ?>" selected>
 												<?php echo $row['year']; ?></option>
 												<?php else : ?>
 
-											<option value="<?php echo $row['school_year_id']; ?>">
+											<option value="<?php echo $row['year_id']; ?>">
 												<?php echo $row['year']; ?></option>
 										<?php endif; ?>
 									<?php endwhile; ?>
