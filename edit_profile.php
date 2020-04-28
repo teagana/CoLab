@@ -1,72 +1,128 @@
 <?php
 	require "config.php";
 
-// Establish MySQL Connection.
-	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-	if ( $mysqli->connect_errno ) {
-		echo $mysqli->connect_error;
-		exit();
+	//don't allow access to this page if user isn't logged in
+    if( !isset($_SESSION['logged_in']) ) {
+        //redirect to search page if not logged in
+        header('Location: search.php');
 	}
+	
+	//logged in; proceed to page
+	else {
+		// Establish MySQL Connection.
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-	$mysqli->set_charset('utf8');
+		if ( $mysqli->connect_errno ) {
+			echo $mysqli->connect_error;
+			exit();
+		}
 
-	$sql_users = "SELECT * FROM users;";
-	$results_users = $mysqli->query( $sql_users );
+		$mysqli->set_charset('utf8');
 
-	if ( $results_users == false ) {
-		echo $mysqli->error;
+		$sql_users = "SELECT * FROM users;";
+		$results_users = $mysqli->query( $sql_users );
+
+		if ( $results_users == false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+		//SELECT EVERYTHING FROM PROFILE, GIVEN USER ID FROM SESSION
+		$user_id = $_SESSION['user_id'];
+
+		$sql_profile = "SELECT * FROM users 
+        WHERE users.user_id = " . $user_id . ";";
+
+        $results_profile = $mysqli->query( $sql_profile );
+
+        if ( $results_profile == false ) {
+            echo $mysqli->error;
+            $mysqli->close();
+            exit();
+        }
+
+        //should only be one row returned, since user ids are unique
+		$profile_row = $results_profile->fetch_assoc();
+		
+		//nothing is filled out -- this is a NEW PROFILE
+		if($profile_row['bio'] == "" && $profile_row['school_id'] == "" && $profile_row['profile_type_id'] == "") {
+
+		}
+
+		//things are filled out -- this is a person editing their profile
+		else {
+			//need to prepopulate everything
+			$sql_profile = "SELECT * FROM users 
+				LEFT JOIN school ON users.school_id = school.school_id 
+				LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
+				LEFT JOIN major ON users.major_id = major.major_id 
+				LEFT JOIN minor ON users.minor_id = minor.minor_id 
+				LEFT JOIN industry ON users.industry_id = industry.industry_id 
+			WHERE users.user_id = " . $user_id . ";";
+
+			$results_edit_profile = $mysqli->query( $sql_profile );
+
+			if ( $results_edit_profile == false ) {
+				echo $mysqli->error;
+				$mysqli->close();
+				exit();
+			}
+
+			//has all the values for an existing profile to prepopulate
+			$profile_row = $results_edit_profile->fetch_assoc();
+		}
+
+	// Schools:
+		$sql_school = "SELECT * FROM school;";
+		$results_school = $mysqli->query($sql_school);
+		if ( $results_school == false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+	// Yeah in School:
+		$sql_school_year = "SELECT * FROM school_year;";
+		$results_school_year = $mysqli->query($sql_school_year);
+		if ( $results_school_year== false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+	// Major:
+		$sql_major = "SELECT * FROM major;";
+		$results_major = $mysqli->query($sql_major);
+		if ( $results_major == false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+	// Minor:
+		$sql_minor = "SELECT * FROM minor;";
+		$results_minor = $mysqli->query($sql_minor);
+		if ( $results_minor == false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+	// Industry:
+		$sql_industry = "SELECT * FROM industry;";
+		$results_industry = $mysqli->query($sql_industry);
+		if ( $results_industry == false ) {
+			echo $mysqli->error;
+			$mysqli->close();
+			exit();
+		}
+
+	// Close DB Connection
 		$mysqli->close();
-		exit();
 	}
 
-// Schools:
-	$sql_school = "SELECT * FROM school;";
-	$results_school = $mysqli->query($sql_school);
-	if ( $results_school == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
-
-// Yeah in School:
-	$sql_school_year = "SELECT * FROM school_year;";
-	$results_school_year = $mysqli->query($sql_school_year);
-	if ( $results_school_year== false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
-
-// Major:
-	$sql_major = "SELECT * FROM major;";
-	$results_major = $mysqli->query($sql_major);
-	if ( $results_major == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
-
-// Minor:
-	$sql_minor = "SELECT * FROM minor;";
-	$results_minor = $mysqli->query($sql_minor);
-	if ( $results_minor == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
-
-// Industry:
-	$sql_industry = "SELECT * FROM industry;";
-	$results_industry = $mysqli->query($sql_industry);
-	if ( $results_industry == false ) {
-		echo $mysqli->error;
-		$mysqli->close();
-		exit();
-	}
-
-// Close DB Connection
-	$mysqli->close();
+	
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -102,7 +158,7 @@
 			<div class="card login-card rounded col-6">
 				<div id="card-body" class="card-body">
 					<h5 class="card-title card-name">Edit your profile</h5>
-					<span id="firstName">Eumin</span> <span id="lastName">Lee</span><br>
+					<span id="firstName"><?php echo $profile_row['user_first'] ?></span> <span id="lastName"><?php echo $profile_row['user_last'] ?></span><br>
 					<span id="email" style="color:dodgerblue;">euminlee@usc.edu</span><br><br>
 				<!-- edit profile form -->
 					<form id="signup-form" method="POST">
