@@ -159,42 +159,42 @@
 				<div id="card-body" class="card-body">
 					<h5 class="card-title card-name">Edit your profile</h5>
 					<span id="firstName"><?php echo $profile_row['user_first'] ?></span> <span id="lastName"><?php echo $profile_row['user_last'] ?></span><br>
-					<span id="email" style="color:dodgerblue;">euminlee@usc.edu</span><br><br>
+					<span id="email" style="color:dodgerblue;"><?php echo $profile_row['user_email'] ?></span><br><br>
 				<!-- edit profile form -->
-					<form id="signup-form" method="POST">
+					<form id="signup-form" method="POST" action="edit_profile.php">
 						<div class="form-group">
-
-							<input type="checkbox" id="mentor" name="mentor" value="">
+							<!-- NEED TO SELECT THE CORRECT ONE BASED ON VALUE OF profile_type_id -->
+							<input type="checkbox" id="mentor" name="mentor" value="1">
  								<label for="mentor" class="checkboxes card-subtitle mb-2 text-muted">Mentor</label><br>
-							<input type="checkbox" id="collaborator" name="collaborator" value="">
+							<input type="checkbox" id="collaborator" name="collaborator" value="2">
 								<label for="collaborator" class="checkboxes card-subtitle mb-2 text-muted">Collaborator</label><br>
-							<input type="checkbox" id="everyone" name="everyone" value="">
+							<input type="checkbox" id="everyone" name="everyone" value="3">
 								<label for="everyone" class="checkboxes card-subtitle mb-2 text-muted">Both</label><br>
 
 							<label class="card-subtitle mb-2 text-muted" for="bio"><h4 class="label">BIO</h4></label>
-							<textarea class="form-control" id="bio-id" name="bio"></textarea>
+							<textarea class="form-control" id="bio-id" name="bio"><?php echo $profile_row['bio'] ?></textarea>
 						</div>
 
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="location"><h4 class="label">CITY</h4></label>
 							<input type="text" class="form-control" id="location-id" name="location">
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">SCHOOL</h4></label>
 							<select name="school" id="school-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school->fetch_assoc() ): ?>
+										<!-- prepopulate appropriate school -->
+										<?php if ( $row['school_id'] == $profile_row['school_id'] ) : ?>
 
-									<?php if ( $row['school_id'] == $row_users['school_id'] ) : ?>
+											<option value="<?php echo $row['school_id']; ?>" selected>
+												<?php echo $row['school_name']; ?></option>
+												<?php else : ?>
 
-								<option value="<?php echo $row['school_id']; ?>" selected>
-									<?php echo $row['school_name']; ?></option>
-									<?php else : ?>
-
-								<option value="<?php echo $row['school_id']; ?>">
-									<?php echo $row['school_name']; ?></option>
-									<?php endif; ?>
+											<option value="<?php echo $row['school_id']; ?>">
+												<?php echo $row['school_name']; ?></option>
+										<?php endif; ?>
 									<?php endwhile; ?>
 							</select>
 						</div>
@@ -205,16 +205,16 @@
 							<select name="school-year" id="school-year-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school_year->fetch_assoc() ): ?>
+										<!-- prepopulate appropriate school year -->
+										<?php if ( $row['school_year_id'] == $profile_row['school_year_id'] ) : ?>
 
-									<?php if ( $row['school_year_id'] == $row_users['school_year_id'] ) : ?>
+											<option value="<?php echo $row['school_year_id']; ?>" selected>
+												<?php echo $row['year']; ?></option>
+												<?php else : ?>
 
-								<option value="<?php echo $row['school_year_id']; ?>" selected>
-									<?php echo $row['year']; ?></option>
-									<?php else : ?>
-
-								<option value="<?php echo $row['school_year_id']; ?>">
-									<?php echo $row['year']; ?></option>
-									<?php endif; ?>
+											<option value="<?php echo $row['school_year_id']; ?>">
+												<?php echo $row['year']; ?></option>
+										<?php endif; ?>
 									<?php endwhile; ?>
 							</select>
 						</div>
@@ -224,16 +224,16 @@
 							<select name="major" id="major-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_major->fetch_assoc() ): ?>
+										<!-- prepopulate appropriate major -->
+										<?php if ( $row['major_id'] == $profile_row['major_id'] ) : ?>
 
-									<?php if ( $row['major_id'] == $row_users['major_id'] ) : ?>
+											<option value="<?php echo $row['major_id']; ?>" selected>
+												<?php echo $row['major']; ?></option>
+												<?php else : ?>
 
-								<option value="<?php echo $row['major_id']; ?>" selected>
-									<?php echo $row['major']; ?></option>
-									<?php else : ?>
-
-								<option value="<?php echo $row['major_id']; ?>">
-									<?php echo $row['major']; ?></option>
-									<?php endif; ?>
+											<option value="<?php echo $row['major_id']; ?>">
+												<?php echo $row['major']; ?></option>
+										<?php endif; ?>
 									<?php endwhile; ?>
 							</select>
 						</div>
@@ -243,28 +243,29 @@
 							<select name="minor" id="minor-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_minor->fetch_assoc() ): ?>
+										
+										<!-- prepopulate appropriate minor -->
+										<?php if ( $row['minor_id'] == $profile_row['minor_id'] ) : ?>
 
-									<?php if ( $row['minor_id'] == $row_users['minor_id'] ) : ?>
+											<option value="<?php echo $row['minor_id']; ?>" selected>
+												<?php echo $row['minor']; ?></option>
+												<?php else : ?>
 
-								<option value="<?php echo $row['minor_id']; ?>" selected>
-									<?php echo $row['minor']; ?></option>
-									<?php else : ?>
-
-								<option value="<?php echo $row['minor_id']; ?>">
-									<?php echo $row['minor']; ?></option>
-									<?php endif; ?>
+											<option value="<?php echo $row['minor_id']; ?>">
+												<?php echo $row['minor']; ?></option>
+										<?php endif; ?>
 									<?php endwhile; ?>
 							</select>
 						</div>
 						
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="company"><h4 class="label">COMPANY</h4></label>
-							<input class="form-control" id="company-id" name="company">
+							<input class="form-control" id="company-id" name="company" value="<?php echo $profile_row['company'] ?>">
 						</div>
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="job-title"><h4 class="label">JOB TITLE</h4></label>
-							<input class="form-control" id="job-title-id" name="job-title">
+							<input class="form-control" id="job-title-id" name="job-title" value="<?php echo $profile_row['job_role'] ?>">
 						</div>
 
 						<div class="form-group">
@@ -272,28 +273,28 @@
 							<select name="industry" id="industry-id" class="form-control">
 								<option value="" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_industry->fetch_assoc() ): ?>
+										<!-- prepopulate appropriate industry -->
+										<?php if ( $row['industry_id'] == $profile_row['industry_id'] ) : ?>
 
-									<?php if ( $row['industry_id'] == $row_users['industry_id'] ) : ?>
+											<option value="<?php echo $row['industry_id']; ?>" selected>
+												<?php echo $row['industry']; ?></option>
+												<?php else : ?>
 
-								<option value="<?php echo $row['industry_id']; ?>" selected>
-									<?php echo $row['industry']; ?></option>
-									<?php else : ?>
-
-								<option value="<?php echo $row['industry_id']; ?>">
-									<?php echo $row['industry']; ?></option>
-									<?php endif; ?>
+											<option value="<?php echo $row['industry_id']; ?>">
+												<?php echo $row['industry']; ?></option>
+										<?php endif; ?>
 									<?php endwhile; ?>
 							</select>
 						</div>
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="skills"><h4 class="label">SKILLS<small>  (SEPARATED BY COMMAS)</small></h4></label>
-							<input class="form-control" id="skills-id" name="skills">
+							<input class="form-control" id="skills-id" name="skills" value="<?php echo $profile_row['skills'] ?>">
 						</div>
 
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="interests"><h4 class="label">INTERESTS<small>  (SEPARATED BY COMMAS)</small></h4></label>
-							<input class="form-control" id="interests-id" name="interests">
+							<input class="form-control" id="interests-id" name="interests" value="<?php echo $profile_row['interest'] ?>">
 						</div>
 
 						<button id="signup-button" class="btn btn-primary" type="submit">Save changes</button>
