@@ -41,7 +41,8 @@
 				OR industry.industry LIKE '%" . $search_term . "%' 
 				OR users.company LIKE '%" . $search_term . "%' 
 				OR users.job_role LIKE '%" . $search_term . "%' 
-				OR users.skills LIKE '%" . $search_term . "%';";
+				OR users.skills LIKE '%" . $search_term . "%' 
+				OR users.interest LIKE '%" . $search_term . "%';";
 		}
 
 		//otherwise add in the profile type filter
@@ -62,7 +63,8 @@
 				OR industry.industry LIKE '%" . $search_term . "%' 
 				OR users.company LIKE '%" . $search_term . "%' 
 				OR users.job_role LIKE '%" . $search_term . "%' 
-				OR users.skills LIKE '%" . $search_term . "%'
+				OR users.skills LIKE '%" . $search_term . "%' 
+				OR users.interest LIKE '%" . $search_term . "%'
 			);";
 		}
 		
