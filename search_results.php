@@ -108,6 +108,7 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
+
 </head>
 <body class="container-xl">
 
@@ -116,6 +117,9 @@
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="nav-logged-in">
             <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+        </div>
+        <div id="edit" style="width: 9%; margin-left: 71%">
+            <a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
         </div>    
     </nav>
 	<div id="new-search">

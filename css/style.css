@@ -680,12 +680,13 @@ body {
 
 /* line 617, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #edit {
-  width: 5%;
-  margin-left: 85%;
+  width: 14%;
+  margin-left: 78%;
+  margin-top: 5px;
   float: left;
 }
 
-/* line 621, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
+/* line 622, /Users/lauren/Documents/ITP 460/CoLab/sass/style.scss */
 #edit input {
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.12);

@@ -90,6 +90,7 @@
     <nav id="header">
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="edit">
+            <a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
             <a href="edit_profile.php"><input id="edit-btn" type="button" class="btn" value="Edit"/></a>
         </div>
     </nav>
