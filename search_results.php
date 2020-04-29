@@ -20,7 +20,6 @@
 			WHERE users.profile_type_id = " . $_GET['filter'] . ";";
 	}
 
-
 	//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
@@ -86,29 +85,6 @@
 		exit();
 	}
 
-// Contact Modal Email
-	if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])) {
-		$name = @trim(stripslashes($_POST['name'])); 
-		$email = @trim(stripslashes($_POST['email'])); 
-		$subject = "Connecting on CoLab";
-		$msg = @trim(stripslashes($_POST['msg']));
-		$msg = wordwrap($msg,70);
-
-		$email_from = $email;
-		$email_to = $row['user_email'];
-
- 	 $body = 'body';
- 	 // 'Name: ' . $name . "\n\n" . 'Email: ' . $email_from. "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' $msg;
-
-	 	mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
-	 	
-	 	alert('Email sent. Thank you!');
-
-
-	} else {
-	 	echo "Please include required fields so that you can connect.";
-	};
-
 	$mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -120,8 +96,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta charset=“utf-8”>
-
-
 
 	<!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
 <script>
@@ -177,10 +151,10 @@
 		</div>
 	</div>
 
-	<!-- profile cards -->    
+<!-- profile cards -->    
 	<div id="results-container" class="container-xl align-items-start justify-content-between">
 		<div class="row">
-			<!-- card 1 -->
+		<!-- card 1 -->
 			
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
@@ -344,19 +318,24 @@
 										</button>
 									</div>
 									<div class="modal-body modal-body-txt">
-										<form action="" method="POST" id="contact">
+										<form action="contact_confirmation.php" method="POST" id="contact">
 											<div class="form-group">
-												<label for="recipient-name" class="col-form-label" name="name">YOUR NAME</label>
-													<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-													<input type="email" class="form-control" class="recipient-email search-bar" name="email">
+												<label for="recipient-name" class="col-form-label">YOUR NAME *</label>
+													<input type="text" class="form-control search-bar" id="recipient-name" name="name">
+												<label for="recipient-email" class="col-form-label">YOUR EMAIL *</label>
+													<input type="email" class="form-control" class="recipient-email search-bar" name="email" id="email">
+													<input type="hidden" value="<?php echo $row['user_email']?>" name="email_to">
 											</div>
 											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-													<textarea class="form-control" class="message-text" name="msg"></textarea>
+												<label for="message-text" class="col-form-label">MESSAGE *</label>
+													<textarea class="form-control" class="message-text" name="msg" id="msg"></textarea>
 											</div>
 										
 											<div class="modal-footer">
+												<div>
+													<small id="email-error" class="form-text text-danger"></small>
+													<small id="error" class="form-text text-danger"></small>
+												</div>
 												<button type="submit" class="btn send">Send</button>
 											</div>
 										</form>
@@ -388,31 +367,47 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	<script>
-	$('#contactModal<?php echo $row['user_id'] ?>').on('shown.bs.modal',function(){
-		('#recipient-name').trigger('focus')
-	};
-//	$(function() {
-//	  $(window).load(function() {
-//	    $('#contactModal<?php echo $row['user_id'] ?>').modal('show');
-//	});
+		document.querySelector('#contact').onsubmit = function(){
+			var validForm = true;
 
-	// $('#btn_send').click(function(){
-	// 		var name  = $(":input[name='name']").val();
-	// 		var email = $(":input[name='email']").val();
-	// 		var msg = $(":textarea[name='msg']").val();
-	// 		var varData = 'name=' + name + '&email=' + email + '&msg=' + msg; 
+			var name = document.querySelector('#recipient-name').value;
+			var email = document.querySelector('#email').value;
+			var message = document.querySelector('#msg').value;		
+		// 1. Name cannot be empty.
+			if ( name.length == 0 ) {
+				// Name is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else {
+				// No errors.
+				document.querySelector('#error').innerHTML = '';
+			}
+		// 1. Email cannot be empty.
+		// 2. Email must contain "@" character.
+			if ( email.length == 0 ) {
+				// Email is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else if ( email.indexOf('@') == -1 ) {
+				// Email does NOT contain '@' character.
+				validForm = false;
+				document.querySelector('#email-error').innerHTML = "Email must contain '@' character.";
+			} else {
+				// No errors
+				document.querySelector('#error').innerHTML = '';
+			}
 
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 	    url: 'search_results.php',
-	// 	    data: varData,
-	// 		success: function(){
-	// 			alert('Email sent. Thank you!');
-	// 			$('#contactModal<?php echo $row['user_id'] ?>').modal('hide');
-	// 	    }
-	// 	});
-	// });
+		// 1. msg cannot be empty.
+			if ( name.length == 0 ) {
+				// Name is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else {
+				// No errors.
+				document.querySelector('#error').innerHTML = '';
+			}		
+			return validForm;
+		}
 	</script>
-
 </body>
 </html>
