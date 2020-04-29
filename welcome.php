@@ -41,6 +41,15 @@
             box-shadow: 0px 0px 50px rgba(255, 108, 108, 0.3);
             transition: 0.2s;
         }
+
+        #cards {
+            font-family: Calibre;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20pt;
+            line-height: 25pt;
+            color: #999999;
+        }
     </style>
 
 </head>
@@ -58,7 +67,7 @@
     <br><br>
 
     <div class="container">
-        <div class="row align-items-center">
+        <div id="cards" class="row align-items-center">
             <!--<h2>Card Header and Footer</h2>-->
             <div class="col-4 card login-card rounded-extra">
                 <!--<div class="card-header">Header</div>-->
