@@ -1,10 +1,98 @@
 <?php
+	ob_start();
+
 	require "config.php";
 
 	//don't allow access to this page if user isn't logged in
     if( !isset($_SESSION['logged_in']) ) {
         //redirect to search page if not logged in
         header('Location: search.php');
+	}
+
+	//USER SAVED CHANGES FROM THIS PAGE; SEND TO SEARCH PAGE
+	else if(isset($_POST['saved-changes']) && !empty($_POST['saved-changes'])) {
+		
+		// Establish MySQL Connection.
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+		if ( $mysqli->connect_errno ) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+
+		$mysqli->set_charset('utf8');
+		
+		//profile type (checkboxes)
+		if(isset($_POST['mentor']) && !empty($_POST['mentor'])) {
+			$profile_type_id = $_POST['mentor'];
+		}
+		else if(isset($_POST['collaborator']) && !empty($_POST['collaborator'])) {
+			$profile_type_id = $_POST['collaborator'];
+		}
+		else if(isset($_POST['everyone']) && !empty($_POST['everyone'])) {
+			$profile_type_id = $_POST['everyone'];
+		}
+
+		//bio (textarea)
+		$bio = $_POST['bio'];
+
+		//school (dropdown)
+		$school_id = $_POST['school'];
+
+		//school year (dropdown)
+		$school_year_id = $_POST['school-year'];
+
+		//major (dropdown)
+		$major_id = $_POST['major'];
+
+		//minor (dropdown)
+		$minor_id = $_POST['minor'];
+
+		//company (text)
+		$company = $_POST['company'];
+
+		//job title (text)
+		$job_title = $_POST['job-title'];
+
+		//industry (dropdown)
+		$industry = $_POST['industry'];
+
+		//skills (text)
+		$skills = $_POST['skills'];
+
+		//interests (text)
+		$interests = $_POST['interests'];
+
+		//update all the fields to the current form values
+		$sql_update = "UPDATE users
+			SET profile_type_id = " . $profile_type_id . ",  
+			bio = '" . $bio . "',  
+			school_id = " . $school_id . ",  
+			school_year_id = " . $school_year_id . ",  
+			major_id = " . $major_id . ",  
+			minor_id = " . $minor_id . ",  
+			industry_id = " . $industry . ",  
+			company = '" . $company . "',  
+			job_role = '" . $job_title . "',  
+			skills = '" . $skills . "',  
+			interest = '" . $interests .
+		"' WHERE user_id = " . $_SESSION['user_id'] . ";";
+
+		$results_update = $mysqli->query($sql_update);
+		if(!$results_update) {
+			echo $mysqli->error;
+		}
+
+		// $results_update = $mysqli->query( $sql_update );
+
+		// if ( $results_update == false ) {
+		// 	echo $mysqli->error;
+		// 	$mysqli->close();
+		// 	exit();
+		// }
+
+		//REDIRECT BACK TO PROFILE PAGE
+		header('Location: profile_page.php');
 	}
 	
 	//logged in; proceed to page
@@ -46,12 +134,12 @@
 		$profile_row = $results_profile->fetch_assoc();
 		
 		//nothing is filled out -- this is a NEW PROFILE
-		if($profile_row['bio'] == "" && $profile_row['school_id'] == "" && $profile_row['profile_type_id'] == "") {
+		// if($profile_row['bio'] == "" && $profile_row['school_id'] == "" && $profile_row['profile_type_id'] == "") {
 
-		}
+		// }
 
 		//things are filled out -- this is a person editing their profile
-		else {
+		// else {
 			//need to prepopulate everything
 			$sql_profile = "SELECT * FROM users 
 				LEFT JOIN school ON users.school_id = school.school_id 
@@ -71,7 +159,7 @@
 
 			//has all the values for an existing profile to prepopulate
 			$profile_row = $results_edit_profile->fetch_assoc();
-		}
+		// }
 
 	// Schools:
 		$sql_school = "SELECT * FROM school;";
@@ -201,7 +289,7 @@
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">SCHOOL</h4></label>
 							<select name="school" id="school-id" class="form-control">
-								<option value="" selected disabled>-- Select One --</option>
+								<option value="0" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school->fetch_assoc() ): ?>
 										<!-- prepopulate appropriate school -->
 										<?php if ( $row['school_id'] == $profile_row['school_id'] ) : ?>
@@ -221,7 +309,7 @@
 							<label class="card-subtitle mb-2 text-muted" for="email"><h4 class="label">YEAR IN SCHOOL</h4></label>
 
 							<select name="school-year" id="school-year-id" class="form-control">
-								<option value="" selected disabled>-- Select One --</option>
+								<option value="0" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_school_year->fetch_assoc() ): ?>
 										<!-- prepopulate appropriate school year -->
 										<?php if ( $row['year_id'] == $profile_row['school_year_id'] ) : ?>
@@ -240,7 +328,7 @@
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="major"><h4 class="label">MAJOR</h4></label>
 							<select name="major" id="major-id" class="form-control">
-								<option value="" selected disabled>-- Select One --</option>
+								<option value="0" selected disabled>-- Select One --</option>
 									<?php while( $row = $results_major->fetch_assoc() ): ?>
 										<!-- prepopulate appropriate major -->
 										<?php if ( $row['major_id'] == $profile_row['major_id'] ) : ?>
@@ -259,7 +347,7 @@
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="minor"><h4 class="label">MINOR</h4></label>
 							<select name="minor" id="minor-id" class="form-control">
-								<option value="" selected disabled>-- Select One --</option>
+								<option value="0" selected>-- None --</option>
 									<?php while( $row = $results_minor->fetch_assoc() ): ?>
 										
 										<!-- prepopulate appropriate minor -->
@@ -289,7 +377,7 @@
 						<div class="form-group">
 							<label class="card-subtitle mb-2 text-muted" for="industry"><h4 class="label">INDUSTRY</h4></label>
 							<select name="industry" id="industry-id" class="form-control">
-								<option value="" selected disabled>-- Select One --</option>
+								<option value="0" selected>-- Select One --</option>
 									<?php while( $row = $results_industry->fetch_assoc() ): ?>
 										<!-- prepopulate appropriate industry -->
 										<?php if ( $row['industry_id'] == $profile_row['industry_id'] ) : ?>
@@ -314,6 +402,9 @@
 							<label class="card-subtitle mb-2 text-muted" for="interests"><h4 class="label">INTERESTS<small>  (SEPARATED BY COMMAS)</small></h4></label>
 							<input class="form-control" id="interests-id" name="interests" value="<?php echo $profile_row['interest'] ?>">
 						</div>
+						
+						<!-- hidden input to differentiate between form being submitted and user navigating to this page -->
+						<input type="hidden" name="saved-changes" value="<?php echo $_SESSION['user_id']; ?>">
 
 						<button id="signup-button" class="btn btn-primary" type="submit">Save changes</button>
 						<input type="button" value="Back" onclick="history.back()" class="btn contact"/>

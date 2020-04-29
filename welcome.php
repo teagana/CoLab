@@ -31,7 +31,7 @@
             text-align: center;
         }
         h5 {
-            font-family: Calibre-Semibold;
+            font-family: Calibre;
             font-style: normal;
             font-size: 18pt;
             line-height: 22pt;
@@ -58,7 +58,7 @@
     <br><br>
 
     <div class="container">
-        <div class="row align-items-center">
+        <div id="cards" class="row align-items-center">
             <!--<h2>Card Header and Footer</h2>-->
             <div class="col-4 card login-card rounded-extra">
                 <!--<div class="card-header">Header</div>-->
