@@ -387,7 +387,7 @@
 						</div>
 						
 						<!-- hidden input to differentiate between form being submitted and user navigating to this page -->
-						<input type="hidden" name="saved-changes" value="<?php echo $user_id ?>">
+						<input type="hidden" name="saved-changes" value="<?php echo $_SESSION['user_id']; ?>">
 
 						<button id="signup-button" class="btn btn-primary" type="submit">Save changes</button>
 						<input type="button" value="Back" onclick="history.back()" class="btn contact"/>
