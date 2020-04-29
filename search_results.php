@@ -398,7 +398,7 @@
 			}
 
 		// 1. msg cannot be empty.
-			if ( name.length == 0 ) {
+			if ( message.length == 0 ) {
 				// Name is empty.
 				validForm = false;
 				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
