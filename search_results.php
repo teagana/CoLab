@@ -169,194 +169,198 @@
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
 
-			<div class="col-3">
-				<div class="card profile-card rounded">
-					<div id="card-header" class="card-header">
-						<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
+				<!-- only show if it's not the current user -->
+				<?php if($row['user_id'] != $_SESSION['user_id']) : ?>
+					<div class="col-3">
+						<div class="card profile-card rounded">
+							<div id="card-header" class="card-header">
+								<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
 
-						<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
-							<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
-						</h5>
-						<!-- college (formerly location) -->
-						<div class="card-location profile-subhead">
-							<?php echo $row['school_name']; ?>
-						</div>
-						<!--profile modal-->
-						<div class="modal fade" id="modal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header gradient">
-										<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
-										<div>
-											<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
-												<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
-											</p>
-											<!-- NOT INCLUDING LOCATION -->
-											<!-- <p class="profile-location profile-modal">
-											</p> -->
-										</div>
-
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div class="left">
-											<div class="about">
-												<div class="card-location profile-subhead">ABOUT 
+								<h5 class="card-title card-name btn" data-toggle="modal" data-target="#modal<?php echo $row['user_id'] ?>" id="myBtn">
+								<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
+							</h5>
+							<!-- college (formerly location) -->
+							<div class="card-location profile-subhead">
+								<?php echo $row['school_name']; ?>
+							</div>
+							<!--profile modal-->
+							<div class="modal fade" id="modal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header gradient">
+											<img src="assets/person-1.png" alt="Profile Picture" class="person-pic">
+											<div>
+												<p class="profile-name modal-title profile-modal" id="exampleModalCenterTitle">
 													<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
-												</div>
-												<p>
-													<?php echo $row['bio']; ?>
 												</p>
+												<!-- NOT INCLUDING LOCATION -->
+												<!-- <p class="profile-location profile-modal">
+												</p> -->
 											</div>
-											<div class="education">
-													<div class="card-location profile-subhead">EDUCATION</div>
 
-													<div class="xp">
-														<img src="icons/profile-school.png" alt="School Icon" class="detail-icon">
-															<?php echo $row['school_name']; ?>
-														<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
-															<?php echo $row['major']; ?>
-														<br/> 
-														<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
-															<?php echo $row['year']; ?>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<div class="left">
+												<div class="about">
+													<div class="card-location profile-subhead">ABOUT 
+														<?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?>
+													</div>
+													<p>
+														<?php echo $row['bio']; ?>
+													</p>
+												</div>
+												<div class="education">
+														<div class="card-location profile-subhead">EDUCATION</div>
 
+														<div class="xp">
+															<img src="icons/profile-school.png" alt="School Icon" class="detail-icon">
+																<?php echo $row['school_name']; ?>
+															<br/> 
+															<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
+																<?php echo $row['major']; ?>
+															<br/> 
+															<img src="icons/profile-in-progress.png" alt="School Icon" class="detail-icon">
+																<?php echo $row['year']; ?>
+
+														</div>
+													</div>
+													<div class="career">
+														<div class="card-location profile-subhead">CAREER</div>
+
+														<div class="xp">
+															<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">
+																<?php echo $row['job_role']; ?>
+															<br/> 
+															<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">
+																<?php echo $row['company']; ?>
+														</div>
+													</div>
+											</div>
+											<div class="right">
+												<div class="profile-skill">
+													<div class="card-location profile-subhead">SKILLS</div>
+													<div class="tagset">  
+														
+														<!-- loop through skills separated by commas -->
+														<?php foreach(explode(",", $row['skills']) as $skill): ?>
+															<div class="tag skill">
+																<?php echo $skill; ?>
+															</div>
+														<?php endforeach; ?>
 													</div>
 												</div>
-												<div class="career">
-													<div class="card-location profile-subhead">CAREER</div>
+												<div class="profile-interest">
+													<div class="card-location">INTERESTED IN</div>
+													<div class="tagset">  
+														<!-- <div class="tag interest">Social Impact</div>
+														<div class="tag interest">Mental Health</div>
+														<div class="tag interest">UX Design</div> -->
 
-													<div class="xp">
-														<img src="icons/profile-work.png" alt="Briefcase" class="detail-icon">
-															<?php echo $row['job_role']; ?>
-														<br/> 
-														<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon">
-															<?php echo $row['company']; ?>
+														<!-- loop through interests separated by commas -->
+														<?php foreach(explode(",", $row['interest']) as $interest): ?>
+															<div class="tag interest">
+																<?php echo $interest; ?>
+															</div>
+														<?php endforeach; ?>
 													</div>
 												</div>
+											</div>
+
 										</div>
-										<div class="right">
-											<div class="profile-skill">
-												<div class="card-location profile-subhead">SKILLS</div>
-												<div class="tagset">  
-													
-													<!-- loop through skills separated by commas -->
-													<?php foreach(explode(",", $row['skills']) as $skill): ?>
-														<div class="tag skill">
-															<?php echo $skill; ?>
-														</div>
-													<?php endforeach; ?>
-												</div>
-											</div>
-											<div class="profile-interest">
-												<div class="card-location">INTERESTED IN</div>
-												<div class="tagset">  
-													<!-- <div class="tag interest">Social Impact</div>
-													<div class="tag interest">Mental Health</div>
-													<div class="tag interest">UX Design</div> -->
-
-													<!-- loop through interests separated by commas -->
-													<?php foreach(explode(",", $row['interest']) as $interest): ?>
-														<div class="tag interest">
-															<?php echo $interest; ?>
-														</div>
-													<?php endforeach; ?>
-												</div>
-											</div>
+										<div class="modal-footer">
+											<button type="button" class="btn contact" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 										</div>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn contact" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
 									</div>
 								</div>
 							</div>
-						</div>
-						<hr>
-						<div class="user-info">
-							<div class="users-school">
-								<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">
-									<?php echo $row['school_name']; ?>	
-								</div>
-							</div>
-							<div class="users-field">
-								<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">
-									<?php echo $row['major']; ?>
-								</div>
-							</div>
-						</div>
-
-						<div class="card-location profile-subhead">SKILLS</div>
-						<div class="tagset">  
-							<!-- <div class="tag skill">Adobe Creative Suite</div>
-							<div class="tag skill">Figma</div>
-							<div class="tag skill">Product Design</div>
-							<div class="tag skill">Creative Problem Solving</div> -->
-
-							<!-- loop through skills separated by commas -->
-							<?php foreach(explode(",", $row['skills']) as $skill): ?>
-								<div class="tag skill">
-									<?php echo $skill; ?>
-								</div>
-							<?php endforeach; ?>
-
-						</div>
-						<div class="card-location">INTERESTED IN</div>
-						<div class="tagset">  
-							<!-- <div class="tag interest">Social Impact</div>
-							<div class="tag interest">Mental Health</div>
-							<div class="tag interest">UX Design</div> -->
-							
-							<!-- loop through interests separated by commas -->
-							<?php foreach(explode(",", $row['interest']) as $interest): ?>
-								<div class="tag interest">
-									<?php echo $interest; ?>
-								</div>
-							<?php endforeach; ?>
-						</div>
-						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
-				<!-- contact modal -->
-						<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header card-name gradient">
-										<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?></p>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
+							<hr>
+							<div class="user-info">
+								<div class="users-school">
+									<img src="icons/profile-school.png" alt="School Icon" class="detail-icon"> <div class="xp">
+										<?php echo $row['school_name']; ?>	
 									</div>
-									<div class="modal-body modal-body-txt">
-										<form action="contact_confirmation.php" method="POST" id="contact">
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME *</label>
-													<input type="text" class="form-control search-bar" id="recipient-name" name="name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL *</label>
-													<input type="email" class="form-control" class="recipient-email search-bar" name="email" id="email">
-													<input type="hidden" value="<?php echo $row['user_email']?>" name="email_to">
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE *</label>
-													<textarea class="form-control" class="message-text" name="msg" id="msg"></textarea>
-											</div>
+								</div>
+								<div class="users-field">
+									<img src="icons/profile-in-progress.png" alt="Graduation Hat" class="detail-icon"> <div class="xp">
+										<?php echo $row['major']; ?>
+									</div>
+								</div>
+							</div>
+
+							<div class="card-location profile-subhead">SKILLS</div>
+							<div class="tagset">  
+								<!-- <div class="tag skill">Adobe Creative Suite</div>
+								<div class="tag skill">Figma</div>
+								<div class="tag skill">Product Design</div>
+								<div class="tag skill">Creative Problem Solving</div> -->
+
+								<!-- loop through skills separated by commas -->
+								<?php foreach(explode(",", $row['skills']) as $skill): ?>
+									<div class="tag skill">
+										<?php echo $skill; ?>
+									</div>
+								<?php endforeach; ?>
+
+							</div>
+							<div class="card-location">INTERESTED IN</div>
+							<div class="tagset">  
+								<!-- <div class="tag interest">Social Impact</div>
+								<div class="tag interest">Mental Health</div>
+								<div class="tag interest">UX Design</div> -->
+								
+								<!-- loop through interests separated by commas -->
+								<?php foreach(explode(",", $row['interest']) as $interest): ?>
+									<div class="tag interest">
+										<?php echo $interest; ?>
+									</div>
+								<?php endforeach; ?>
+							</div>
+							<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
+					<!-- contact modal -->
+							<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header card-name gradient">
+											<p class="modal-title" id="exampleModalLabel">Leave a message for <?php echo $row['user_first'] . " " . $row['user_last'][0] . "."; ?></p>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body modal-body-txt">
+											<form action="contact_confirmation.php" method="POST" id="contact">
+												<div class="form-group">
+													<label for="recipient-name" class="col-form-label">YOUR NAME *</label>
+														<input type="text" class="form-control search-bar" id="recipient-name" name="name">
+													<label for="recipient-email" class="col-form-label">YOUR EMAIL *</label>
+														<input type="email" class="form-control" class="recipient-email search-bar" name="email" id="email">
+														<input type="hidden" value="<?php echo $row['user_email']?>" name="email_to">
+												</div>
+												<div class="form-group">
+													<label for="message-text" class="col-form-label">MESSAGE *</label>
+														<textarea class="form-control" class="message-text" name="msg" id="msg"></textarea>
+												</div>
+											
+												<div class="modal-footer">
+													<div>
+														<small id="email-error" class="form-text text-danger"></small>
+														<small id="error" class="form-text text-danger"></small>
+													</div>
+													<button type="submit" class="btn send">Send</button>
+												</div>
+											</form>
+										</div>
 										
-											<div class="modal-footer">
-												<div>
-													<small id="email-error" class="form-text text-danger"></small>
-													<small id="error" class="form-text text-danger"></small>
-												</div>
-												<button type="submit" class="btn send">Send</button>
-											</div>
-										</form>
 									</div>
-									
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+
+			<?php endif; ?>
 
 			<?php endwhile; ?>
 			<!-- END LOOPING THROUGH RESULT CARDS -->
