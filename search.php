@@ -59,9 +59,12 @@
 
     <nav id="header">
         <div><a href="welcome.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
-        <div id="nav-logged-in">
-            <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-        </div>    
+		<!-- only show profile icon if logged in -->
+		<?php if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+			<div id="nav-logged-in">
+				<div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+			</div>   
+		<?php endif; ?> 
     </nav>
 
     <!-- main body, including login/signup card -->

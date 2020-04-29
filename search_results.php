@@ -115,12 +115,18 @@
 	<!-- the header at the top -->
     <nav id="header">
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
-        <div id="nav-logged-in">
-            <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-        </div>
-        <div id="edit" style="width: 9%; margin-left: 71%">
-            <a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
-        </div>    
+        
+		<!-- only show profile icon and log out button if currently logged in -->
+		<?php if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+			<div id="nav-logged-in">
+				<div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+			</div>
+			<div id="edit" style="width: 9%; margin-left: 71%">
+				<!-- only show logout button if you're already logged in -->
+				
+					<a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
+			</div> 
+		<?php endif; ?>   
     </nav>
 	<div id="new-search">
 		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
