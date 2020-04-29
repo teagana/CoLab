@@ -1,4 +1,6 @@
 <?php
+	ob_start();
+
 	require "config.php";
 
 	//don't allow access to this page if user isn't logged in
@@ -66,13 +68,18 @@
 			interest = '" . $interests .
 		"' WHERE user_id = " . $_SESSION['user_id'] . ";";
 
-		$results_update = $mysqli->query( $sql_update );
-
-		if ( $results_update == false ) {
+		$results_update = $mysqli->query($sql_update);
+		if(!$results_update) {
 			echo $mysqli->error;
-			$mysqli->close();
-			exit();
 		}
+
+		// $results_update = $mysqli->query( $sql_update );
+
+		// if ( $results_update == false ) {
+		// 	echo $mysqli->error;
+		// 	$mysqli->close();
+		// 	exit();
+		// }
 
 		//REDIRECT TO THE SEARCH PAGE
 		header('Location: search.php');
