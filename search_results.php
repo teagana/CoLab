@@ -144,6 +144,9 @@
         <div id="nav-logged-in">
             <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
+		<div id="edit">
+			<a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
+		</div>
     </nav>
 	<div id="new-search">
 		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
