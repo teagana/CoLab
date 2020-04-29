@@ -31,7 +31,7 @@
             text-align: center;
         }
         h5 {
-            font-family: Calibre-Semibold;
+            font-family: Calibre;
             font-style: normal;
             font-size: 18pt;
             line-height: 22pt;
@@ -40,15 +40,6 @@
         .login-card:hover {
             box-shadow: 0px 0px 50px rgba(255, 108, 108, 0.3);
             transition: 0.2s;
-        }
-
-        #cards {
-            font-family: Calibre;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 20pt;
-            line-height: 25pt;
-            color: #999999;
         }
     </style>
 
