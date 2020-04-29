@@ -70,8 +70,6 @@
 	}
 
 //probably change this to a prepared statement
-
-
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
 		echo $mysqli->error;
@@ -87,7 +85,30 @@
 		$mysqli->close();
 		exit();
 	}
-	
+
+// Contact Modal Email
+	if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])) {
+		$name = @trim(stripslashes($_POST['name'])); 
+		$email = @trim(stripslashes($_POST['email'])); 
+		$subject = "Connecting on CoLab";
+		$msg = @trim(stripslashes($_POST['msg']));
+		$msg = wordwrap($msg,70);
+
+		$email_from = $email;
+		$email_to = $row['user_email'];
+
+ 	 $body = 'body';
+ 	 // 'Name: ' . $name . "\n\n" . 'Email: ' . $email_from. "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' $msg;
+
+	 	mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
+	 	
+	 	alert('Email sent. Thank you!');
+
+
+	} else {
+	 	echo "Please include required fields so that you can connect.";
+	};
+
 	$mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -312,7 +333,7 @@
 							<?php endforeach; ?>
 						</div>
 						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
+				<!-- contact modal -->
 						<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -323,22 +344,24 @@
 										</button>
 									</div>
 									<div class="modal-body modal-body-txt">
-										<form>
+										<form action="" method="POST">
 											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
+												<label for="recipient-name" class="col-form-label" name="name">YOUR NAME</label>
 												<input type="text" class="form-control search-bar" id="recipient-name">
 												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" class="recipient-email search-bar">
+												<input type="email" class="form-control" class="recipient-email search-bar" name="email">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" class="message-text"></textarea>
+												<textarea class="form-control" class="message-text" name="msg"></textarea>
+											</div>
+										
+											<div class="modal-footer">
+												<button type="submit" class="btn send">Send</button>
 											</div>
 										</form>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
+									
 								</div>
 							</div>
 						</div>
