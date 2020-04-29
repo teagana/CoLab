@@ -97,9 +97,8 @@
 		$email_from = $email;
 		$email_to = $row['user_email'];
 
- 	 $body = "body";
-
- 	 	// "Name: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Subject: " . $subject . "\n\n" . "Message: " . $msg;
+ 	 $body = 'body';
+ 	 // 'Name: ' . $name . "\n\n" . 'Email: ' . $email_from. "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' $msg;
 
 	 	mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
 	 	
@@ -144,9 +143,6 @@
         <div id="nav-logged-in">
             <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
-		<div id="edit">
-			<a href="logout.php"><input id="logout-btn" type="button" class="btn" value="Logout"/></a>
-		</div>
     </nav>
 	<div id="new-search">
 		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
@@ -390,6 +386,33 @@
 
 	<!-- <script src="jquery-3.4.1.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<script>
+	$('#contactModal<?php echo $row['user_id'] ?>').on('shown.bs.modal',function(){
+		('#recipient-name').trigger('focus')
+	};
+//	$(function() {
+//	  $(window).load(function() {
+//	    $('#contactModal<?php echo $row['user_id'] ?>').modal('show');
+//	});
+
+	// $('#btn_send').click(function(){
+	// 		var name  = $(":input[name='name']").val();
+	// 		var email = $(":input[name='email']").val();
+	// 		var msg = $(":textarea[name='msg']").val();
+	// 		var varData = 'name=' + name + '&email=' + email + '&msg=' + msg; 
+
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 	    url: 'search_results.php',
+	// 	    data: varData,
+	// 		success: function(){
+	// 			alert('Email sent. Thank you!');
+	// 			$('#contactModal<?php echo $row['user_id'] ?>').modal('hide');
+	// 	    }
+	// 	});
+	// });
+	</script>
 
 </body>
 </html>

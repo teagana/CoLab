@@ -63,7 +63,6 @@
             <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
     </nav>
- 	
 
     <!-- main body, including login/signup card -->
     <div id="home-container" class="container d-flex justify-content-start">
