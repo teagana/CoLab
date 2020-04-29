@@ -33,7 +33,7 @@
 			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
 			LEFT JOIN major ON users.major_id = major.major_id 
 			LEFT JOIN minor ON users.minor_id = minor.minor_id 
-			LEFT JOIN industry ON users.industry_id = industry.industry_id 
+			LEFT JOIN industry ON users.industry_id = industry.industry_id
 			WHERE school.school_name LIKE '%" . $search_term . "%' 
 				OR users.bio LIKE '%" . $search_term . "%'
 				OR school_year.year LIKE '%" . $search_term . "%' 
@@ -141,7 +141,7 @@
     <nav id="header">
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="nav-logged-in">
-            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+            <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
     </nav>
 	<div id="new-search">
@@ -344,16 +344,16 @@
 										</button>
 									</div>
 									<div class="modal-body modal-body-txt">
-										<form action="" method="POST">
+										<form action="" method="POST" id="contact">
 											<div class="form-group">
 												<label for="recipient-name" class="col-form-label" name="name">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
+													<input type="text" class="form-control search-bar" id="recipient-name">
 												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" class="recipient-email search-bar" name="email">
+													<input type="email" class="form-control" class="recipient-email search-bar" name="email">
 											</div>
 											<div class="form-group">
 												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" class="message-text" name="msg"></textarea>
+													<textarea class="form-control" class="message-text" name="msg"></textarea>
 											</div>
 										
 											<div class="modal-footer">
@@ -379,7 +379,6 @@
 		</div>
 	</div>
 
-
 	<!-- BOOTSTRAP JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -387,6 +386,33 @@
 
 	<!-- <script src="jquery-3.4.1.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<script>
+	$('#contactModal<?php echo $row['user_id'] ?>').on('shown.bs.modal',function(){
+		('#recipient-name').trigger('focus')
+	};
+//	$(function() {
+//	  $(window).load(function() {
+//	    $('#contactModal<?php echo $row['user_id'] ?>').modal('show');
+//	});
+
+	// $('#btn_send').click(function(){
+	// 		var name  = $(":input[name='name']").val();
+	// 		var email = $(":input[name='email']").val();
+	// 		var msg = $(":textarea[name='msg']").val();
+	// 		var varData = 'name=' + name + '&email=' + email + '&msg=' + msg; 
+
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 	    url: 'search_results.php',
+	// 	    data: varData,
+	// 		success: function(){
+	// 			alert('Email sent. Thank you!');
+	// 			$('#contactModal<?php echo $row['user_id'] ?>').modal('hide');
+	// 	    }
+	// 	});
+	// });
+	</script>
 
 </body>
 </html>

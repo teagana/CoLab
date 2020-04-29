@@ -110,10 +110,7 @@
 
 	<!-- the header at the top -->
     <nav id="header">
-        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
-        <div id="nav-logged-in">
-            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
-        </div>    
+        <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>  
     </nav>
 
     <!-- main body, including login/signup card -->
