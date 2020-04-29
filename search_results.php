@@ -20,7 +20,6 @@
 			WHERE users.profile_type_id = " . $_GET['filter'] . ";";
 	}
 
-
 	//IF THERE IS A SEARCH TERM SET
 	if(isset($_GET['search'])) {
 		
@@ -33,7 +32,7 @@
 			LEFT JOIN school_year ON users.school_year_id = school_year.year_id 
 			LEFT JOIN major ON users.major_id = major.major_id 
 			LEFT JOIN minor ON users.minor_id = minor.minor_id 
-			LEFT JOIN industry ON users.industry_id = industry.industry_id 
+			LEFT JOIN industry ON users.industry_id = industry.industry_id
 			WHERE school.school_name LIKE '%" . $search_term . "%' 
 				OR users.bio LIKE '%" . $search_term . "%'
 				OR school_year.year LIKE '%" . $search_term . "%' 
@@ -70,8 +69,6 @@
 	}
 
 //probably change this to a prepared statement
-
-
 	$results_users = $mysqli->query( $sql_users );
 	if ( $results_users == false ) {
 		echo $mysqli->error;
@@ -87,7 +84,7 @@
 		$mysqli->close();
 		exit();
 	}
-	
+
 	$mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -99,8 +96,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta charset=“utf-8”>
-
-
 
 	<!-- Hotjar Tracking Code for https://460.itpwebdev.com/~colab/ -->
 <script>
@@ -120,7 +115,7 @@
     <nav id="header">
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="nav-logged-in">
-            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+            <div class="nav-profile" id="profile-hide"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
     </nav>
 	<div id="new-search">
@@ -156,10 +151,10 @@
 		</div>
 	</div>
 
-	<!-- profile cards -->    
+<!-- profile cards -->    
 	<div id="results-container" class="container-xl align-items-start justify-content-between">
 		<div class="row">
-			<!-- card 1 -->
+		<!-- card 1 -->
 			
 			<!-- LOOP THROUGH ALL THE RESULT CARDS -->
 			<?php while ( $row = $results_users->fetch_assoc() ) : ?>
@@ -312,7 +307,7 @@
 							<?php endforeach; ?>
 						</div>
 						<button class="btn contact contact-button" type="submit" data-toggle="modal" data-target="#contactModal<?php echo $row['user_id'] ?>" data-whatever="@mdo">Contact</button>
-						<!-- contact modal -->
+				<!-- contact modal -->
 						<div class="modal fade" id="contactModal<?php echo $row['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -323,22 +318,29 @@
 										</button>
 									</div>
 									<div class="modal-body modal-body-txt">
-										<form>
+										<form action="contact_confirmation.php" method="POST" id="contact">
 											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">YOUR NAME</label>
-												<input type="text" class="form-control search-bar" id="recipient-name">
-												<label for="recipient-email" class="col-form-label">YOUR EMAIL</label>
-												<input type="email" class="form-control" class="recipient-email search-bar">
+												<label for="recipient-name" class="col-form-label">YOUR NAME *</label>
+													<input type="text" class="form-control search-bar" id="recipient-name" name="name">
+												<label for="recipient-email" class="col-form-label">YOUR EMAIL *</label>
+													<input type="email" class="form-control" class="recipient-email search-bar" name="email" id="email">
+													<input type="hidden" value="<?php echo $row['user_email']?>" name="email_to">
 											</div>
 											<div class="form-group">
-												<label for="message-text" class="col-form-label">MESSAGE</label>
-												<textarea class="form-control" class="message-text"></textarea>
+												<label for="message-text" class="col-form-label">MESSAGE *</label>
+													<textarea class="form-control" class="message-text" name="msg" id="msg"></textarea>
+											</div>
+										
+											<div class="modal-footer">
+												<div>
+													<small id="email-error" class="form-text text-danger"></small>
+													<small id="error" class="form-text text-danger"></small>
+												</div>
+												<button type="submit" class="btn send">Send</button>
 											</div>
 										</form>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn send">Send</button>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -356,7 +358,6 @@
 		</div>
 	</div>
 
-
 	<!-- BOOTSTRAP JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -365,5 +366,48 @@
 	<!-- <script src="jquery-3.4.1.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+	<script>
+		document.querySelector('#contact').onsubmit = function(){
+			var validForm = true;
+
+			var name = document.querySelector('#recipient-name').value;
+			var email = document.querySelector('#email').value;
+			var message = document.querySelector('#msg').value;		
+		// 1. Name cannot be empty.
+			if ( name.length == 0 ) {
+				// Name is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else {
+				// No errors.
+				document.querySelector('#error').innerHTML = '';
+			}
+		// 1. Email cannot be empty.
+		// 2. Email must contain "@" character.
+			if ( email.length == 0 ) {
+				// Email is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else if ( email.indexOf('@') == -1 ) {
+				// Email does NOT contain '@' character.
+				validForm = false;
+				document.querySelector('#email-error').innerHTML = "Email must contain '@' character.";
+			} else {
+				// No errors
+				document.querySelector('#error').innerHTML = '';
+			}
+
+		// 1. msg cannot be empty.
+			if ( message.length == 0 ) {
+				// Name is empty.
+				validForm = false;
+				document.querySelector('#error').innerHTML = "* Required fields cannot be empty.";
+			} else {
+				// No errors.
+				document.querySelector('#error').innerHTML = '';
+			}		
+			return validForm;
+		}
+	</script>
 </body>
 </html>

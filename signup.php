@@ -8,6 +8,7 @@
     if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
 		header('Location: search.php');
+
 	}
 
 	//user not logged in; let them sign up
@@ -92,7 +93,14 @@
 		}
 	}
 		
-	
+	// hidding pofile if not looged in and showing when is.
+		if ($_SESSION['logged_in'] == 'profile-hide') {
+			$showdiv = 'profile-hide';
+		} else if ($_SESSION[''] == '') {
+
+		}
+
+		echo "<script>document.getElementById('".$showdiv."').style.display = 'block';</script>";
 
 	// $sql_users = "SELECT * FROM users;";
 
@@ -103,8 +111,6 @@
 	// 	$mysqli->close();
 	// 	exit();
 	// }
-
-	// // var_dump($results_users);
 
 	// $mysqli->close();
 ?>
@@ -142,7 +148,7 @@
     <nav id="header">
         <div><a href="search.php"><img src="icons/nav-logo.png" alt="CoLab" class="nav-profile"></a></div>
         <div id="nav-logged-in">
-            <div class="nav-profile"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
+            <div class="nav-profile" id="profile-hide" style="display: none;"><a href="profile_page.php"><img src="icons/nav-placeholder.png" alt="Pofile Picture" class="nav-profile"></a></div>
         </div>    
     </nav>
 
