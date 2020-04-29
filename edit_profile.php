@@ -12,6 +12,16 @@
 	//USER SAVED CHANGES FROM THIS PAGE; SEND TO SEARCH PAGE
 	else if(isset($_POST['saved-changes']) && !empty($_POST['saved-changes'])) {
 		
+		// Establish MySQL Connection.
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+		if ( $mysqli->connect_errno ) {
+			echo $mysqli->connect_error;
+			exit();
+		}
+
+		$mysqli->set_charset('utf8');
+		
 		//profile type (checkboxes)
 		if(isset($_POST['mentor']) && !empty($_POST['mentor'])) {
 			$profile_type_id = $_POST['mentor'];
