@@ -91,8 +91,8 @@
 		// 	exit();
 		// }
 
-		//REDIRECT TO THE SEARCH PAGE
-		header('Location: search.php');
+		//REDIRECT BACK TO PROFILE PAGE
+		header('Location: profile_page.php');
 	}
 	
 	//logged in; proceed to page
