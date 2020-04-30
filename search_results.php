@@ -41,7 +41,8 @@
 				OR industry.industry LIKE '%" . $search_term . "%' 
 				OR users.company LIKE '%" . $search_term . "%' 
 				OR users.job_role LIKE '%" . $search_term . "%' 
-				OR users.skills LIKE '%" . $search_term . "%';";
+				OR users.skills LIKE '%" . $search_term . "%' 
+				OR users.interest LIKE '%" . $search_term . "%';";
 		}
 
 		//otherwise add in the profile type filter
@@ -62,7 +63,8 @@
 				OR industry.industry LIKE '%" . $search_term . "%' 
 				OR users.company LIKE '%" . $search_term . "%' 
 				OR users.job_role LIKE '%" . $search_term . "%' 
-				OR users.skills LIKE '%" . $search_term . "%'
+				OR users.skills LIKE '%" . $search_term . "%' 
+				OR users.interest LIKE '%" . $search_term . "%'
 			);";
 		}
 		
@@ -75,6 +77,30 @@
 		$mysqli->close();
 		exit();
 	}
+
+	// get the number of users (need to requery)
+	$results_users_count = $mysqli->query( $sql_users );
+	if ( $results_users_count == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+
+	$result_count = 0;
+	$people_or_person = "people";
+
+	//make sure not to count the logged in user if they'd show up in search
+	while ( $row = $results_users_count->fetch_assoc() ){
+		if($row['user_id'] != $_SESSION['user_id']) {
+			$result_count += 1;
+		}
+	}
+
+	//if there's only one search result, should be "person" not "people"
+	if($result_count == 1) {
+		$people_or_person = "person";
+	}
+
 
 // Profile Type:
 	$sql_profile_type = "SELECT * FROM profile_type;";
@@ -129,7 +155,8 @@
 		<?php endif; ?>   
     </nav>
 	<div id="new-search">
-		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
+		<h3 id="results-number">
+		<?php echo $result_count . " " . $people_or_person ?> found for '<?php echo $search_term ?>'</h3>
 		<div class="input-group mb-3">
 			
 	<!-- searchbar here -->
