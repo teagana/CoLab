@@ -78,16 +78,23 @@
 		exit();
 	}
 
-	// get the number of users
+	// get the number of users (need to requery)
+	$results_users_count = $mysqli->query( $sql_users );
+	if ( $results_users_count == false ) {
+		echo $mysqli->error;
+		$mysqli->close();
+		exit();
+	}
+
 	$result_count = 0;
 
-	while ( $row = $results_users->fetch_assoc() ){
+	//make sure not to count the logged in user if they'd show up in search
+	while ( $row = $results_users_count->fetch_assoc() ){
 		if($row['user_id'] != $_SESSION['user_id']) {
 			$result_count += 1;
 		}
 	}
 
-		
 
 // Profile Type:
 	$sql_profile_type = "SELECT * FROM profile_type;";
