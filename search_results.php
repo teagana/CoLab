@@ -87,12 +87,18 @@
 	}
 
 	$result_count = 0;
+	$people_or_person = "people";
 
 	//make sure not to count the logged in user if they'd show up in search
 	while ( $row = $results_users_count->fetch_assoc() ){
 		if($row['user_id'] != $_SESSION['user_id']) {
 			$result_count += 1;
 		}
+	}
+
+	//if there's only one search result, should be "person" not "people"
+	if($result_count == 1) {
+		$people_or_person = "person";
 	}
 
 
@@ -150,7 +156,7 @@
     </nav>
 	<div id="new-search">
 		<h3 id="results-number">
-		<?php echo $result_count ?> people found for '<?php echo $search_term ?>'</h3>
+		<?php echo $result_count . " " . $people_or_person ?> found for '<?php echo $search_term ?>'</h3>
 		<div class="input-group mb-3">
 			
 	<!-- searchbar here -->
