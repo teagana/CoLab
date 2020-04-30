@@ -78,6 +78,17 @@
 		exit();
 	}
 
+	// get the number of users
+	$result_count = 0;
+
+	while ( $row = $results_users->fetch_assoc() ){
+		if($row['user_id'] != $_SESSION['user_id']) {
+			$result_count += 1;
+		}
+	}
+
+		
+
 // Profile Type:
 	$sql_profile_type = "SELECT * FROM profile_type;";
 	$results_profile_type = $mysqli->query($sql_profile_type);
@@ -131,7 +142,8 @@
 		<?php endif; ?>   
     </nav>
 	<div id="new-search">
-		<h3 id="results-number"><?php echo $results_users->num_rows ?> people found for '<?php echo $search_term ?>'</h3>
+		<h3 id="results-number">
+		<?php echo $result_count ?> people found for '<?php echo $search_term ?>'</h3>
 		<div class="input-group mb-3">
 			
 	<!-- searchbar here -->
